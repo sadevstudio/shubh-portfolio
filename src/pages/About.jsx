@@ -1019,6 +1019,7 @@
 
 // export default About;
 
+import Footer from '../components/layout/Footer'
 import Navbar from "../components/layout/Navbar";
 import { motion } from "framer-motion";
 
@@ -1047,6 +1048,7 @@ import aboutBattle from "../assets/about/about-battle.png";
 import aboutCity from "../assets/about/about-city.png";
 import aboutWorkspace from "../assets/about/about-workspace.png";
 import aboutEnding from "../assets/about/about-ending.png";
+import signatureImage from "../assets/about/signature.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -1055,30 +1057,30 @@ function About() {
   
   const sectionsRef = useRef([]);
 
-  useEffect(() => {
+useEffect(() => {
 
-    sectionsRef.current.forEach((section) => {
+  sectionsRef.current.forEach((section) => {
 
-      const image = section.querySelector(".parallax-image");
+    const image = section.querySelector(".parallax-image");
 
-      gsap.to(image, {
+    if (!image) return;
 
-        scale: 1.15,
-        y: -120,
-        ease: "none",
+    gsap.to(image, {
+      scale: 1.18,
+      yPercent: -8,
+      ease: "none",
 
-        scrollTrigger: {
-          trigger: section,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true,
-        },
-
-      });
-
+      scrollTrigger: {
+        trigger: section,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 1.5,
+      },
     });
 
-  }, []);
+  });
+
+}, []);
 
   return (
 
@@ -1097,21 +1099,41 @@ function About() {
         "
       >
 
-        <img
-          src={aboutHero}
-          alt=""
-          className="
-parallax-image
-absolute inset-0
-w-full h-full
-object-cover
-object-center
-md:object-[center_25%]
-brightness-[1.05]
-scale-[1.08]
-translate-y-10
-"
-        />
+        <motion.img
+
+  initial={{
+    scale: 1.12,
+  }}
+
+  animate={{
+    scale: 1.03,
+    y: [-10, 10, -10],
+  }}
+
+  transition={{
+    duration: 8,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+
+  src={aboutHero}
+  alt=""
+
+  className="
+    parallax-image
+    absolute inset-0
+    w-full h-full
+    object-cover
+    object-[center_top]
+    md:object-[center_top]
+    brightness-[1.15]
+    
+  "
+
+  style={{
+    objectPosition: 'center 80px',
+  }}
+/>
 
         <div className="
         absolute inset-0
@@ -1128,9 +1150,11 @@ translate-y-10
 
         <div className="
         relative z-10
-        w-[90%]
-        max-w-[1500px]
-        mx-auto
+w-[90%]
+max-w-[1500px]
+mx-auto
+pt-24
+md:pt-32
         ">
 
           <motion.div
@@ -1139,55 +1163,96 @@ translate-y-10
             transition={{ duration:1.2 }}
           >
 
-            <p className="
-            uppercase
-            tracking-[12px]
-            text-red-500
-            mb-8
-            text-sm
-            ">
+            <p
+  className="
+  uppercase
+  tracking-[14px]
+  text-red-600
+  mb-6
+  text-sm
+  font-semibold
+  "
+>
+  About Me
+</p>
 
-              Cinematic Creator
+<h1
+  className="
+  text-[4rem]
+  md:text-[8rem]
+  leading-[0.82]
+  font-black
+  uppercase
+  "
+>
+  ABOUT{" "}
+  <span className="text-red-600">
+    ME
+  </span>
+</h1>
 
-            </p>
+<div
+  className="
+  w-[90px]
+  h-[2px]
+  bg-red-600
+  mt-8
+  mb-8
+  "
+></div>
 
-            <h1 className="
-            text-[5rem]
-            md:text-[10rem]
-            leading-[0.82]
-            font-black
-            uppercase
-            ">
+<p
+  className="
+  text-white/85
+  text-[1.15rem]
+  md:text-[1.3rem]
+  leading-[2]
+  max-w-[650px]
+  font-light
+  "
+>
+  I'm Shubh Asawa, a Motion Designer,
+  3D Artist and Visual Storyteller
+  from{" "}
+  <span className="text-red-500 font-medium">
+    New Delhi, India.
+  </span>
+</p>
 
-              SHUBH
-              <br />
+<p
+  className="
+  text-white/60
+  text-lg
+  leading-[2]
+  max-w-[620px]
+  mt-8
+  "
+>
+  I create cinematic visuals that connect
+  emotions with motion. From concept
+  to creation, I love turning ideas
+  into powerful visual stories.
+</p>
 
-              <span className="gradient-text">
-                ASAWA
-              </span>
+<div className="mt-0 flex flex-col items-start">
 
-            </h1>
+  <img
+    src={signatureImage}
+    alt="Shubh Asawa Signature"
+    className="
+      w-[620px]
+      md:w-[720px]
+      max-w-none
+      object-contain
+      -ml-32
+      mt-0
+    "
+  />
 
-            <div className="
-            w-[140px]
-            h-[2px]
-            bg-red-500
-            mt-10
-            mb-10
-            "></div>
 
-            <p className="
-            text-white/70
-            text-xl
-            leading-[2]
-            max-w-[700px]
-            ">
 
-              Motion Designer, Blender Artist,
-              and cinematic storyteller creating
-              immersive anime-inspired digital experiences.
 
-            </p>
+</div>
 
           </motion.div>
 
@@ -1207,18 +1272,34 @@ translate-y-10
 >
 
   {/* BACKGROUND IMAGE */}
-  <img
-    src={aboutStory}
-    alt=""
-    className="
-    parallax-image
-    absolute inset-0
-    w-full h-full
-    object-cover
-    brightness-[1]
-    scale-110
-    "
-  />
+  <motion.img
+
+          initial={{
+            scale: 1.12,
+          }}
+
+          animate={{
+            scale: 1.03,
+            y: [-10, 10, -10],
+          }}
+
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+
+  src={aboutStory}
+  alt=""
+
+  className="
+  absolute inset-0
+  w-full h-full
+  object-cover
+  brightness-[1]
+  scale-[1.15]
+  "
+/>
 
   {/* DARK OVERLAY */}
   <div
@@ -1348,7 +1429,22 @@ translate-y-10
         "
       >
 
-        <img
+        <motion.img
+
+          initial={{
+            scale: 1.12,
+          }}
+
+          animate={{
+            scale: 1.03,
+            y: [-10, 10, -10],
+          }}
+
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
           src={aboutCity}
           alt=""
           className="
@@ -1433,7 +1529,22 @@ translate-y-10
         "
       >
 
-        <img
+        <motion.img
+
+          initial={{
+            scale: 1.12,
+          }}
+
+          animate={{
+            scale: 1.03,
+            y: [-10, 10, -10],
+          }}
+
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
           src={aboutBattle}
           alt=""
           className="
@@ -1555,7 +1666,22 @@ translate-y-10
         "
       >
 
-        <img
+        <motion.img
+
+          initial={{
+            scale: 1.12,
+          }}
+
+          animate={{
+            scale: 1.03,
+            y: [-10, 10, -10],
+          }}
+
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
           src={aboutWorkspace}
           alt=""
           className="
@@ -1678,7 +1804,22 @@ translate-y-10
         "
       >
 
-        <img
+        <motion.img
+
+          initial={{
+            scale: 1.12,
+          }}
+
+          animate={{
+            scale: 1.03,
+            y: [-10, 10, -10],
+          }}
+
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
           src={aboutEnding}
           alt=""
           className="
@@ -1735,6 +1876,8 @@ translate-y-10
         </motion.div>
 
       </section>
+
+       <Footer />
 
     </div>
   );

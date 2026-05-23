@@ -135,8 +135,10 @@ import heroImg from '../assets/contact/contact-hero.png'
 import touchImg from '../assets/contact/contact-touch.png'
 import mapImg from '../assets/contact/contact-map.png'
 import footerImg from '../assets/contact/contact-footer.png'
-import signatureImg from '../assets/contact/signature.png'
-
+import signatureImage from '../assets/contact/signature.png'
+import phoneIcon from '../assets/icons/phone.png'
+import locationIcon from '../assets/icons/location.png'
+import emailIcon from '../assets/icons/email.png'
 
 
 function Contact() {
@@ -322,7 +324,7 @@ tracking-tight
         text-white/55
         leading-[2]
         text-lg
-        mb-16
+        mb-4
         max-w-2xl
         "
       >
@@ -330,19 +332,22 @@ tracking-tight
         powerful, emotional and unforgettable.
       </motion.p>
 
-      <motion.img
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.9 }}
-        src={signatureImg}
-        alt="signature"
-        className="
-        w-[700px]
-        max-w-full
-        opacity-55
-        drop-shadow-[0_0_40px_rgba(255,0,0,0.4)]
-        "
-      />
+      <div className="mt-0 flex flex-col items-start">
+
+  <img
+    src={signatureImage}
+    alt="Shubh Asawa Signature"
+    className="
+      w-[620px]
+      md:w-[720px]
+      max-w-none
+      object-contain
+      -ml-32
+      mt-0
+    "
+  />
+
+</div>
 
     </div>
 
@@ -529,113 +534,198 @@ tracking-tight
 
             <div className="space-y-10">
 
-              <div className="flex gap-6">
+  {/* LOCATION */}
 
-                <div className="
-                w-16
-                h-16
-                border
-                border-red-600
-                flex
-                items-center
-                justify-center
-                text-red-500
-                text-xl
-                ">
-                  <FaMapMarkerAlt />
-                </div>
+  <a
+    href="https://maps.google.com/?q=New+Delhi+India"
+    target="_blank"
+    rel="noreferrer"
+    className="
+    flex
+    gap-6
+    group
+    transition-all
+    duration-500
+    "
+  >
 
-                <div>
+    <div
+      className="
+      w-16
+      h-16
+      rounded-full
+      bg-red-600/10
+      backdrop-blur-md
+      border
+      border-red-500/30
+      flex
+      items-center
+      justify-center
+      shadow-[0_0_30px_rgba(255,0,0,0.25)]
+      overflow-hidden
+      group-hover:scale-110
+      transition-all
+      duration-500
+      "
+    >
 
-                  <h3 className="
-                  uppercase
-                  tracking-[0.2em]
-                  mb-2
-                  ">
-                    Location
-                  </h3>
+      <img
+        src={locationIcon}
+        alt="location"
+        className="w-8 h-8 object-contain"
+      />
 
-                  <p className="text-white/70">
-                    New Delhi, India
-                  </p>
+    </div>
 
-                </div>
+    <div>
 
-              </div>
+      <h3
+        className="
+        uppercase
+        tracking-[0.2em]
+        mb-2
+        group-hover:text-red-500
+        transition
+        "
+      >
+        Location
+      </h3>
 
-              <div className="flex gap-6">
+      <p className="text-white/70">
+        New Delhi, India
+      </p>
 
-                <div className="
-                w-16
-h-16
-rounded-full
-bg-red-600/10
-backdrop-blur-md
-border
-border-red-500/30
-flex
-items-center
-justify-center
-text-red-500
-text-2xl
-shadow-[0_0_30px_rgba(255,0,0,0.25)]
-                ">
-                  <FaPhoneAlt />
-                </div>
+    </div>
 
-                <div>
+  </a>
 
-                  <h3 className="
-                  uppercase
-                  tracking-[0.2em]
-                  mb-2
-                  ">
-                    Phone
-                  </h3>
+  {/* PHONE */}
 
-                  <p className="text-white/70">
-                    +91 70172 84828
-                  </p>
+  <a
+    href="tel:+917017284828"
+    className="
+    flex
+    gap-6
+    group
+    transition-all
+    duration-500
+    "
+  >
 
-                </div>
+    <div
+      className="
+      w-16
+      h-16
+      rounded-full
+      bg-red-600/10
+      backdrop-blur-md
+      border
+      border-red-500/30
+      flex
+      items-center
+      justify-center
+      shadow-[0_0_30px_rgba(255,0,0,0.25)]
+      overflow-hidden
+      group-hover:scale-110
+      transition-all
+      duration-500
+      "
+    >
 
-              </div>
+      <img
+        src={phoneIcon}
+        alt="phone"
+        className="w-8 h-8 object-contain"
+      />
 
-              <div className="flex gap-6">
+    </div>
 
-                <div className="
-                w-16
-                h-16
-                border
-                border-red-600
-                flex
-                items-center
-                justify-center
-                text-red-500
-                text-xl
-                ">
-                  <FaEnvelope />
-                </div>
+    <div>
 
-                <div>
+      <h3
+        className="
+        uppercase
+        tracking-[0.2em]
+        mb-2
+        group-hover:text-red-500
+        transition
+        "
+      >
+        Phone
+      </h3>
 
-                  <h3 className="
-                  uppercase
-                  tracking-[0.2em]
-                  mb-2
-                  ">
-                    Email
-                  </h3>
+      <p className="text-white/70">
+        +91 70172 84828
+      </p>
 
-                  <p className="text-white/70 break-all">
-                    shubhdesigns3d@gmail.com
-                  </p>
+    </div>
 
-                </div>
+  </a>
 
-              </div>
+  {/* EMAIL */}
 
-            </div>
+  <a
+    href="mailto:shubhdesigns3d@gmail.com"
+    className="
+    flex
+    gap-6
+    group
+    transition-all
+    duration-500
+    "
+  >
+
+    <div
+      className="
+      w-16
+      h-16
+      rounded-full
+      bg-red-600/10
+      backdrop-blur-md
+      border
+      border-red-500/30
+      flex
+      items-center
+      justify-center
+      shadow-[0_0_30px_rgba(255,0,0,0.25)]
+      overflow-hidden
+      group-hover:scale-110
+      transition-all
+      duration-500
+      "
+    >
+
+      <img
+        src={emailIcon}
+        alt="email"
+        className="w-8 h-8 object-contain"
+      />
+
+    </div>
+
+    <div>
+
+      <h3
+        className="
+        uppercase
+        tracking-[0.2em]
+        mb-2
+        group-hover:text-red-500
+        transition
+        "
+      >
+        Email
+      </h3>
+
+      <p className="text-white/70 break-all">
+        shubhdesigns3d@gmail.com
+      </p>
+
+    </div>
+
+  </a>
+
+</div>
 
           </div>
 

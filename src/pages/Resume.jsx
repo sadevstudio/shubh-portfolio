@@ -1246,6 +1246,7 @@ import photoshop from '../assets/tools/photoshop.png'
 import illustrator from '../assets/tools/illustrator.png'
 import blender from '../assets/tools/blender.png'
 import figma from '../assets/tools/figma.png'
+import signatureImage from "../assets/about/signature.png";
 
 function Resume() {
 
@@ -1544,7 +1545,7 @@ function Resume() {
               mb-10
               ">
 
-                <div className="
+                {/* <div className="
                 w-10 h-10
                 rounded-full
                 border border-red-500
@@ -1552,7 +1553,7 @@ function Resume() {
                 text-red-500
                 ">
                   ✦
-                </div>
+                </div> */}
 
                 <h2 className="
                 uppercase
@@ -1591,14 +1592,22 @@ function Resume() {
                 and immersive digital experiences.
               </p>
 
-              <h3 className="
-              text-red-500
-              text-4xl
-              italic
-              tracking-wide
-              ">
-                Shubh Asawa
-              </h3>
+              <div className="mt-0 flex flex-col items-start">
+
+  <img
+    src={signatureImage}
+    alt="Shubh Asawa Signature"
+
+    className="
+      w-[520px]
+      md:w-[620px]
+      max-w-none
+      object-contain
+      -ml-32
+    "
+  />
+
+</div>
 
             </div>
 
