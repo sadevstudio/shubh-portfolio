@@ -1,10 +1,15 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
+
+import { Link } from 'react-router-dom'
+import MagneticButton from '../ui/MagneticButton'
 import reel1 from '../../assets/videos/reel1.mp4'
 import reel2 from '../../assets/videos/reel2.mp4'
 import reel3 from '../../assets/videos/reel3.mp4'
 import reel4 from '../../assets/videos/reel4.mp4'
+
+import SamuraiShowreel from '../../assets/images/samurai-showreel.png'
 
 const reels = [
 
@@ -38,7 +43,6 @@ function ShowreelSection() {
 
   const [current,setCurrent] = useState(0)
 
-  // AUTO CHANGE
   useEffect(()=>{
 
     const interval = setInterval(()=>{
@@ -53,7 +57,6 @@ function ShowreelSection() {
 
   },[])
 
-  // NEXT
   const nextReel = ()=>{
 
     setCurrent((prev)=>
@@ -62,7 +65,6 @@ function ShowreelSection() {
 
   }
 
-  // PREV
   const prevReel = ()=>{
 
     setCurrent((prev)=>
@@ -75,35 +77,100 @@ function ShowreelSection() {
 
     <section className="
     relative
-    py-40
+    py-28
     overflow-hidden
+    border-t border-white/10
     ">
 
-      {/* BACKGROUND */}
+      {/* BACKGROUND IMAGE */}
+      <motion.div
+
+        initial={{
+    scale: 1.12,
+  }}
+
+  animate={{
+    scale: 1.03,
+    y: [-10, 10, -10],
+  }}
+
+  transition={{
+    duration: 8,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+
+        viewport={{ once:true }}
+
+        className="
+        absolute inset-0
+        "
+      >
+
+        <img
+          src={SamuraiShowreel}
+          alt="Samurai Showreel"
+          className="
+          w-full
+          h-full
+          object-cover
+          opacity-70
+          "
+        />
+
+      </motion.div>
+
+      {/* DARK OVERLAY */}
       <div className="
       absolute inset-0
-      bg-black
+      bg-black/70
       "></div>
 
-      {/* RED GLOW */}
+      {/* RED ATMOSPHERE */}
       <div className="
-      absolute top-1/2 left-1/2
+      absolute
+      top-1/2
+      left-1/2
       -translate-x-1/2
       -translate-y-1/2
-      w-[1200px]
-      h-[1200px]
+      w-[900px]
+      h-[900px]
       bg-red-600/10
-      blur-[220px]
+      blur-[180px]
       rounded-full
       "></div>
 
       <div className="
-      container
+      max-w-[1500px]
+      mx-auto
+      px-8
       relative z-10
+      grid
+      lg:grid-cols-[0.5fr_1.5fr]
+      gap-14
+      items-center
       ">
 
-        {/* HEADING */}
-        <div className="mb-20">
+        {/* LEFT CONTENT */}
+        <motion.div
+
+          initial={{
+            opacity:0,
+            x:-60,
+          }}
+
+          whileInView={{
+            opacity:1,
+            x:0,
+          }}
+
+          transition={{
+            duration:1,
+          }}
+
+          viewport={{ once:true }}
+
+        >
 
           <p className="
           uppercase
@@ -118,29 +185,91 @@ function ShowreelSection() {
           <h2 className="
           big-title
           text-[4rem]
-          md:text-[8rem]
+          md:text-[7rem]
           leading-[0.9]
           uppercase
+          mb-8
           ">
-            HYPER
-            <br />
+
             SHOWREEL
+
           </h2>
 
-        </div>
+          <p className="
+          text-white/60
+          text-lg
+          leading-relaxed
+          max-w-[500px]
+          mb-10
+          ">
 
-        {/* VIDEO WRAPPER */}
-        <div className="
-        relative
-        h-[850px]
-        overflow-hidden
-        rounded-[60px]
-        border border-white/10
-        bg-black
-        shadow-[0_0_120px_rgba(255,0,0,0.12)]
-        ">
+            A cinematic collection of anime-inspired
+            motion visuals,
+            CGI storytelling,
+            dramatic edits,
+            and immersive creative direction.
 
-          {/* VIDEOS */}
+          </p>
+          
+
+         <motion.div
+  initial={{ opacity:0, y:40 }}
+  whileInView={{ opacity:1, y:0 }}
+  transition={{ delay:0.8, duration:1 }}
+  viewport={{ once:true }}
+  className="
+  flex flex-wrap
+  items-center
+  gap-6
+  mt-12
+  "
+>
+
+  <Link to="/portfolio">
+
+    <MagneticButton>
+      WATCH MORE
+    </MagneticButton>
+
+  </Link>
+
+</motion.div>
+
+        </motion.div>
+
+        {/* VIDEO FRAME */}
+        <motion.div
+
+          initial={{
+            opacity:0,
+            x:60,
+          }}
+
+          whileInView={{
+            opacity:1,
+            x:0,
+          }}
+
+          transition={{
+            duration:1,
+          }}
+
+          viewport={{ once:true }}
+
+          className="
+relative
+overflow-hidden
+rounded-[45px]
+border border-white/10
+bg-black
+shadow-[0_0_120px_rgba(255,0,0,0.15)]
+aspect-video
+min-h-[650px]
+w-full
+"
+        >
+
+          {/* VIDEO */}
           <AnimatePresence mode="wait">
 
             <motion.video
@@ -149,24 +278,26 @@ function ShowreelSection() {
               muted
               loop
               playsInline
+
               initial={{
                 opacity:0,
                 scale:1.08,
-                filter:'blur(20px)',
               }}
+
               animate={{
                 opacity:1,
                 scale:1,
-                filter:'blur(0px)',
               }}
+
               exit={{
                 opacity:0,
-                scale:1.1,
-                filter:'blur(20px)',
+                scale:1.08,
               }}
+
               transition={{
                 duration:0.8,
               }}
+
               className="
               absolute inset-0
               w-full h-full
@@ -188,46 +319,28 @@ function ShowreelSection() {
           absolute inset-0
           bg-gradient-to-t
           from-black
-          via-black/20
+          via-black/10
           to-transparent
-          "></div>
-
-          {/* SIDE FADE */}
-          <div className="
-          absolute inset-0
-          bg-gradient-to-r
-          from-black/70
-          via-transparent
-          to-black/20
           "></div>
 
           {/* CONTENT */}
           <div className="
           absolute
-          bottom-14 left-14
+          bottom-10 left-10
           z-20
-          max-w-[700px]
           ">
 
             <motion.p
               key={reels[current].subtitle}
-              initial={{
-                opacity:0,
-                y:30,
-              }}
-              animate={{
-                opacity:1,
-                y:0,
-              }}
-              transition={{
-                duration:0.6,
-              }}
+              initial={{ opacity:0, y:20 }}
+              animate={{ opacity:1, y:0 }}
+              transition={{ duration:0.5 }}
               className="
               uppercase
-              tracking-[0.5em]
+              tracking-[0.4em]
               text-red-500
-              text-sm
-              mb-6
+              text-xs
+              mb-4
               "
             >
 
@@ -237,21 +350,13 @@ function ShowreelSection() {
 
             <motion.h3
               key={reels[current].title}
-              initial={{
-                opacity:0,
-                y:40,
-              }}
-              animate={{
-                opacity:1,
-                y:0,
-              }}
-              transition={{
-                duration:0.8,
-              }}
+              initial={{ opacity:0, y:30 }}
+              animate={{ opacity:1, y:0 }}
+              transition={{ duration:0.7 }}
               className="
               big-title
-              text-[4rem]
-              md:text-[7rem]
+              text-[2.5rem]
+              md:text-[4rem]
               leading-[0.9]
               uppercase
               "
@@ -266,22 +371,23 @@ function ShowreelSection() {
           {/* CONTROLS */}
           <div className="
           absolute
-          bottom-14 right-14
+          bottom-10 right-10
           z-20
-          flex items-center gap-5
+          flex
+          items-center
+          gap-4
           ">
 
             <button
               onClick={prevReel}
               className="
-              w-16 h-16
+              w-14 h-14
               rounded-full
               border border-white/10
               bg-black/40
               backdrop-blur-xl
               hover:bg-red-500
               transition
-              text-xl
               "
             >
               ←
@@ -290,14 +396,13 @@ function ShowreelSection() {
             <button
               onClick={nextReel}
               className="
-              w-16 h-16
+              w-14 h-14
               rounded-full
               border border-white/10
               bg-black/40
               backdrop-blur-xl
               hover:bg-red-500
               transition
-              text-xl
               "
             >
               →
@@ -305,33 +410,7 @@ function ShowreelSection() {
 
           </div>
 
-          {/* REEL INDICATORS */}
-          <div className="
-          absolute
-          top-10 right-10
-          z-20
-          flex gap-3
-          ">
-
-            {reels.map((_,index)=>(
-
-              <div
-                key={index}
-                className={`
-                h-2 rounded-full transition-all duration-500
-
-                ${current === index
-                  ? 'w-20 bg-red-500'
-                  : 'w-8 bg-white/30'
-                }
-                `}
-              ></div>
-
-            ))}
-
-          </div>
-
-        </div>
+        </motion.div>
 
       </div>
 

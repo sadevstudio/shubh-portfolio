@@ -709,6 +709,7 @@
 
 // export default Home
 
+import { useState } from 'react'
 import Navbar from '../components/layout/Navbar'
 import Footer from '../components/layout/Footer'
 import MagneticButton from '../components/ui/MagneticButton'
@@ -728,9 +729,27 @@ import AboutBg from '../assets/images/about-bg.png'
 import VideoShowcase from '../components/home/VideoShowcase'
 import ShowreelSection from '../components/home/ShowreelSection'
 import ThankYouSection from '../components/home/ThankYouSection'
+import SamuraiExpertise from '../assets/images/samurai-expertise.png'
+import SamuraiBattle from '../assets/images/samurai-battle.png'
+
+import Project1 from '../assets/images/project-1.png'
+import Project2 from '../assets/images/project-2.png'
+import Project3 from '../assets/images/project-3.png'
+import Project4 from '../assets/images/project-4.png'
+
+import BlenderLogo from '../assets/images/blender.png'
+import AeLogo from '../assets/images/after-effects.png'
+import PsLogo from '../assets/images/photoshop.png'
+import PrLogo from '../assets/images/premiere-pro.png'
+import AiLogo from '../assets/images/illustrator.png'
+import FigmaLogo from '../assets/images/figma.png'
+import DavinciLogo from '../assets/images/davinci.png'
+
+import SamuraiOrbit from '../assets/images/samurai-orbit.png'
 
 function Home() {
 
+  const [paused, setPaused] = useState(false)
   return (
 
     <div className="
@@ -1020,220 +1039,312 @@ function Home() {
 
       </section>
 
-      {/* EXPERTISE SECTION */}
-      <section className="
-      py-24
-      border-t border-white/10
-      border-b border-white/10
-      bg-white/[0.02]
-      ">
+   {/* EXPERTISE SECTION */}
+<section className="
+relative
+py-40
+overflow-hidden
+border-t border-white/10
+border-b border-white/10
+bg-black
+">
 
-        <div className="
-        container
-        grid md:grid-cols-2 lg:grid-cols-4
-        gap-8
+  {/* BACKGROUND IMAGE */}
+  <motion.div
+    initial={{ scale:1.05 }}
+    whileInView={{ scale:1 }}
+    transition={{ duration:2 }}
+    className="
+    absolute inset-0
+    "
+  >
+
+    <motion.img
+
+  initial={{
+    scale: 1.12,
+  }}
+
+  animate={{
+    scale: 1.03,
+    y: [-10, 10, -10],
+  }}
+
+  transition={{
+    duration: 8,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+      src={SamuraiExpertise}
+      alt="Samurai Background"
+      className="
+      w-full
+      h-full
+      object-cover
+      opacity-40
+      "
+    />
+
+  </motion.div>
+
+  {/* DARK CINEMATIC OVERLAY */}
+  <div className="
+  absolute inset-0
+  bg-black/20
+  "></div>
+
+  {/* TOP/BOTTOM CINEMATIC FADE */}
+  <div className="
+  absolute
+  inset-0
+  bg-gradient-to-t
+  from-black
+  via-transparent
+  to-black/20
+  "></div>
+
+  {/* SUBTLE GRID */}
+  <div className="
+  absolute inset-0
+  opacity-[0.04]
+  bg-[linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)]
+  bg-[size:80px_80px]
+  "></div>
+
+  <div className="
+max-w-[1350px]
+mx-auto
+px-6
+relative
+z-10
+">
+
+    {/* MAIN LAYOUT */}
+    <div className="
+    grid
+    lg:grid-cols-[0.9fr_1.1fr]
+    gap-20
+    items-center
+    ">
+
+      {/* LEFT SIDE */}
+      <motion.div
+        initial={{ opacity:0, x:-60 }}
+        whileInView={{ opacity:1, x:0 }}
+        transition={{ duration:1 }}
+        viewport={{ once:true }}
+      >
+
+        {/* SMALL LABEL */}
+        <p className="
+        uppercase
+        tracking-[0.5em]
+        text-red-500
+        text-sm
+        mb-6
+        ">
+          Creative Expertise
+        </p>
+
+        {/* TITLE */}
+        <h2 className="
+        big-title
+        text-[4rem]
+        md:text-[6rem]
+        xl:text-[7rem]
+        leading-[0.9]
+        uppercase
+        mb-10
         ">
 
-          {[
-            'Motion Design',
-            'Anime Edits',
-            'CGI Visuals',
-            'Visual Storytelling',
-          ].map((item,index)=>(
+          DIGITAL
+          <br />
 
-            <div
-              key={index}
-              className="
-              glass
-              rounded-[30px]
-              p-8
-              hover:-translate-y-2
-              transition duration-500
-              "
-            >
+          ARSENAL
 
-              <p className="
+        </h2>
+
+        {/* DESCRIPTION */}
+        <p className="
+        text-white/65
+        text-lg
+        leading-relaxed
+        max-w-[520px]
+        ">
+
+          A blend of creativity,
+          cinematic storytelling,
+          motion graphics,
+          anime aesthetics,
+          and immersive CGI visuals
+          crafted to create emotional impact.
+
+        </p>
+
+      </motion.div>
+
+      {/* RIGHT SIDE CARDS */}
+      <div className="
+      grid
+      md:grid-cols-2
+      gap-8
+      ">
+
+        {[
+          {
+            title:'Motion Design',
+            icon:'✦',
+            number:'01',
+            text:"Creating cinematic visals",
+          },
+
+          {
+            title:'Anime Edits',
+            icon:'赤',
+            number:'02',
+            text:"Creating cinematic visua",
+          },
+
+          {
+            title:'CGI Visuals',
+            icon:'◉',
+            number:'03',
+            text:"Creating cinematic visuals",
+          },
+
+          {
+            title:'Visual Storytelling',
+            icon:'刀',
+            number:'04',
+            text:"Creating cinematic viuals",
+          },
+
+        ].map((item,index)=>(
+
+          <motion.div
+            key={index}
+            initial={{ opacity:0, y:60 }}
+            whileInView={{ opacity:1, y:0 }}
+            transition={{
+              duration:0.8,
+              delay:index * 0.15,
+            }}
+            viewport={{ once:true }}
+            whileHover={{
+              y:-10,
+              scale:1.02,
+            }}
+            className="
+            group
+            relative
+            overflow-hidden
+            rounded-[32px]
+            border
+            border-white/10
+            bg-black/20
+            backdrop-blur-xl
+            p-8
+            min-h-[320px]
+            transition
+            duration-500
+            shadow-[0_0_40px_rgba(255,0,0,0.08)]
+            hover:border-red-500/30
+            hover:bg-black/35
+            hover:shadow-[0_0_60px_rgba(255,0,0,0.18)]
+            "
+          >
+
+            {/* CARD LIGHT */}
+            <div className="
+            absolute
+            inset-0
+            opacity-0
+            group-hover:opacity-100
+            transition
+            duration-700
+            bg-gradient-to-br
+            from-white/[0.04]
+            via-transparent
+            to-red-500/[0.04]
+            "></div>
+
+            {/* TOP */}
+            <div className="
+            relative z-10
+            flex
+            items-center
+            justify-between
+            mb-14
+            ">
+
+              <span className="
               text-red-500
-              uppercase
-              tracking-[0.3em]
-              text-xs
-              mb-4
-              ">
-                Expertise
-              </p>
-
-              <h3 className="
               text-4xl
-              big-title
-              leading-none
+              group-hover:scale-110
+              transition
+              duration-500
               ">
-                {item}
-              </h3>
+                {item.icon}
+              </span>
+
+              <span className="
+              text-white/15
+              big-title
+              text-5xl
+              ">
+                {item.number}
+              </span>
 
             </div>
 
-          ))}
-
-        </div>
-
-      </section>
-
-      {/* FOOTER */}
-      {/* RECENT WORK SECTION */}
-<section className="
-py-32
-relative
-overflow-hidden
-">
-
-  {/* BACKGROUND GLOW */}
-  <div className="
-  absolute top-1/2 left-1/2
-  -translate-x-1/2
-  -translate-y-1/2
-  w-[900px] h-[900px]
-  bg-red-600/10
-  blur-[180px]
-  rounded-full
-  "></div>
-
-  <div className="container relative z-10">
-
-    {/* SECTION HEADING */}
-    <div className="mb-20">
-
-      <p className="
-      uppercase
-      tracking-[0.5em]
-      text-red-500
-      text-sm
-      mb-6
-      ">
-        Recent Work
-      </p>
-
-      <h2 className="
-      big-title
-      text-[4rem]
-      md:text-[7rem]
-      leading-[0.9]
-      uppercase
-      ">
-
-        CINEMATIC
-        <br />
-
-        PROJECTS
-
-      </h2>
-
-    </div>
-
-    {/* PROJECT GRID */}
-    <div className="
-    grid
-    md:grid-cols-2
-    xl:grid-cols-4
-    gap-6
-    ">
-
-      {[
-        {
-          title:'Karna Reel',
-          image:'https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200&auto=format&fit=crop',
-        },
-
-        {
-          title:'Anime Edit',
-          image:'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop',
-        },
-
-        {
-          title:'CGI Product',
-          image:'https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1200&auto=format&fit=crop',
-        },
-
-        {
-          title:'Motion Typography',
-          image:'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop',
-        },
-
-      ].map((project,index)=>(
-
-        <motion.div
-          key={index}
-          whileHover={{ y:-10 }}
-          className="
-          relative
-          group
-          overflow-hidden
-          rounded-[30px]
-          border border-white/10
-          bg-white/[0.03]
-          "
-        >
-
-          {/* IMAGE */}
-          <img
-            src={project.image}
-            alt={project.title}
-            className="
-            h-[450px]
-            w-full
-            object-cover
-            group-hover:scale-110
-            transition duration-700
-            "
-          />
-
-          {/* OVERLAY */}
-          <div className="
-          absolute inset-0
-          bg-gradient-to-t
-          from-black
-          via-black/20
-          to-transparent
-          "></div>
-
-          {/* RED GLOW */}
-          <div className="
-          absolute inset-0
-          opacity-0
-          group-hover:opacity-100
-          bg-red-500/10
-          transition duration-500
-          "></div>
-
-          {/* CONTENT */}
-          <div className="
-          absolute bottom-0 left-0
-          p-6
-          z-10
-          ">
-
-            <p className="
-            uppercase
-            tracking-[0.3em]
-            text-red-500
-            text-xs
-            mb-3
-            ">
-              Featured Work
-            </p>
-
+            {/* TITLE */}
             <h3 className="
+            relative z-10
             text-4xl
             big-title
             leading-none
+            mb-8
+            group-hover:text-red-400
+            transition
+            duration-500
             ">
-              {project.title}
+
+              {item.title}
+
             </h3>
 
-          </div>
+            {/* TEXT */}
+            <p className="
+            relative z-10
+            text-white/55
+            leading-relaxed
+            group-hover:text-white/75
+            transition
+            duration-500
+            ">
 
-        </motion.div>
+              {item.text}
 
-      ))}
+            </p>
+
+            {/* BOTTOM LINE */}
+            <div className="
+            absolute
+            bottom-0
+            left-0
+            h-[2px]
+            w-0
+            bg-red-500
+            group-hover:w-full
+            transition-all
+            duration-700
+            "></div>
+
+          </motion.div>
+
+        ))}
+
+      </div>
 
     </div>
 
@@ -1241,99 +1352,546 @@ overflow-hidden
 
 </section>
 
-{/* FEATURED PROJECT SECTION */}
+{/* RECENT WORK SECTION */}
+<section className="
+relative
+py-32
+overflow-hidden
+border-t border-white/10
+border-b border-white/10
+bg-black
+">
+
+  {/* BACKGROUND IMAGE */}
+  <motion.div
+    initial={{ scale:1.05 }}
+    whileInView={{ scale:1 }}
+    transition={{ duration:2 }}
+    className="
+    absolute inset-0
+    "
+  >
+
+    <motion.img
+
+  initial={{
+    scale: 1.12,
+  }}
+
+  animate={{
+    scale: 1.03,
+    y: [-10, 10, -10],
+  }}
+
+  transition={{
+    duration: 8,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+      src={SamuraiBattle}
+      alt="Samurai Battle"
+      className="
+      w-full
+      h-full
+      object-cover
+      opacity-55
+      "
+    />
+
+  </motion.div>
+
+  {/* DARK OVERLAY */}
+  <div className="
+  absolute inset-0
+  bg-black/40
+  "></div>
+
+  {/* CINEMATIC GRADIENT */}
+  <div className="
+  absolute inset-0
+  bg-gradient-to-r
+  from-black
+  via-black/50
+  to-black/80
+  "></div>
+
+  {/* RED ATMOSPHERE */}
+  <div className="
+  absolute
+  top-1/2
+  left-1/2
+  -translate-x-1/2
+  -translate-y-1/2
+  w-[900px]
+  h-[900px]
+  bg-red-600/10
+  blur-[160px]
+  rounded-full
+  "></div>
+
+  {/* GRID TEXTURE */}
+  <div className="
+  absolute inset-0
+  opacity-[0.03]
+  bg-[linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)]
+  bg-[size:80px_80px]
+  "></div>
+
+  <div className="
+w-full
+relative
+z-10
+">
+
+    {/* TOP AREA */}
+<div className="
+max-w-[1400px]
+mx-auto
+px-8
+flex
+flex-col
+lg:flex-row
+lg:items-end
+lg:justify-between
+gap-10
+mb-20
+">
+
+      {/* LEFT CONTENT */}
+      <motion.div
+        initial={{ opacity:0, y:60 }}
+        whileInView={{ opacity:1, y:0 }}
+        transition={{ duration:1 }}
+        viewport={{ once:true }}
+      >
+
+        <p className="
+        uppercase
+        tracking-[0.5em]
+        text-red-500
+        text-sm
+        mb-6
+        ">
+          Recent Work
+        </p>
+
+        <h2 className="
+        big-title
+        text-[4rem]
+        md:text-[6rem]
+        leading-[0.9]
+        uppercase
+        mb-8
+        ">
+
+          CINEMATIC
+          <br />
+
+          PROJECTS
+
+        </h2>
+
+        <p className="
+        text-white/60
+        text-lg
+        leading-relaxed
+        max-w-[520px]
+        ">
+
+          A collection of anime-inspired
+          cinematic visuals,
+          immersive storytelling,
+          CGI motion work,
+          and emotionally powerful digital experiences.
+
+        </p>
+
+      </motion.div>
+
+      <motion.div
+              initial={{ opacity:0, y:40 }}
+              animate={{ opacity:1, y:0 }}
+              transition={{ delay:0.8, duration:1 }}
+              className="
+              flex flex-wrap
+              items-center
+              gap-6
+              mt-12
+              "
+            >
+
+              <Link to="/portfolio">
+
+                <MagneticButton>
+                  VIEW MORE
+                </MagneticButton>
+
+              </Link>
+
+      </motion.div>
+
+    </div>
+
+    {/* PROJECT SLIDER */}
+<div className="
+relative
+overflow-hidden
+w-full
+">
+
+  {/* LEFT FADE */}
+  <div className="
+  absolute
+  left-0
+  top-0
+  w-40
+  h-full
+  z-20
+  bg-gradient-to-r
+  from-black
+  to-transparent
+  pointer-events-none
+  "></div>
+
+  {/* RIGHT FADE */}
+  <div className="
+  absolute
+  right-0
+  top-0
+  w-24
+  h-full
+  z-20
+  bg-gradient-to-l
+  from-black
+  to-transparent
+  pointer-events-none
+  "></div>
+
+  <motion.div
+    animate={{
+      x: paused ? 0 : ['0%', '-50%'],
+    }}
+    transition={{
+      duration: 45,
+      repeat: Infinity,
+      ease: 'linear',
+    }}
+    className="
+flex
+gap-8
+w-max
+px-8
+"
+  >
+
+    {[
+      {
+        title:'Karna Reel',
+        image:Project1,
+      },
+
+      {
+        title:'Anime Edit',
+        image:Project2,
+      },
+
+      {
+        title:'CGI Product',
+        image:Project3,
+      },
+
+      {
+        title:'Motion Typography',
+        image:Project4,
+      },
+
+      {
+        title:'Red Moon',
+        image:Project2,
+      },
+
+      {
+        title:'Cinematic Edit',
+        image:Project3,
+      },
+
+      {
+        title:'Samurai Visual',
+        image:Project1,
+      },
+
+      // DUPLICATE FOR INFINITE LOOP
+      {
+        title:'Karna Reel',
+        image:Project1,
+      },
+
+      {
+        title:'Anime Edit',
+        image:Project2,
+      },
+
+      {
+        title:'CGI Product',
+        image:Project3,
+      },
+
+      {
+        title:'Motion Typography',
+        image:Project4,
+      },
+
+      {
+        title:'Red Moon',
+        image:Project2,
+      },
+
+      {
+        title:'Cinematic Edit',
+        image:Project3,
+      },
+
+      {
+        title:'Samurai Visual',
+        image:Project1,
+      },
+
+    ].map((project,index)=>(
+
+      <motion.div
+        key={index}
+        onHoverStart={() => setPaused(true)}
+        onHoverEnd={() => setPaused(false)}
+        whileHover={{
+          y:-16,
+          scale:1.02,
+        }}
+        className="
+        group
+        relative
+        overflow-hidden
+        rounded-[36px]
+        border
+        border-white/10
+        bg-black/20
+        backdrop-blur-xl
+        h-[520px]
+        min-w-[380px]
+        transition
+        duration-500
+        hover:border-red-500/30
+        hover:shadow-[0_0_70px_rgba(255,0,0,0.22)]
+        "
+      >
+
+        {/* IMAGE */}
+        <img
+          src={project.image}
+          alt={project.title}
+          className="
+          absolute
+          inset-0
+          w-full
+          h-full
+          object-cover
+          group-hover:scale-110
+          transition
+          duration-700
+          "
+        />
+
+        {/* OVERLAY */}
+        <div className="
+        absolute inset-0
+        bg-gradient-to-t
+        from-black
+        via-black/30
+        to-transparent
+        "></div>
+
+        {/* LIGHT REFLECTION */}
+        <div className="
+        absolute
+        inset-0
+        opacity-0
+        group-hover:opacity-100
+        transition
+        duration-700
+        bg-gradient-to-br
+        from-white/[0.08]
+        via-transparent
+        to-red-500/[0.05]
+        "></div>
+
+        {/* RED GLOW */}
+        <div className="
+        absolute inset-0
+        opacity-0
+        group-hover:opacity-100
+        bg-red-500/10
+        transition
+        duration-500
+        "></div>
+
+        {/* CONTENT */}
+        <div className="
+        absolute
+        bottom-0
+        left-0
+        p-8
+        z-10
+        ">
+
+          <p className="
+          uppercase
+          tracking-[0.35em]
+          text-red-500
+          text-xs
+          mb-4
+          ">
+            Featured Work
+          </p>
+
+          <h3 className="
+          text-4xl
+          big-title
+          leading-none
+          mb-6
+          group-hover:text-red-400
+          transition
+          duration-500
+          ">
+
+            {project.title}
+
+          </h3>
+
+          {/* LINE */}
+          <div className="
+          w-16
+          h-[2px]
+          bg-red-500
+          group-hover:w-28
+          transition-all
+          duration-500
+          "></div>
+
+        </div>
+
+      </motion.div>
+
+    ))}
+
+  </motion.div>
+
+</div>
+  </div>
+
+</section>
+
+{/* CREATIVE STACK SECTION */}
 <section className="
 relative
 py-40
 overflow-hidden
 border-t border-white/10
+bg-black
 ">
 
-  {/* BACKGROUND ATMOSPHERE */}
+  {/* BACKGROUND IMAGE */}
+  <motion.div
+
+    initial={{ scale:1.1 }}
+
+    whileInView={{
+      scale:1,
+      y:-20,
+    }}
+
+    transition={{
+      duration:2,
+      ease:'easeOut',
+    }}
+
+    viewport={{ once:true }}
+
+    className="
+    absolute inset-0
+    "
+  >
+
+   <motion.img
+
+  initial={{
+    scale: 1.12,
+  }}
+
+  animate={{
+    scale: 1.03,
+    y: [-10, 10, -10],
+  }}
+
+  transition={{
+    duration: 8,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+      src={SamuraiOrbit}
+      alt="Samurai Background"
+      className="
+      w-full
+      h-full
+      object-cover
+      opacity-40
+      "
+    />
+
+  </motion.div>
+
+  {/* DARK OVERLAY */}
   <div className="
   absolute inset-0
-  bg-gradient-to-br
-  from-red-900/10
-  via-black
-  to-purple-900/10
+  bg-black/55
   "></div>
 
-  {/* RED GLOW */}
+  {/* RED ATMOSPHERE */}
   <div className="
-  absolute top-1/2 left-1/2
+  absolute
+  top-1/2
+  left-1/2
   -translate-x-1/2
   -translate-y-1/2
-  w-[1000px]
-  h-[1000px]
+  w-[900px]
+  h-[900px]
   bg-red-600/10
   blur-[180px]
   rounded-full
   "></div>
 
+  {/* GRID TEXTURE */}
   <div className="
-  container
-  relative z-10
-  grid lg:grid-cols-2
+  absolute inset-0
+  opacity-[0.03]
+  bg-[linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)]
+  bg-[size:80px_80px]
+  "></div>
+
+  <div className="
+  max-w-[1400px]
+  mx-auto
+  px-8
+  relative
+  z-10
+  grid
+  lg:grid-cols-[0.8fr_1.2fr]
   gap-20
   items-center
   ">
 
-    {/* LEFT IMAGE */}
+    {/* LEFT CONTENT */}
     <motion.div
-      initial={{ opacity:0, x:-60 }}
-      whileInView={{ opacity:1, x:0 }}
-      transition={{ duration:1 }}
-      viewport={{ once:true }}
-      className="
-      relative
-      group
-      "
-    >
-
-      {/* IMAGE */}
-      <img
-        src={SamuraiHero}
-        alt="Featured Project"
-        className="
-        rounded-[40px]
-        border border-white/10
-        shadow-[0_0_80px_rgba(255,0,0,0.2)]
-        group-hover:scale-[1.02]
-        transition duration-700
-        "
-      />
-
-      {/* OVERLAY */}
-      <div className="
-      absolute inset-0
-      bg-gradient-to-t
-      from-black
-      via-transparent
-      to-transparent
-      rounded-[40px]
-      "></div>
-
-      {/* FLOATING TAG */}
-      <div className="
-      absolute
-      top-6 left-6
-      glass
-      px-5 py-3
-      rounded-full
-      text-xs
-      uppercase
-      tracking-[0.3em]
-      text-red-500
-      ">
-        Featured Project
-      </div>
-
-    </motion.div>
-
-    {/* RIGHT CONTENT */}
-    <motion.div
-      initial={{ opacity:0, x:60 }}
-      whileInView={{ opacity:1, x:0 }}
+      initial={{ opacity:0, y:50 }}
+      whileInView={{ opacity:1, y:0 }}
       transition={{ duration:1 }}
       viewport={{ once:true }}
     >
@@ -1345,7 +1903,7 @@ border-t border-white/10
       text-sm
       mb-6
       ">
-        Cinematic Storytelling
+        Creative Workflow
       </p>
 
       <h2 className="
@@ -1357,10 +1915,10 @@ border-t border-white/10
       mb-8
       ">
 
-        KARNA
+        CREATIVE
         <br />
 
-        CINEMATIC
+        STACK
 
       </h2>
 
@@ -1368,89 +1926,156 @@ border-t border-white/10
       text-white/60
       text-lg
       leading-relaxed
-      mb-10
+      max-w-[520px]
       ">
-        A cinematic anime-inspired motion project
-        focused on powerful storytelling,
-        dramatic visuals,
-        emotional atmosphere,
-        and immersive motion design inspired by
-        mythological warrior aesthetics.
+
+        Industry-standard creative tools used
+        to craft cinematic visuals,
+        anime-inspired motion graphics,
+        immersive CGI scenes,
+        and emotionally powerful storytelling.
+
       </p>
 
-      {/* TOOLS */}
-      <div className="
-      flex flex-wrap
-      gap-4
-      mb-12
-      ">
+    </motion.div>
 
-        {[
-          'Blender',
-          'After Effects',
-          'Photoshop',
-          'Premiere Pro',
-        ].map((tool,index)=>(
+    {/* SOFTWARE GRID */}
+    <div className="
+    grid
+    sm:grid-cols-2
+    xl:grid-cols-3
+    gap-6
+    ">
 
-          <div
-            key={index}
-            className="
-            px-5 py-3
-            rounded-full
-            border border-white/10
-            bg-white/[0.03]
-            text-sm
-            uppercase
-            tracking-[0.2em]
-            "
-          >
-            {tool}
-          </div>
+      {[
+        {
+          name:'Blender',
+          logo:BlenderLogo,
+        },
 
-        ))}
+        {
+          name:'After Effects',
+          logo:AeLogo,
+        },
 
-      </div>
+        {
+          name:'Photoshop',
+          logo:PsLogo,
+        },
 
-      {/* BUTTONS */}
-      <div className="
-      flex flex-wrap
-      gap-6
-      ">
+        {
+          name:'Premiere Pro',
+          logo:PrLogo,
+        },
 
-        <MagneticButton>
-          WATCH PROJECT
-        </MagneticButton>
+        {
+          name:'Illustrator',
+          logo:AiLogo,
+        },
 
-        <Link to="/portfolio">
+        {
+          name:'Figma',
+          logo:FigmaLogo,
+        },
 
-          <button className="
-          px-10 py-5
-          border border-purple-500/30
-          bg-purple-500/10
+      ].map((software,index)=>(
+
+        <motion.div
+          key={index}
+          initial={{ opacity:0, y:50 }}
+          whileInView={{ opacity:1, y:0 }}
+          transition={{
+            duration:0.8,
+            delay:index * 0.1,
+          }}
+          viewport={{ once:true }}
+
+          whileHover={{
+            y:-14,
+            scale:1.04,
+          }}
+
+          className="
+          group
+          relative
+          overflow-hidden
+          rounded-[32px]
+          border
+          border-white/10
+          bg-white/[0.03]
           backdrop-blur-xl
-          hover:bg-purple-500/20
-          hover:border-purple-400
+          p-10
+          min-h-[270px]
+          flex
+          flex-col
+          items-center
+          justify-center
+          text-center
           transition
-          uppercase
-          tracking-[0.25em]
-          purple-glow
+          duration-500
+          hover:border-red-500/30
+          hover:bg-red-500/[0.03]
+          hover:shadow-[0_0_80px_rgba(255,0,0,0.22)]
+          "
+        >
+
+          {/* GLOW */}
+          <div className="
+          absolute inset-0
+          opacity-0
+          group-hover:opacity-100
+          transition
+          duration-700
+          bg-gradient-to-br
+          from-white/[0.05]
+          via-transparent
+          to-red-500/[0.05]
+          "></div>
+
+          {/* LOGO */}
+          <img
+            src={software.logo}
+            alt={software.name}
+            className="
+            w-28
+            h-28
+            object-contain
+            mb-8
+            relative
+            z-10
+            group-hover:scale-110
+            transition
+            duration-500
+            "
+          />
+
+          {/* NAME */}
+          <h3 className="
+          text-2xl
+          big-title
+          leading-none
+          relative
+          z-10
+          group-hover:text-red-400
+          transition
+          duration-500
           ">
 
-            VIEW MORE
+            {software.name}
 
-          </button>
+          </h3>
 
-        </Link>
+        </motion.div>
 
-      </div>
+      ))}
 
-    </motion.div>
+    </div>
 
   </div>
 
 </section>
 
-MARQUEE SECTION
+{/*MARQUEE SECTION*/}
 <section className="
 relative
 overflow-hidden
@@ -1612,17 +2237,32 @@ overflow-hidden
 ">
 
   {/* BACKGROUND IMAGE */}
-  <div
-    className="
-    absolute inset-0
-    "
+  <motion.div
+        initial={{
+    scale: 1.12,
+  }}
+
+  animate={{
+    scale: 1.03,
+    y: [-10, 10, -10],
+  }}
+
+  transition={{
+    duration: 8,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+        viewport={{ once:true }}
+        className="
+        absolute inset-0
+        "
     style={{
       backgroundImage:`url(${AboutBg})`,
       backgroundPosition:'center',
       backgroundSize:'cover',
       backgroundRepeat:'no-repeat',
     }}
-  ></div>
+  ></motion.div>
 
   {/* DARK OVERLAY */}
   <div className="

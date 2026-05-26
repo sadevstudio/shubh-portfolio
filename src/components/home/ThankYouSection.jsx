@@ -9,23 +9,34 @@ function ThankYouSection() {
 
     <section className="
     relative
-    min-h-screen
+    h-[70vh]
     overflow-hidden
     flex items-center justify-center
     ">
 
       {/* BACKGROUND */}
       <motion.div
-        initial={{ scale:1.15 }}
-        whileInView={{ scale:1 }}
-        transition={{ duration:4 }}
+        initial={{
+    scale: 1.12,
+  }}
+
+  animate={{
+    scale: 1.03,
+    y: [-10, 10, -10],
+  }}
+
+  transition={{
+    duration: 8,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
         viewport={{ once:true }}
         className="
         absolute inset-0
         "
         style={{
           backgroundImage:`url(${ThankYouBg})`,
-          backgroundPosition:'center',
+          backgroundPosition:'center 22%',
           backgroundSize:'cover',
           backgroundRepeat:'no-repeat',
           filter:'brightness(0.75)',
