@@ -732,10 +732,7 @@ import ThankYouSection from '../components/home/ThankYouSection'
 import SamuraiExpertise from '../assets/images/samurai-expertise.png'
 import SamuraiBattle from '../assets/images/samurai-battle.png'
 
-import Project1 from '../assets/images/project-1.png'
-import Project2 from '../assets/images/project-2.png'
-import Project3 from '../assets/images/project-3.png'
-import Project4 from '../assets/images/project-4.png'
+import projects from "../data/projects";
 
 import BlenderLogo from '../assets/images/blender.png'
 import AeLogo from '../assets/images/after-effects.png'
@@ -1373,21 +1370,21 @@ bg-black
   >
 
     <motion.img
+      initial={{
+        scale: 1.12,
+      }}
 
-  initial={{
-    scale: 1.12,
-  }}
+      animate={{
+        scale: 1.03,
+        y: [-10, 10, -10],
+      }}
 
-  animate={{
-    scale: 1.03,
-    y: [-10, 10, -10],
-  }}
+      transition={{
+        duration: 8,
+        repeat: Infinity,
+        ease: "easeInOut",
+      }}
 
-  transition={{
-    duration: 8,
-    repeat: Infinity,
-    ease: "easeInOut",
-  }}
       src={SamuraiBattle}
       alt="Samurai Battle"
       className="
@@ -1438,24 +1435,24 @@ bg-black
   "></div>
 
   <div className="
-w-full
-relative
-z-10
-">
+  w-full
+  relative
+  z-10
+  ">
 
     {/* TOP AREA */}
-<div className="
-max-w-[1400px]
-mx-auto
-px-8
-flex
-flex-col
-lg:flex-row
-lg:items-end
-lg:justify-between
-gap-10
-mb-20
-">
+    <div className="
+    max-w-[1400px]
+    mx-auto
+    px-8
+    flex
+    flex-col
+    lg:flex-row
+    lg:items-end
+    lg:justify-between
+    gap-10
+    mb-20
+    ">
 
       {/* LEFT CONTENT */}
       <motion.div
@@ -1508,283 +1505,222 @@ mb-20
 
       </motion.div>
 
+      {/* BUTTON */}
       <motion.div
-              initial={{ opacity:0, y:40 }}
-              animate={{ opacity:1, y:0 }}
-              transition={{ delay:0.8, duration:1 }}
-              className="
-              flex flex-wrap
-              items-center
-              gap-6
-              mt-12
-              "
-            >
+        initial={{ opacity:0, y:40 }}
+        animate={{ opacity:1, y:0 }}
+        transition={{ delay:0.8, duration:1 }}
+        className="
+        flex flex-wrap
+        items-center
+        gap-6
+        mt-12
+        "
+      >
 
-              <Link to="/portfolio">
+        <Link to="/portfolio">
 
-                <MagneticButton>
-                  VIEW MORE
-                </MagneticButton>
+          <MagneticButton>
+            VIEW MORE
+          </MagneticButton>
 
-              </Link>
+        </Link>
 
       </motion.div>
 
     </div>
 
     {/* PROJECT SLIDER */}
-<div className="
-relative
-overflow-hidden
-w-full
-">
+    <div className="
+    relative
+    overflow-hidden
+    w-full
+    ">
 
-  {/* LEFT FADE */}
-  <div className="
-  absolute
-  left-0
-  top-0
-  w-40
-  h-full
-  z-20
-  bg-gradient-to-r
-  from-black
-  to-transparent
-  pointer-events-none
-  "></div>
+      {/* LEFT FADE */}
+      <div className="
+      absolute
+      left-0
+      top-0
+      w-40
+      h-full
+      z-20
+      bg-gradient-to-r
+      from-black
+      to-transparent
+      pointer-events-none
+      "></div>
 
-  {/* RIGHT FADE */}
-  <div className="
-  absolute
-  right-0
-  top-0
-  w-24
-  h-full
-  z-20
-  bg-gradient-to-l
-  from-black
-  to-transparent
-  pointer-events-none
-  "></div>
+      {/* RIGHT FADE */}
+      <div className="
+      absolute
+      right-0
+      top-0
+      w-24
+      h-full
+      z-20
+      bg-gradient-to-l
+      from-black
+      to-transparent
+      pointer-events-none
+      "></div>
 
-  <motion.div
-    animate={{
-      x: paused ? 0 : ['0%', '-50%'],
-    }}
-    transition={{
-      duration: 45,
-      repeat: Infinity,
-      ease: 'linear',
-    }}
-    className="
-flex
-gap-8
-w-max
-px-8
-"
-  >
-
-    {[
-      {
-        title:'Karna Reel',
-        image:Project1,
-      },
-
-      {
-        title:'Anime Edit',
-        image:Project2,
-      },
-
-      {
-        title:'CGI Product',
-        image:Project3,
-      },
-
-      {
-        title:'Motion Typography',
-        image:Project4,
-      },
-
-      {
-        title:'Red Moon',
-        image:Project2,
-      },
-
-      {
-        title:'Cinematic Edit',
-        image:Project3,
-      },
-
-      {
-        title:'Samurai Visual',
-        image:Project1,
-      },
-
-      // DUPLICATE FOR INFINITE LOOP
-      {
-        title:'Karna Reel',
-        image:Project1,
-      },
-
-      {
-        title:'Anime Edit',
-        image:Project2,
-      },
-
-      {
-        title:'CGI Product',
-        image:Project3,
-      },
-
-      {
-        title:'Motion Typography',
-        image:Project4,
-      },
-
-      {
-        title:'Red Moon',
-        image:Project2,
-      },
-
-      {
-        title:'Cinematic Edit',
-        image:Project3,
-      },
-
-      {
-        title:'Samurai Visual',
-        image:Project1,
-      },
-
-    ].map((project,index)=>(
-
+      {/* SLIDER */}
       <motion.div
-        key={index}
-        onHoverStart={() => setPaused(true)}
-        onHoverEnd={() => setPaused(false)}
-        whileHover={{
-          y:-16,
-          scale:1.02,
+        animate={{
+          x: paused ? 0 : ['0%', '-50%'],
+        }}
+        transition={{
+          duration: 45,
+          repeat: Infinity,
+          ease: 'linear',
         }}
         className="
-        group
-        relative
-        overflow-hidden
-        rounded-[36px]
-        border
-        border-white/10
-        bg-black/20
-        backdrop-blur-xl
-        h-[520px]
-        min-w-[380px]
-        transition
-        duration-500
-        hover:border-red-500/30
-        hover:shadow-[0_0_70px_rgba(255,0,0,0.22)]
+        flex
+        gap-8
+        w-max
+        px-8
         "
       >
 
-        {/* IMAGE */}
-        <img
-          src={project.image}
-          alt={project.title}
-          className="
-          absolute
-          inset-0
-          w-full
-          h-full
-          object-cover
-          group-hover:scale-110
-          transition
-          duration-700
-          "
-        />
+        {[...projects, ...projects].map((project,index)=>(
 
-        {/* OVERLAY */}
-        <div className="
-        absolute inset-0
-        bg-gradient-to-t
-        from-black
-        via-black/30
-        to-transparent
-        "></div>
+          <Link
+  key={index}
+  to={`/portfolio/${project.slug}`}
+  className="block"
+>
+  <motion.div
 
-        {/* LIGHT REFLECTION */}
-        <div className="
-        absolute
-        inset-0
-        opacity-0
-        group-hover:opacity-100
-        transition
-        duration-700
-        bg-gradient-to-br
-        from-white/[0.08]
-        via-transparent
-        to-red-500/[0.05]
-        "></div>
+            onHoverStart={() => setPaused(true)}
+            onHoverEnd={() => setPaused(false)}
 
-        {/* RED GLOW */}
-        <div className="
-        absolute inset-0
-        opacity-0
-        group-hover:opacity-100
-        bg-red-500/10
-        transition
-        duration-500
-        "></div>
+            whileHover={{
+              y:-16,
+              scale:1.02,
+            }}
 
-        {/* CONTENT */}
-        <div className="
-        absolute
-        bottom-0
-        left-0
-        p-8
-        z-10
-        ">
+            className="
+            group
+            relative
+            overflow-hidden
+            rounded-[36px]
+            border
+            border-white/10
+            bg-black/20
+            backdrop-blur-xl
+            aspect-[16/9]
+            min-w-[720px]
+            transition
+            duration-500
+            hover:border-red-500/30
+            hover:shadow-[0_0_70px_rgba(255,0,0,0.22)]
+            "
+          >
 
-          <p className="
-          uppercase
-          tracking-[0.35em]
-          text-red-500
-          text-xs
-          mb-4
-          ">
-            Featured Work
-          </p>
+            {/* IMAGE */}
+            <img
+              src={project.thumbnail}
+              alt={project.title}
+              className="
+              absolute
+              inset-0
+              w-full
+              h-full
+              object-cover
+              group-hover:scale-110
+              transition
+              duration-700
+              "
+            />
 
-          <h3 className="
-          text-4xl
-          big-title
-          leading-none
-          mb-6
-          group-hover:text-red-400
-          transition
-          duration-500
-          ">
+            {/* OVERLAY */}
+            <div className="
+            absolute inset-0
+            bg-gradient-to-t
+            from-black
+            via-black/30
+            to-transparent
+            "></div>
 
-            {project.title}
+            {/* LIGHT REFLECTION */}
+            <div className="
+            absolute
+            inset-0
+            opacity-0
+            group-hover:opacity-100
+            transition
+            duration-700
+            bg-gradient-to-br
+            from-white/[0.08]
+            via-transparent
+            to-red-500/[0.05]
+            "></div>
 
-          </h3>
+            {/* RED GLOW */}
+            <div className="
+            absolute inset-0
+            opacity-0
+            group-hover:opacity-100
+            bg-red-500/10
+            transition
+            duration-500
+            "></div>
 
-          {/* LINE */}
-          <div className="
-          w-16
-          h-[2px]
-          bg-red-500
-          group-hover:w-28
-          transition-all
-          duration-500
-          "></div>
+            {/* CONTENT */}
+            <div className="
+            absolute
+            bottom-0
+            left-0
+            p-10
+            z-10
+            ">
 
-        </div>
+              <p className="
+              uppercase
+              tracking-[0.35em]
+              text-red-500
+              text-xs
+              mb-4
+              ">
+                Featured Work
+              </p>
+
+              <h3 className="
+              text-5xl
+              big-title
+              leading-none
+              mb-6
+              group-hover:text-red-400
+              transition
+              duration-500
+              ">
+
+                {project.title}
+
+              </h3>
+
+              {/* LINE */}
+              <div className="
+              w-16
+              h-[2px]
+              bg-red-500
+              group-hover:w-28
+              transition-all
+              duration-500
+              "></div>
+
+            </div>
+
+          </motion.div>
+          </Link>
+
+        ))}
 
       </motion.div>
 
-    ))}
+    </div>
 
-  </motion.div>
-
-</div>
   </div>
 
 </section>

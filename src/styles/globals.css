@@ -189,3 +189,151 @@ img{
   }
 
 }
+.big-title {
+  @apply
+  font-black
+  uppercase
+  text-white
+  leading-[0.9];
+}
+
+.red-glow {
+  box-shadow:
+    0 0 40px rgba(239, 68, 68, 0.35);
+}
+
+.cinematic-border {
+  border:
+    1px solid rgba(255,255,255,0.08);
+}
+
+.section-spacing {
+  @apply py-32;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==================================================
+   GLOBAL RESET
+================================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #050505;
+  color: white;
+  font-family: sans-serif;
+  overflow-x: hidden;
+}
+
+/* ==================================================
+   SCROLLBAR
+================================================== */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #991b1b;
+  border-radius: 999px;
+}
+
+/* ==================================================
+   TYPOGRAPHY
+================================================== */
+
+.big-title {
+  @apply
+  uppercase
+  font-black
+  leading-[0.9]
+  text-white;
+}
+
+.section-title {
+  @apply
+  uppercase
+  font-bold
+  text-white
+  leading-[1];
+}
+
+.section-label {
+  @apply
+  uppercase
+  tracking-[0.4em]
+  text-red-500
+  text-sm;
+}
+
+.body-text {
+  @apply
+  text-zinc-400
+  leading-relaxed;
+}
+
+/* ==================================================
+   GLOW EFFECTS
+================================================== */
+
+.red-glow-soft {
+  box-shadow:
+    0 0 40px rgba(239, 68, 68, 0.25);
+}
+
+.red-glow-strong {
+  box-shadow:
+    0 0 80px rgba(239, 68, 68, 0.45);
+}
+
+/* ==================================================
+   SECTION SPACING
+================================================== */
+
+.section-spacing {
+  @apply py-32;
+}
+
+/* ==================================================
+   CINEMATIC BORDER
+================================================== */
+
+.cinematic-border {
+  border:
+    1px solid rgba(255,255,255,0.08);
+}
+
+/* ==================================================
+   GLASS EFFECT
+================================================== */
+
+.glass-panel {
+  background:
+    rgba(255,255,255,0.03);
+
+  backdrop-filter:
+    blur(10px);
+
+  border:
+    1px solid rgba(255,255,255,0.08);
+}
+
+/* HIDE SCROLLBAR */
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
