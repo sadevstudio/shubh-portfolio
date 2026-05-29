@@ -31,6 +31,7 @@ export default {
   resultImage,
 
   video: resultVideo,
+  showreelVideo: resultVideo,
 
   projectType: "CGI Advertisement",
 

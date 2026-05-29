@@ -4,40 +4,33 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 import { Link } from 'react-router-dom'
 import MagneticButton from '../ui/MagneticButton'
-import reel1 from '../../assets/videos/reel1.mp4'
-import reel2 from '../../assets/videos/reel2.mp4'
-import reel3 from '../../assets/videos/reel3.mp4'
-import reel4 from '../../assets/videos/reel4.mp4'
+import projects from '../../data/projects'
+// import reel1 from '../../assets/videos/reel1.mp4'
+// import reel2 from '../../assets/videos/reel2.mp4'
+// import reel3 from '../../assets/videos/reel3.mp4'
+// import reel4 from '../../assets/videos/reel4.mp4'
 
 import SamuraiShowreel from '../../assets/images/samurai-showreel.png'
 
-const reels = [
+const reels = [...projects]
 
-  {
-    video: reel1,
-    title:'KARNA CINEMATIC',
-    subtitle:'Anime Inspired Motion Experience',
-  },
+  .filter((project) => project.showreelVideo)
 
-  {
-    video: reel2,
-    title:'HYPER ANIME EDIT',
-    subtitle:'Fast Transition Visual Storytelling',
-  },
+  .sort(() => 0.5 - Math.random())
 
-  {
-    video: reel3,
-    title:'CGI MOTION',
-    subtitle:'Cinematic 3D Visual Direction',
-  },
+  .slice(0, 4)
 
-  {
-    video: reel4,
-    title:'MOTION EXPERIENCE',
-    subtitle:'Immersive Creative Reel',
-  },
+  .map((project) => ({
 
-]
+    video: project.showreelVideo,
+
+    title: project.title,
+
+    subtitle: project.category,
+
+    slug: project.slug,
+
+  }))
 
 function ShowreelSection() {
 
@@ -269,50 +262,68 @@ w-full
 "
         >
 
-          {/* VIDEO */}
-          <AnimatePresence mode="wait">
+          {/* <AnimatePresence mode="wait"> */}
 
-            <motion.video
-              key={current}
-              autoPlay
-              muted
-              loop
-              playsInline
+  <Link
+    to={`/portfolio/${reels[current].slug}`}
+    className="absolute inset-0"
+  >
 
-              initial={{
-                opacity:0,
-                scale:1.08,
-              }}
+    <motion.video
+  key={current}
 
-              animate={{
-                opacity:1,
-                scale:1,
-              }}
+  autoPlay
+  muted
+  loop
+  playsInline
+  preload="auto"
 
-              exit={{
-                opacity:0,
-                scale:1.08,
-              }}
+  initial={{
+    opacity:0,
+    scale:1.05,
+  }}
 
-              transition={{
-                duration:0.8,
-              }}
+  animate={{
+    opacity:1,
+    scale:1,
+  }}
 
-              className="
-              absolute inset-0
-              w-full h-full
-              object-cover
-              "
-            >
+  exit={{
+    opacity:0,
+    scale:1.05,
+  }}
 
-              <source
-                src={reels[current].video}
-                type="video/mp4"
-              />
+  transition={{
+    duration:1,
+    ease:"easeOut",
+  }}
 
-            </motion.video>
+  style={{
+    imageRendering: "auto",
+  }}
 
-          </AnimatePresence>
+  className="
+  absolute inset-0
+  w-full h-full
+  object-cover
+  cursor-pointer
+
+  will-change-transform
+  transform-gpu
+  backface-hidden
+  "
+>
+
+      <source
+        src={reels[current].video}
+        type="video/mp4"
+      />
+
+    </motion.video>
+
+  </Link>
+
+{/* </AnimatePresence> */}
 
           {/* OVERLAY */}
           <div className="

@@ -1285,7 +1285,7 @@ function Resume() {
 
   return (
 
-    <div className="bg-black text-white overflow-hidden">
+    <div className="bg-black text-white overflow-x-hidden">
 
       <Navbar />
 
