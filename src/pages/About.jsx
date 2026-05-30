@@ -1089,176 +1089,254 @@ useEffect(() => {
       <Navbar />
 
       {/* HERO */}
-      <section
-        ref={(el) => sectionsRef.current[0] = el}
+<section
+  ref={(el) => sectionsRef.current[0] = el}
+  className="
+  relative
+  min-h-screen
+  flex items-center
+  overflow-hidden
+  "
+>
+
+  {/* BACKGROUND IMAGE */}
+  <motion.img
+
+    initial={{
+      scale: 1.12,
+    }}
+
+    animate={{
+      scale: 1.03,
+      y: [-10, 10, -10],
+    }}
+
+    transition={{
+      duration: 8,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+
+    src={aboutHero}
+    alt=""
+
+    className="
+    parallax-image
+
+    absolute inset-0
+
+    w-full
+    h-full
+
+    object-cover
+
+    object-[center_top]
+    md:object-[center_top]
+
+    brightness-[1.15]
+    "
+
+    style={{
+      objectPosition: 'center 80px',
+    }}
+  />
+
+  {/* DARK OVERLAY */}
+  <div
+    className="
+    absolute inset-0
+    bg-black/25
+    "
+  ></div>
+
+  {/* GRADIENT */}
+  <div
+    className="
+    absolute inset-0
+
+    bg-gradient-to-r
+    from-black
+    via-black/40
+    to-transparent
+    "
+  ></div>
+
+  {/* CONTENT */}
+  <div
+    className="
+    relative z-10
+
+    w-[92%]
+    md:w-[90%]
+
+    max-w-[1500px]
+
+    mx-auto
+
+    pt-28
+    md:pt-32
+    "
+  >
+
+    <motion.div
+      initial={{ opacity:0, y:100 }}
+      animate={{ opacity:1, y:0 }}
+      transition={{ duration:1.2 }}
+    >
+
+      {/* LABEL */}
+      <p
         className="
-        relative
-        min-h-screen
-        flex items-center
-        overflow-hidden
+        uppercase
+
+        tracking-[6px]
+        md:tracking-[14px]
+
+        text-red-600
+
+        mb-4
+        md:mb-6
+
+        text-[10px]
+        md:text-sm
+
+        font-semibold
+        "
+      >
+        About Me
+      </p>
+
+      {/* TITLE */}
+      <h1
+        className="
+        text-[3.5rem]
+        sm:text-[4.5rem]
+        md:text-[8rem]
+
+        leading-[0.88]
+        md:leading-[0.82]
+
+        font-black
+        uppercase
+        "
+      >
+        ABOUT{" "}
+
+        <span className="text-red-600">
+          ME
+        </span>
+
+      </h1>
+
+      {/* LINE */}
+      <div
+        className="
+        w-[70px]
+        md:w-[90px]
+
+        h-[2px]
+
+        bg-red-600
+
+        mt-6
+        md:mt-8
+
+        mb-6
+        md:mb-8
+        "
+      ></div>
+
+      {/* DESCRIPTION */}
+      <p
+        className="
+        text-white/85
+
+        text-base
+        md:text-[1.3rem]
+
+        leading-[1.9]
+        md:leading-[2]
+
+        max-w-full
+        md:max-w-[650px]
+
+        font-light
         "
       >
 
-        <motion.img
+        I'm Shubh Asawa, a Motion Designer,
+        3D Artist and Visual Storyteller
+        from{" "}
 
-  initial={{
-    scale: 1.12,
-  }}
+        <span className="text-red-500 font-medium">
+          New Delhi, India.
+        </span>
 
-  animate={{
-    scale: 1.03,
-    y: [-10, 10, -10],
-  }}
+      </p>
 
-  transition={{
-    duration: 8,
-    repeat: Infinity,
-    ease: "easeInOut",
-  }}
+      {/* SECOND PARAGRAPH */}
+      <p
+        className="
+        text-white/60
 
-  src={aboutHero}
-  alt=""
+        text-sm
+        md:text-lg
 
-  className="
-    parallax-image
-    absolute inset-0
-    w-full h-full
-    object-cover
-    object-[center_top]
-    md:object-[center_top]
-    brightness-[1.15]
-    
-  "
+        leading-[1.9]
+        md:leading-[2]
 
-  style={{
-    objectPosition: 'center 80px',
-  }}
-/>
+        max-w-full
+        md:max-w-[620px]
 
-        <div className="
-        absolute inset-0
-        bg-black/25
-        "></div>
+        mt-6
+        md:mt-8
+        "
+      >
 
-        <div className="
-        absolute inset-0
-        bg-gradient-to-r
-        from-black
-        via-black/40
-        to-transparent
-        "></div>
+        I create cinematic visuals that connect
+        emotions with motion. From concept
+        to creation, I love turning ideas
+        into powerful visual stories.
 
-        <div className="
-        relative z-10
-w-[90%]
-max-w-[1500px]
-mx-auto
-pt-24
-md:pt-32
-        ">
+      </p>
 
-          <motion.div
-            initial={{ opacity:0, y:100 }}
-            animate={{ opacity:1, y:0 }}
-            transition={{ duration:1.2 }}
-          >
+      {/* SIGNATURE */}
+      <div
+        className="
+        mt-2
 
-            <p
-  className="
-  uppercase
-  tracking-[14px]
-  text-red-600
-  mb-6
-  text-sm
-  font-semibold
-  "
->
-  About Me
-</p>
+        flex flex-col
+        items-start
+        "
+      >
 
-<h1
-  className="
-  text-[4rem]
-  md:text-[8rem]
-  leading-[0.82]
-  font-black
-  uppercase
-  "
->
-  ABOUT{" "}
-  <span className="text-red-600">
-    ME
-  </span>
-</h1>
+        <img
+          src={signatureImage}
+          alt="Shubh Asawa Signature"
 
-<div
-  className="
-  w-[90px]
-  h-[2px]
-  bg-red-600
-  mt-8
-  mb-8
-  "
-></div>
+          className="
+          w-[260px]
+          sm:w-[340px]
+          md:w-[720px]
 
-<p
-  className="
-  text-white/85
-  text-[1.15rem]
-  md:text-[1.3rem]
-  leading-[2]
-  max-w-[650px]
-  font-light
-  "
->
-  I'm Shubh Asawa, a Motion Designer,
-  3D Artist and Visual Storyteller
-  from{" "}
-  <span className="text-red-500 font-medium">
-    New Delhi, India.
-  </span>
-</p>
+          max-w-none
 
-<p
-  className="
-  text-white/60
-  text-lg
-  leading-[2]
-  max-w-[620px]
-  mt-8
-  "
->
-  I create cinematic visuals that connect
-  emotions with motion. From concept
-  to creation, I love turning ideas
-  into powerful visual stories.
-</p>
+          object-contain
 
-<div className="mt-0 flex flex-col items-start">
+          -ml-6
+          md:-ml-32
 
-  <img
-    src={signatureImage}
-    alt="Shubh Asawa Signature"
-    className="
-      w-[620px]
-      md:w-[720px]
-      max-w-none
-      object-contain
-      -ml-32
-      mt-0
-    "
-  />
+          mt-2
+          "
+        />
 
+      </div>
 
+    </motion.div>
 
+  </div>
 
-</div>
-
-          </motion.div>
-
-        </div>
-
-      </section>
+</section>
 
       {/* WHO IS SHUBH */}
 <section
@@ -1274,32 +1352,37 @@ md:pt-32
   {/* BACKGROUND IMAGE */}
   <motion.img
 
-          initial={{
-            scale: 1.12,
-          }}
+    initial={{
+      scale: 1.12,
+    }}
 
-          animate={{
-            scale: 1.03,
-            y: [-10, 10, -10],
-          }}
+    animate={{
+      scale: 1.03,
+      y: [-10, 10, -10],
+    }}
 
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
+    transition={{
+      duration: 8,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
 
-  src={aboutStory}
-  alt=""
+    src={aboutStory}
+    alt=""
 
-  className="
-  absolute inset-0
-  w-full h-full
-  object-cover
-  brightness-[1]
-  scale-[1.15]
-  "
-/>
+    className="
+    absolute inset-0
+
+    w-full
+    h-full
+
+    object-cover
+
+    brightness-[1]
+
+    scale-[1.15]
+    "
+  />
 
   {/* DARK OVERLAY */}
   <div
@@ -1313,6 +1396,7 @@ md:pt-32
   <div
     className="
     absolute inset-0
+
     bg-gradient-to-t
     from-black
     via-black/5
@@ -1324,65 +1408,112 @@ md:pt-32
   <div
     className="
     relative z-10
-    w-[90%]
+
+    w-[92%]
+    md:w-[90%]
+
     max-w-[1500px]
+
     mx-auto
+
+    px-4
+    sm:px-6
+    md:px-8
     "
   >
 
     <motion.div
+
       initial={{ opacity: 0, y: 100 }}
+
       whileInView={{ opacity: 1, y: 0 }}
+
       transition={{ duration: 1.2 }}
-      className="max-w-[850px]"
+
+      className="
+      max-w-full
+      md:max-w-[850px]
+      "
     >
 
+      {/* LABEL */}
       <p
         className="
         uppercase
-        tracking-[10px]
+
+        tracking-[5px]
+        md:tracking-[10px]
+
         text-red-500
-        mb-8
-        text-sm
+
+        mb-5
+        md:mb-8
+
+        text-[10px]
+        md:text-sm
         "
       >
         Who Is Shubh?
       </p>
 
+      {/* TITLE */}
       <h2
         className="
-        text-[4rem]
+        text-[3rem]
+        sm:text-[4rem]
         md:text-[8rem]
-        leading-[0.88]
+
+        leading-[0.95]
+        md:leading-[0.88]
+
         font-black
         uppercase
         "
       >
 
         I Don't
+
         <br />
+
         Just Create
+
         <br />
+
         Visuals.
 
       </h2>
 
+      {/* LINE */}
       <div
         className="
-        w-[140px]
+        w-[90px]
+        md:w-[140px]
+
         h-[2px]
+
         bg-red-500
-        mt-10
-        mb-10
+
+        mt-6
+        md:mt-10
+
+        mb-6
+        md:mb-10
         "
       ></div>
 
+      {/* FIRST PARAGRAPH */}
       <p
         className="
         text-white/75
-        text-xl
-        leading-[2]
-        max-w-[750px]
+
+        text-base
+        md:text-xl
+
+        leading-[1.9]
+        md:leading-[2]
+
+        max-w-full
+        md:max-w-[750px]
         "
       >
 
@@ -1393,13 +1524,22 @@ md:pt-32
 
       </p>
 
+      {/* SECOND PARAGRAPH */}
       <p
         className="
         text-white/60
-        text-lg
-        leading-[2]
-        mt-8
-        max-w-[700px]
+
+        text-sm
+        md:text-lg
+
+        leading-[1.9]
+        md:leading-[2]
+
+        mt-6
+        md:mt-8
+
+        max-w-full
+        md:max-w-[700px]
         "
       >
 
@@ -1419,378 +1559,654 @@ md:pt-32
 </section>
 
       {/* PHILOSOPHY */}
-      <section
-        ref={(el) => sectionsRef.current[2] = el}
+<section
+  ref={(el) => sectionsRef.current[2] = el}
+  className="
+  relative
+  min-h-screen
+  overflow-hidden
+  flex items-center
+  "
+>
+
+  {/* BACKGROUND IMAGE */}
+  <motion.img
+
+    initial={{
+      scale: 1.12,
+    }}
+
+    animate={{
+      scale: 1.03,
+      y: [-10, 10, -10],
+    }}
+
+    transition={{
+      duration: 8,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+
+    src={aboutCity}
+    alt=""
+
+    className="
+    parallax-image
+
+    absolute inset-0
+
+    w-full
+    h-full
+
+    object-cover
+
+    brightness-[0.75]
+
+    scale-110
+    "
+  />
+
+  {/* DARK OVERLAY */}
+  <div
+    className="
+    absolute inset-0
+    bg-black/45
+    "
+  ></div>
+
+  {/* GRADIENT */}
+  <div
+    className="
+    absolute inset-0
+
+    bg-gradient-to-r
+    from-black
+    via-black/20
+    to-transparent
+    "
+  ></div>
+
+  {/* CONTENT */}
+  <motion.div
+
+    initial={{ opacity:0, x:-100 }}
+
+    whileInView={{ opacity:1, x:0 }}
+
+    transition={{ duration:1 }}
+
+    className="
+    relative z-10
+
+    w-[92%]
+    md:w-[90%]
+
+    max-w-[1500px]
+
+    mx-auto
+
+    px-4
+    sm:px-6
+    md:px-8
+    "
+  >
+
+    <div
+      className="
+      max-w-full
+      md:max-w-[800px]
+      "
+    >
+
+      {/* LABEL */}
+      <p
         className="
-        relative
-        min-h-screen
-        overflow-hidden
-        flex items-center
+        uppercase
+
+        tracking-[5px]
+        md:tracking-[10px]
+
+        text-red-500
+
+        mb-5
+        md:mb-8
+
+        text-[10px]
+        md:text-sm
         "
       >
 
-        <motion.img
+        Philosophy
 
-          initial={{
-            scale: 1.12,
-          }}
+      </p>
 
-          animate={{
-            scale: 1.03,
-            y: [-10, 10, -10],
-          }}
+      {/* TITLE */}
+      <h2
+        className="
+        text-[3rem]
+        sm:text-[4rem]
+        md:text-[8rem]
 
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          src={aboutCity}
-          alt=""
-          className="
-          parallax-image
-          absolute inset-0
-          w-full h-full
-          object-cover
-          brightness-[0.75]
-          scale-110
-          "
-        />
+        leading-[0.95]
+        md:leading-[0.9]
 
-        <div className="
-        absolute inset-0
-        bg-black/45
-        "></div>
+        font-black
+        uppercase
+        "
+      >
 
-        <div className="
-        absolute inset-0
-        bg-gradient-to-r
-        from-black
-        via-black/20
-        to-transparent
-        "></div>
+        Discipline.
 
-        <motion.div
-          initial={{ opacity:0, x:-100 }}
-          whileInView={{ opacity:1, x:0 }}
-          transition={{ duration:1 }}
-          className="
-          relative z-10
-          w-[90%]
-          max-w-[1500px]
-          mx-auto
-          "
-        >
+        <br />
 
-          <div className="max-w-[800px]">
+        Passion.
 
-            <p className="
-            uppercase
-            tracking-[10px]
-            text-red-500
-            mb-8
-            text-sm
-            ">
+        <br />
 
-              Philosophy
+        Purpose.
 
-            </p>
+      </h2>
 
-            <h2 className="
-            text-[4rem]
-            md:text-[8rem]
-            leading-[0.9]
-            font-black
-            uppercase
-            ">
+    </div>
 
-              Discipline.
-              <br />
-              Passion.
-              <br />
-              Purpose.
+  </motion.div>
 
-            </h2>
-
-          </div>
-
-        </motion.div>
-
-      </section>
+</section>
 
       {/* SKILLS */}
-      <section
-        ref={(el) => sectionsRef.current[3] = el}
+<section
+  ref={(el) => sectionsRef.current[3] = el}
+  className="
+  relative
+  min-h-screen
+  overflow-hidden
+  flex items-center
+  "
+>
+
+  {/* BACKGROUND */}
+  <motion.img
+
+    initial={{
+      scale: 1.12,
+    }}
+
+    animate={{
+      scale: 1.03,
+      y: [-10, 10, -10],
+    }}
+
+    transition={{
+      duration: 8,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+
+    src={aboutBattle}
+    alt=""
+
+    className="
+    parallax-image
+
+    absolute inset-0
+
+    w-full
+    h-full
+
+    object-cover
+
+    brightness-[0.9]
+
+    scale-110
+    "
+  />
+
+  {/* OVERLAY */}
+  <div
+    className="
+    absolute inset-0
+    bg-black/30
+    "
+  ></div>
+
+  {/* GRADIENT */}
+  <div
+    className="
+    absolute inset-0
+
+    bg-gradient-to-l
+    from-black
+    via-black/30
+    to-transparent
+    "
+  ></div>
+
+  {/* CONTENT */}
+  <div
+    className="
+    relative z-10
+
+    w-[92%]
+    md:w-[90%]
+
+    max-w-[1500px]
+
+    mx-auto
+
+    flex justify-end
+
+    px-4
+    sm:px-6
+    md:px-8
+    "
+  >
+
+    <motion.div
+
+      initial={{ opacity:0, x:100 }}
+
+      whileInView={{ opacity:1, x:0 }}
+
+      transition={{ duration:1 }}
+
+      className="
+      max-w-full
+      md:max-w-[650px]
+      "
+    >
+
+      {/* LABEL */}
+      <p
         className="
-        relative
-        min-h-screen
-        overflow-hidden
-        flex items-center
+        uppercase
+
+        tracking-[5px]
+        md:tracking-[10px]
+
+        text-red-500
+
+        mb-5
+        md:mb-8
+
+        text-[10px]
+        md:text-sm
         "
       >
 
-        <motion.img
+        What I Do
 
-          initial={{
-            scale: 1.12,
-          }}
+      </p>
 
-          animate={{
-            scale: 1.03,
-            y: [-10, 10, -10],
-          }}
-
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          src={aboutBattle}
-          alt=""
-          className="
-          parallax-image
-          absolute inset-0
-          w-full h-full
-          object-cover
-          brightness-[0.9]
-          scale-110
-          "
-        />
-
-        <div className="
-        absolute inset-0
-        bg-black/30
-        "></div>
-
-        <div className="
-        absolute inset-0
-        bg-gradient-to-l
-        from-black
-        via-black/30
-        to-transparent
-        "></div>
-
-        <div className="
-        relative z-10
-        w-[90%]
-        max-w-[1500px]
-        mx-auto
-        flex justify-end
-        ">
-
-          <motion.div
-            initial={{ opacity:0, x:100 }}
-            whileInView={{ opacity:1, x:0 }}
-            transition={{ duration:1 }}
-            className="max-w-[650px]"
-          >
-
-            <p className="
-            uppercase
-            tracking-[10px]
-            text-red-500
-            mb-8
-            text-sm
-            ">
-
-              What I Do
-
-            </p>
-
-            <h2 className="
-            text-[4rem]
-            md:text-[7rem]
-            leading-[0.95]
-            font-black
-            uppercase
-            ">
-
-              I Build
-              <br />
-              Cinematic
-              <br />
-              Worlds
-
-            </h2>
-
-            <div className="
-            grid grid-cols-2
-            gap-10
-            mt-16
-            ">
-
-              <div>
-                <FaFilm className="text-red-500 text-4xl mb-5" />
-                <h3 className="text-2xl font-bold">
-                  Motion Design
-                </h3>
-              </div>
-
-              <div>
-                <FaCube className="text-red-500 text-4xl mb-5" />
-                <h3 className="text-2xl font-bold">
-                  CGI & 3D
-                </h3>
-              </div>
-
-              <div>
-                <FaVideo className="text-red-500 text-4xl mb-5" />
-                <h3 className="text-2xl font-bold">
-                  Editing
-                </h3>
-              </div>
-
-              <div>
-                <FaMagic className="text-red-500 text-4xl mb-5" />
-                <h3 className="text-2xl font-bold">
-                  Storytelling
-                </h3>
-              </div>
-
-            </div>
-
-          </motion.div>
-
-        </div>
-
-      </section>
-
-      {/* WORKSPACE */}
-      <section
-        ref={(el) => sectionsRef.current[4] = el}
+      {/* TITLE */}
+      <h2
         className="
-        relative
-        min-h-screen
-        overflow-hidden
-        flex items-center
+        text-[3rem]
+        sm:text-[4rem]
+        md:text-[7rem]
+
+        leading-[0.95]
+
+        font-black
+        uppercase
         "
       >
 
-        <motion.img
+        I Build
 
-          initial={{
-            scale: 1.12,
-          }}
+        <br />
 
-          animate={{
-            scale: 1.03,
-            y: [-10, 10, -10],
-          }}
+        Cinematic
 
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          src={aboutWorkspace}
-          alt=""
-          className="
-          parallax-image
-          absolute inset-0
-          w-full h-full
-          object-cover
-          brightness-[0.9]
-          scale-110
-          "
-        />
+        <br />
 
-        <div className="
-        absolute inset-0
-        bg-black/30
-        "></div>
+        Worlds
 
-        <div className="
-        absolute inset-0
-        bg-gradient-to-r
-        from-black
-        via-black/40
-        to-transparent
-        "></div>
+      </h2>
 
-        <div className="
-        relative z-10
-        w-[90%]
-        max-w-[1500px]
-        mx-auto
-        ">
+      {/* GRID */}
+      <div
+        className="
+        grid
 
-          <motion.div
-            initial={{ opacity:0, y:80 }}
-            whileInView={{ opacity:1, y:0 }}
-            transition={{ duration:1 }}
-          >
+        grid-cols-1
+        sm:grid-cols-2
 
-            <p className="
-            uppercase
-            tracking-[10px]
+        gap-6
+        md:gap-10
+
+        mt-10
+        md:mt-16
+        "
+      >
+
+        {/* ITEM */}
+        <div>
+
+          <FaFilm
+            className="
             text-red-500
-            mb-8
-            text-sm
-            ">
 
-              Tools Of Creation
+            text-3xl
+            md:text-4xl
 
-            </p>
+            mb-4
+            md:mb-5
+            "
+          />
 
-            <h2 className="
-            text-[4rem]
-            md:text-[7rem]
-            leading-[0.9]
-            font-black
-            uppercase
-            ">
+          <h3
+            className="
+            text-xl
+            md:text-2xl
 
-              Behind
-              <br />
-              Every Frame
-
-            </h2>
-
-            <div className="
-            flex flex-wrap
-            gap-12
-            mt-16
-            items-center
-            ">
-
-              {[
-                aftereffectsLogo,
-                premiereLogo,
-                photoshopLogo,
-                illustratorLogo,
-                blenderLogo,
-                figmaLogo,
-              ].map((logo, index) => (
-
-                <motion.img
-                  key={index}
-                  whileHover={{
-                    scale:1.2,
-                    y:-10,
-                  }}
-                  transition={{
-                    duration:0.4,
-                  }}
-                  src={logo}
-                  alt=""
-                  className="
-                  w-[75px]
-                  md:w-[85px]
-                  object-contain
-                  rounded-[22px]
-                  opacity-90
-                  "
-                />
-
-              ))}
-
-            </div>
-
-          </motion.div>
+            font-bold
+            "
+          >
+            Motion Design
+          </h3>
 
         </div>
 
-      </section>
+        {/* ITEM */}
+        <div>
+
+          <FaCube
+            className="
+            text-red-500
+
+            text-3xl
+            md:text-4xl
+
+            mb-4
+            md:mb-5
+            "
+          />
+
+          <h3
+            className="
+            text-xl
+            md:text-2xl
+
+            font-bold
+            "
+          >
+            CGI & 3D
+          </h3>
+
+        </div>
+
+        {/* ITEM */}
+        <div>
+
+          <FaVideo
+            className="
+            text-red-500
+
+            text-3xl
+            md:text-4xl
+
+            mb-4
+            md:mb-5
+            "
+          />
+
+          <h3
+            className="
+            text-xl
+            md:text-2xl
+
+            font-bold
+            "
+          >
+            Editing
+          </h3>
+
+        </div>
+
+        {/* ITEM */}
+        <div>
+
+          <FaMagic
+            className="
+            text-red-500
+
+            text-3xl
+            md:text-4xl
+
+            mb-4
+            md:mb-5
+            "
+          />
+
+          <h3
+            className="
+            text-xl
+            md:text-2xl
+
+            font-bold
+            "
+          >
+            Storytelling
+          </h3>
+
+        </div>
+
+      </div>
+
+    </motion.div>
+
+  </div>
+
+</section>
+
+{/* WORKSPACE */}
+<section
+  ref={(el) => sectionsRef.current[4] = el}
+  className="
+  relative
+  min-h-screen
+  overflow-hidden
+  flex items-center
+  "
+>
+
+  <motion.img
+
+  initial={{
+    scale: 1.08,
+    y: 0,
+  }}
+
+  animate={{
+    scale: 1.02,
+    y: [-6, 6, -6],
+  }}
+
+  transition={{
+    duration: 10,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+
+  src={aboutWorkspace}
+  alt=""
+
+  className="
+  parallax-image
+
+  absolute
+  inset-0
+
+  w-full
+  h-full
+
+  object-cover
+
+  brightness-[0.9]
+
+  will-change-transform
+  transform-gpu
+
+  [backface-visibility:hidden]
+  [transform:translateZ(0)]
+  "
+/>
+
+  {/* OVERLAY */}
+  <div
+    className="
+    absolute inset-0
+    bg-black/30
+    "
+  ></div>
+
+  {/* GRADIENT */}
+  <div
+    className="
+    absolute inset-0
+
+    bg-gradient-to-r
+    from-black
+    via-black/40
+    to-transparent
+    "
+  ></div>
+
+  {/* CONTENT */}
+  <div
+    className="
+    relative z-10
+
+    w-[92%]
+    md:w-[90%]
+
+    max-w-[1500px]
+
+    mx-auto
+
+    px-4
+    sm:px-6
+    md:px-8
+    "
+  >
+
+    <motion.div
+
+      initial={{ opacity:0, y:80 }}
+
+      whileInView={{ opacity:1, y:0 }}
+
+      transition={{ duration:1 }}
+    >
+
+      {/* LABEL */}
+      <p
+        className="
+        uppercase
+
+        tracking-[5px]
+        md:tracking-[10px]
+
+        text-red-500
+
+        mb-5
+        md:mb-8
+
+        text-[10px]
+        md:text-sm
+        "
+      >
+
+        Tools Of Creation
+
+      </p>
+
+      {/* TITLE */}
+      <h2
+        className="
+        text-[3rem]
+        sm:text-[4rem]
+        md:text-[7rem]
+
+        leading-[0.95]
+        md:leading-[0.9]
+
+        font-black
+        uppercase
+        "
+      >
+
+        Behind
+
+        <br />
+
+        Every Frame
+
+      </h2>
+
+      {/* LOGOS */}
+      <div
+        className="
+        flex flex-wrap
+
+        gap-6
+        md:gap-12
+
+        mt-10
+        md:mt-16
+
+        items-center
+        "
+      >
+
+        {[
+          aftereffectsLogo,
+          premiereLogo,
+          photoshopLogo,
+          illustratorLogo,
+          blenderLogo,
+          figmaLogo,
+        ].map((logo, index) => (
+
+          <motion.img
+
+            key={index}
+
+            whileHover={{
+              scale:1.15,
+              y:-8,
+            }}
+
+            transition={{
+              duration:0.35,
+            }}
+
+            src={logo}
+            alt=""
+
+            className="
+            w-[58px]
+            sm:w-[65px]
+            md:w-[85px]
+
+            object-contain
+
+            rounded-[18px]
+            md:rounded-[22px]
+
+            opacity-90
+            "
+          />
+
+        ))}
+
+      </div>
+
+    </motion.div>
+
+  </div>
+
+</section>
 
       {/* ENDING */}
       <section
