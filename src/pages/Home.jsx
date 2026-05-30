@@ -802,7 +802,7 @@ function Home() {
           "
         >
 
-          {/* IMAGE */}
+          {/* IMAGE
           <div
             className="
             absolute
@@ -817,7 +817,42 @@ function Home() {
               backgroundPosition:'center right',
               backgroundSize:'contain',
             }}
-          ></div>
+          ></div> */}
+          {/* IMAGE */}
+<motion.div
+
+  initial={{
+    scale: 1.12,
+  }}
+
+  animate={{
+    scale: 1.03,
+    y: [-12, 12, -12],
+    x: [0, -10, 0],
+  }}
+
+  transition={{
+    duration: 10,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+
+  className="
+  absolute
+  top-0
+  right-[-10%]
+  w-[75vw]
+  h-screen
+  will-change-transform
+  transform-gpu
+  "
+  style={{
+    backgroundImage:`url(${SamuraiHero})`,
+    backgroundRepeat:'no-repeat',
+    backgroundPosition:'right bottom',
+    backgroundSize:'contain',
+  }}
+></motion.div>
 
           {/* LEFT DARK FADE */}
           <div className="

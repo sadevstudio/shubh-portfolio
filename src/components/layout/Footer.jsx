@@ -105,7 +105,7 @@ w-full
 h-full
 object-cover
 object-[center_60%]
-opacity-70
+opacity-50
 scale-45
 
 transition-transform duration-[4000ms]
@@ -117,7 +117,7 @@ transition-transform duration-[4000ms]
         className="
         absolute
         inset-0
-        bg-black/25
+        bg-black/35
         "
       ></div>
 

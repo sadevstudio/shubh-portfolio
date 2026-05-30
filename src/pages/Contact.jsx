@@ -1409,11 +1409,13 @@ function Contact() {
   {/* CONTENT */}
 
   <div
-  className="
-  relative
-  z-10
-  w-full
-  "
+ className="
+relative
+z-10
+w-full
+pl-8
+md:pl-14
+"
 >
 
     <motion.div
