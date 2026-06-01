@@ -762,7 +762,8 @@ function Home() {
 <section
   className="
   relative
-  min-h-screen
+  min-h-[700px]
+md:min-h-[100svh]
   overflow-hidden
   flex items-center
   "
@@ -799,168 +800,220 @@ function Home() {
   ></div>
 
   {/* CINEMATIC IMAGE COMPOSITION */}
+<motion.div
+
+  initial={{
+    opacity:0,
+    scale:1.04,
+  }}
+
+  animate={{
+    opacity:1,
+    scale:1,
+  }}
+
+  transition={{
+    duration:1.5,
+  }}
+
+  className="
+  absolute
+  inset-0
+  z-0
+  overflow-hidden
+  "
+>
+
+  {/* IMAGE */}
   <motion.div
-    initial={{ opacity:0, scale:1.1 }}
-    animate={{ opacity:1, scale:1 }}
-    transition={{ duration:1.5 }}
+
+    initial={{
+      scale: 1.08,
+    }}
+
+    animate={{
+      scale: 1.02,
+      y: [-6, 6, -6],
+    }}
+
+    transition={{
+      duration: 10,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+
+    className="
+    absolute
+
+    top-[12%]
+    md:top-[8%]
+
+    right-[-55%]
+    sm:right-[-40%]
+    md:right-[-18%]
+    lg:right-[-10%]
+
+    w-[150vw]
+    sm:w-[120vw]
+    md:w-[82vw]
+    lg:w-[72vw]
+
+    h-[60vh]
+    sm:h-[70vh]
+    md:h-[100vh]
+
+    will-change-transform
+    transform-gpu
+
+    [backface-visibility:hidden]
+    [transform:translateZ(0)]
+    "
+
+    style={{
+      backgroundImage:`url(${SamuraiHero})`,
+      backgroundRepeat:'no-repeat',
+      backgroundPosition:'center right',
+      backgroundSize:'contain',
+    }}
+  ></motion.div>
+
+  {/* LEFT DARK FADE */}
+  <div
     className="
     absolute
     inset-0
-    z-0
+
+    bg-gradient-to-r
+    from-black
+    via-black/80
+    to-transparent
     "
-  >
+  ></div>
 
-    {/* IMAGE */}
-    <motion.div
-
-      initial={{
-        scale: 1.12,
-      }}
-
-      animate={{
-        scale: 1.03,
-        y: [-12, 12, -12],
-        x: [0, -10, 0],
-      }}
-
-      transition={{
-        duration: 10,
-        repeat: Infinity,
-        ease: "easeInOut",
-      }}
-
-      className="
-      absolute
-
-      top-[8%]
-
-      right-[-35%]
-      md:right-[-10%]
-
-      w-[140vw]
-      md:w-[75vw]
-
-      h-[75vh]
-      md:h-screen
-
-      will-change-transform
-      transform-gpu
-      "
-
-      style={{
-        backgroundImage:`url(${SamuraiHero})`,
-        backgroundRepeat:'no-repeat',
-        backgroundPosition:'right bottom',
-        backgroundSize:'contain',
-      }}
-    ></motion.div>
-
-    {/* LEFT DARK FADE */}
-    <div
-      className="
-      absolute inset-0
-      bg-gradient-to-r
-      from-black
-      via-black/70
-      to-transparent
-      "
-    ></div>
-
-    {/* BOTTOM FADE */}
-    <div
-      className="
-      absolute inset-0
-      bg-gradient-to-t
-      from-black
-      via-transparent
-      to-transparent
-      "
-    ></div>
-
-    {/* RED OVERLAY */}
-    <div
-      className="
-      absolute inset-0
-      bg-red-900/10
-      mix-blend-screen
-      "
-    ></div>
-
-  </motion.div>
-
-  {/* SOCIAL SIDEBAR */}
+  {/* BOTTOM FADE */}
   <div
     className="
-    hidden lg:flex
-    absolute left-10 top-1/2
-    -translate-y-1/2
-    flex-col gap-8
-    z-30
+    absolute
+    inset-0
+
+    bg-gradient-to-t
+    from-black
+    via-transparent
+    to-transparent
+    "
+  ></div>
+
+  {/* RED OVERLAY */}
+  <div
+    className="
+    absolute
+    inset-0
+
+    bg-red-900/10
+
+    mix-blend-screen
+    "
+  ></div>
+
+</motion.div>
+
+ {/* SOCIAL SIDEBAR */}
+<div
+
+  className="
+  absolute
+
+  left-4
+  md:left-6
+
+  top-[68%]
+  md:top-[58%]
+  lg:top-1/2
+
+  -translate-y-1/2
+
+  flex
+  flex-col
+
+  gap-4
+  md:gap-6
+
+  z-20
+  "
+
+>
+
+  <a
+    href="https://wa.me/917017288428"
+    target="_blank"
+    rel="noreferrer"
+    className="
+    text-white/60
+    hover:text-red-500
+    transition
+    duration-300
+
+    text-base
+    md:text-xl
     "
   >
+    <FaWhatsapp />
+  </a>
 
-    <a
-      href="https://wa.me/917017288428"
-      target="_blank"
-      rel="noreferrer"
-      className="
-      text-white/60
-      hover:text-red-500
-      transition
-      duration-300
-      text-xl
-      "
-    >
-      <FaWhatsapp />
-    </a>
+  <a
+    href="https://www.instagram.com/shubhdesign3d"
+    target="_blank"
+    className="
+    text-white/40
+    hover:text-red-500
+    transition
 
-    <a
-      href="https://www.instagram.com/shubhdesign3d"
-      target="_blank"
-      className="
-      text-white/40
-      hover:text-red-500
-      transition
-      text-xl
-      "
-    >
-      <FaInstagram />
-    </a>
+    text-base
+    md:text-xl
+    "
+  >
+    <FaInstagram />
+  </a>
 
-    <a
-      href="https://www.linkedin.com/in/shubhdesign3d/"
-      target="_blank"
-      className="
-      text-white/40
-      hover:text-red-500
-      transition
-      text-xl
-      "
-    >
-      <FaLinkedin />
-    </a>
+  <a
+    href="https://www.linkedin.com/in/shubhdesign3d/"
+    target="_blank"
+    className="
+    text-white/40
+    hover:text-red-500
+    transition
 
-    <a
-      href="https://www.behance.net/shubhasawa1"
-      target="_blank"
-      className="
-      text-white/40
-      hover:text-red-500
-      transition
-      text-xl
-      "
-    >
-      <FaBehance />
-    </a>
+    text-base
+    md:text-xl
+    "
+  >
+    <FaLinkedin />
+  </a>
 
-  </div>
+  <a
+    href="https://www.behance.net/shubhasawa1"
+    target="_blank"
+    className="
+    text-white/40
+    hover:text-red-500
+    transition
+
+    text-base
+    md:text-xl
+    "
+  >
+    <FaBehance />
+  </a>
+
+</div>
 
   {/* MAIN CONTENT */}
   <div
     className="
     container
     relative z-20
-    min-h-screen
+   min-h-[700px]
+md:min-h-[100svh]
     flex items-center
 
     px-4
@@ -970,17 +1023,23 @@ function Home() {
   >
 
     <div
-      className="
-      max-w-full
-      md:max-w-[650px]
+  className="
+  max-w-full
+  md:max-w-[520px]
+  lg:max-w-[650px]
 
-      pt-20
-      md:pt-24
+  ml-12
+  md:ml-16
+  lg:ml-24
 
-      px-2
-      md:px-0
-      "
-    >
+  pt-28
+  md:pt-20
+  lg:pt-24
+
+  px-2
+  md:px-0
+  "
+>
 
       <motion.p
         initial={{ opacity:0, y:30 }}
@@ -1011,10 +1070,11 @@ function Home() {
         className="
         big-title
 
-        text-[3.5rem]
-        sm:text-[4.5rem]
-        md:text-[8rem]
-        xl:text-[10rem]
+        text-[3rem]
+sm:text-[4rem]
+md:text-[5rem]
+lg:text-[7rem]
+xl:text-[10rem]
 
         leading-[0.9]
         uppercase
@@ -1072,7 +1132,7 @@ function Home() {
         md:gap-6
 
         mt-8
-        md:mt-12
+        md:mt-10
         "
       >
 

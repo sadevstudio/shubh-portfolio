@@ -708,132 +708,179 @@ function Portfolio() {
       ================================================== */}
       <Navbar />
 
-      {/* HERO SECTION */}
-      <section
-        className="
-        relative
-        min-h-screen
-        overflow-hidden
-        bg-black
-        flex
-        items-center
-        justify-center
-        "
-      >
-        {/* BACKGROUND */}
-        <motion.div
-          initial={{
-            scale: 1.15,
-            opacity: 0,
-          }}
-          animate={{
-            scale: 1,
-            opacity: 1,
-          }}
-          transition={{
-            duration: 2,
-            ease: "easeOut",
-          }}
-          className="
-          absolute
-          inset-0
-          "
-          style={{
-            backgroundImage: `url(${portfolioBg})`,
-            backgroundSize: "100%",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-        />
+      
+{/* HERO SECTION */}
+<section
+  className="
+  relative
+  min-h-screen
+  overflow-hidden
+  bg-black
 
-        {/* DARK OVERLAY */}
-        <div
-          className="
-          absolute
-          inset-0
-          bg-black/25
-          "
-        ></div>
+  flex
+  items-center
+  justify-center
+  "
+>
 
-        {/* IMAGE */}
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 120,
-            scale: 0.9,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-            scale: 1.2,
-          }}
-          transition={{
-            delay: 1,
-            duration: 1.5,
-            ease: "easeOut",
-          }}
-          className="
-          relative
-          z-10
-          flex
-          items-end
-          justify-center
-          h-screen
-          "
-        >
-          {/* RED GLOW */}
-        <div
-          className="
-          absolute
-          bottom-0
-          w-[500px]
-          h-[500px]
-          bg-red-500/20
-          blur-[120px]
-          rounded-full
-          "
-        ></div>
-          
+  {/* BACKGROUND */}
+  <motion.div
+    initial={{
+      scale: 1.08,
+      opacity: 0,
+    }}
 
-          {/* PERSON IMAGE */}
-          <motion.img
-          animate={{
-            y: [-15, 15, -15],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-            src={shubhImage}
-            alt="Shubh Asawa"
-            className="
-            relative
-            z-10
-            w-[90%]
-            md:w-[55%]
-            lg:w-[50%]
-            max-w-[920px]
-            object-contain
-            
-            "
-          />
-        </motion.div>
+    animate={{
+      scale: 1,
+      opacity: 1,
+    }}
 
-        {/* BOTTOM FADE */}
-        <div
-          className="
-          absolute
-          bottom-0
-          left-0
-          w-full
-          h-[180px]
-          bg-gradient-to-t
-          from-black
-          to-transparent
-          "
-        ></div>
-      </section>
+    transition={{
+      duration: 2,
+      ease: "easeOut",
+    }}
+
+    className="
+    absolute
+    inset-0
+    "
+    style={{
+      backgroundImage: `url(${portfolioBg})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+    }}
+  />
+
+  {/* DARK OVERLAY */}
+  <div
+    className="
+    absolute
+    inset-0
+    bg-black/30
+    "
+  ></div>
+
+  {/* MAIN CONTENT */}
+  <motion.div
+
+    initial={{
+      opacity: 0,
+      y: 80,
+      scale: 0.96,
+    }}
+
+    animate={{
+      opacity: 1,
+      y: 0,
+      scale: 1,
+    }}
+
+    transition={{
+      delay: 0.6,
+      duration: 1.3,
+      ease: "easeOut",
+    }}
+
+    className="
+    relative
+    z-10
+
+    flex
+    items-end
+    justify-center
+
+    w-full
+    h-screen
+
+    pt-28
+    "
+  >
+
+    {/* RED GLOW */}
+    <div
+      className="
+      absolute
+      bottom-[-120px]
+
+      w-[320px]
+      sm:w-[420px]
+      md:w-[520px]
+      lg:w-[650px]
+
+      h-[320px]
+      sm:h-[420px]
+      md:h-[520px]
+      lg:h-[650px]
+
+      bg-red-500/20
+
+      blur-[120px]
+
+      rounded-full
+      "
+    ></div>
+
+    {/* PERSON IMAGE */}
+    <motion.img
+
+      animate={{
+        y: [-12, 12, -12],
+      }}
+
+      transition={{
+        duration: 6,
+        repeat: Infinity,
+        ease: "easeInOut",
+      }}
+
+      src={shubhImage}
+      alt="Shubh Asawa"
+
+      className="
+      relative
+      z-10
+
+      object-contain
+
+      w-[95%]
+      sm:w-[85%]
+      md:w-[72%]
+      lg:w-[62%]
+      xl:w-[55%]
+
+      max-w-[980px]
+
+      max-h-[82vh]
+      sm:max-h-[84vh]
+      md:max-h-[88vh]
+
+      "
+    />
+
+  </motion.div>
+
+  {/* BOTTOM FADE */}
+  <div
+    className="
+    absolute
+    bottom-0
+    left-0
+
+    w-full
+
+    h-[140px]
+    md:h-[180px]
+
+    bg-gradient-to-t
+    from-black
+    to-transparent
+    "
+  ></div>
+
+</section>
+
+
 
       {/* ==================================================
           CREATOR SECTION
@@ -841,148 +888,250 @@ function Portfolio() {
       <CreatorSection />
        
 
-      {/* ==================================================
-          PROJECT ARCHIVE SECTION
-      ================================================== */}
-      <section
-        className="
-        relative
-        py-32
-        overflow-hidden
-        bg-black
-        "
-      >
-        {/* GRID TEXTURE */}
-        <div
-          className="
-          absolute
-          inset-0
-          opacity-[0.04]
-          bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)]
-          bg-[size:80px_80px]
-          "
-        />
+      
+{/* ==================================================
+    PROJECT ARCHIVE SECTION
+================================================== */}
+<section
+  className="
+  relative
+  overflow-hidden
+  bg-black
 
-        {/* RED LIGHT */}
-        <div
-          className="
-          absolute
-          top-1/2
-          left-1/2
-          -translate-x-1/2
-          -translate-y-1/2
-          w-[700px]
-          h-[700px]
-          bg-red-600/10
-          blur-[100px]
-          rounded-full
-          "
-        />
+  py-20
+  sm:py-24
+  md:py-28
+  lg:py-32
+  "
+>
 
-        {/* CONTENT */}
-        <div
+  {/* GRID TEXTURE */}
+  <div
+    className="
+    absolute
+    inset-0
+
+    opacity-[0.04]
+
+    bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)]
+
+    bg-[size:40px_40px]
+    sm:bg-[size:60px_60px]
+    md:bg-[size:80px_80px]
+    "
+  />
+
+  {/* RED LIGHT */}
+  <div
+    className="
+    absolute
+
+    top-1/2
+    left-1/2
+
+    -translate-x-1/2
+    -translate-y-1/2
+
+    w-[300px]
+    h-[300px]
+
+    sm:w-[450px]
+    sm:h-[450px]
+
+    md:w-[650px]
+    md:h-[650px]
+
+    lg:w-[800px]
+    lg:h-[800px]
+
+    bg-red-600/10
+
+    blur-[80px]
+    md:blur-[120px]
+
+    rounded-full
+    "
+  />
+
+  {/* CONTENT */}
+  <div
+    className="
+    relative
+    z-10
+
+    w-[92%]
+    sm:w-[90%]
+
+    max-w-[1700px]
+
+    mx-auto
+    "
+  >
+
+    {/* TOP AREA */}
+    <div
+      className="
+      flex
+      flex-col
+
+      xl:flex-row
+      xl:items-end
+      xl:justify-between
+
+      gap-8
+      md:gap-12
+
+      mb-14
+      md:mb-20
+      "
+    >
+
+      {/* TITLE */}
+      <div>
+
+        <p
           className="
-          relative
-          z-10
-          max-w-[1700px]
-          mx-auto
-          px-6
+          uppercase
+
+          tracking-[0.35em]
+          md:tracking-[0.5em]
+
+          text-red-500
+
+          text-[10px]
+          sm:text-xs
+          md:text-sm
+
+          mb-4
+          md:mb-6
           "
         >
-          {/* TOP AREA */}
-          <div
-            className="
-            flex
-            flex-col
-            lg:flex-row
-            lg:items-center
-            lg:justify-between
-            gap-10
-            mb-20
-            "
-          >
-            {/* TITLE */}
-            <div>
-              <p
-                className="
-                uppercase
-                tracking-[0.5em]
-                text-red-500
-                text-sm
-                mb-6
-                "
-              >
-                Work Archive
-              </p>
+          Work Archive
+        </p>
 
-              <h2
-                className="
-                text-white
-                uppercase
-                leading-[0.9]
-                font-black
-                text-[3rem]
-                md:text-[6rem]
-                "
-              >
-                Featured
-                <br />
-                Works
-              </h2>
-            </div>
+        <h2
+          className="
+          text-white
+          uppercase
+          font-black
 
-            {/* SEARCH */}
-            <SearchBar
-              search={search}
-              setSearch={setSearch}
-            />
-          </div>
+          leading-[0.92]
 
-          {/* CATEGORY FILTER */}
-          <CategoryFilter
-            selectedCategory={selectedCategory}
-            setSelectedCategory={setSelectedCategory}
-          />
+          text-[2.5rem]
+          sm:text-[3.5rem]
+          md:text-[5rem]
+          lg:text-[6rem]
+          "
+        >
 
-          {/* PROJECT GRID */}
-          {filteredProjects.length > 0 ? (
-            <ProjectGrid
-              projects={filteredProjects}
-            />
-          ) : (
-            <div
-              className="
-              py-32
-              text-center
-              border
-              border-white/10
-              bg-white/[0.02]
-              backdrop-blur-sm
-              "
-            >
-              <h3
-                className="
-                text-3xl
-                text-white
-                uppercase
-                tracking-widest
-                "
-              >
-                No Projects Found
-              </h3>
+          Featured
 
-              <p
-                className="
-                mt-4
-                text-zinc-500
-                "
-              >
-                Try searching with another keyword.
-              </p>
-            </div>
-          )}
-        </div>
-      </section>
+          <br />
+
+          Works
+
+        </h2>
+
+      </div>
+
+      {/* SEARCH */}
+      <div
+        className="
+        w-full
+        xl:w-auto
+        "
+      >
+        <SearchBar
+          search={search}
+          setSearch={setSearch}
+        />
+      </div>
+
+    </div>
+
+    {/* CATEGORY FILTER */}
+    <div
+  className="
+  mb-12
+  md:mb-16
+
+  w-full
+  overflow-hidden
+  "
+>
+      <CategoryFilter
+        selectedCategory={selectedCategory}
+        setSelectedCategory={setSelectedCategory}
+      />
+    </div>
+
+    {/* PROJECT GRID */}
+    {filteredProjects.length > 0 ? (
+
+      <ProjectGrid
+        projects={filteredProjects}
+      />
+
+    ) : (
+
+      <div
+        className="
+        py-20
+        md:py-32
+
+        px-6
+
+        text-center
+
+        border
+        border-white/10
+
+        bg-white/[0.02]
+
+        backdrop-blur-sm
+
+        rounded-[24px]
+        "
+      >
+
+        <h3
+          className="
+          text-2xl
+          md:text-3xl
+
+          text-white
+
+          uppercase
+
+          tracking-[0.2em]
+          md:tracking-widest
+          "
+        >
+          No Projects Found
+        </h3>
+
+        <p
+          className="
+          mt-4
+
+          text-sm
+          md:text-base
+
+          text-zinc-500
+          "
+        >
+          Try searching with another keyword.
+        </p>
+
+      </div>
+
+    )}
+
+  </div>
+
+</section>
+
+
 
       {/* {/* ==================================================
           FEATURED MASTERPIECE

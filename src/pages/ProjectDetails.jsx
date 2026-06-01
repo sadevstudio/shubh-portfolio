@@ -2742,198 +2742,256 @@ function ProjectDetails() {
       </section>
 
       {/* ==================================================
-          RESULT SECTION
-      ================================================== */}
-      <section
+    RESULT SECTION
+================================================== */}
+<section
+  className="
+  relative
+
+  overflow-hidden
+
+  bg-black
+
+  py-20
+  sm:py-24
+  md:py-28
+  lg:py-32
+  "
+>
+
+  {/* BACKGROUND */}
+  <motion.div
+
+    initial={{
+      scale: 1.08,
+    }}
+
+    animate={{
+      scale: 1.02,
+      y: [-20, 20, -20],
+    }}
+
+    transition={{
+      duration: 10,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+
+    className="
+    absolute
+    inset-0
+    "
+
+    style={{
+      backgroundImage: `url(${resultBg})`,
+      backgroundPosition: "center",
+      backgroundSize: "cover",
+      backgroundRepeat: "no-repeat",
+      filter: "brightness(0.45)",
+    }}
+  />
+
+  {/* OVERLAY */}
+  <div
+    className="
+    absolute
+    inset-0
+
+    bg-black/55
+    "
+  ></div>
+
+  {/* RED GLOW */}
+  <div
+    className="
+    absolute
+
+    top-1/2
+    left-1/2
+
+    -translate-x-1/2
+    -translate-y-1/2
+
+    w-[300px]
+    h-[300px]
+
+    sm:w-[500px]
+    sm:h-[500px]
+
+    lg:w-[800px]
+    lg:h-[800px]
+
+    bg-red-600/10
+
+    blur-[100px]
+    lg:blur-[160px]
+
+    rounded-full
+    "
+  ></div>
+
+  {/* CONTENT */}
+  <SectionContainer>
+
+    <div
+      className="
+      relative
+      z-10
+
+      w-full
+
+      max-w-[1400px]
+
+      mx-auto
+      "
+    >
+
+      {/* TITLE AREA */}
+      <div
         className="
-        relative
-
-        min-h-[90vh]
-
-        flex
-        items-center
-
-        overflow-hidden
-
-        py-20
-        md:py-24
-
-        bg-black
+        mb-10
+        sm:mb-14
+        md:mb-20
         "
       >
 
-        {/* BACKGROUND */}
-        <motion.div
-
-          initial={{
-            scale: 1.08,
-          }}
-
-          animate={{
-            scale: 1.02,
-            y: [-20, 20, -20],
-          }}
-
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-
-          className="absolute inset-0"
-
-          style={{
-            backgroundImage: `url(${resultBg})`,
-            backgroundPosition: "center 25%",
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-            filter: "brightness(0.75)",
-          }}
-        />
-
-        {/* DARK OVERLAY */}
-        <div
+        <p
           className="
-          absolute
-          inset-0
+          uppercase
 
-          bg-black/35
+          tracking-[0.35em]
+          md:tracking-[0.5em]
+
+          text-red-500
+
+          text-[10px]
+          sm:text-xs
+          md:text-sm
+
+          mb-4
+          md:mb-6
           "
-        />
+        >
+          Final Output
+        </p>
 
-        <SectionContainer>
+        <h2
+          className="
+          uppercase
 
-          <div
+          font-black
+
+          leading-[0.9]
+
+          text-white
+
+          text-[2.3rem]
+          sm:text-[3.5rem]
+          md:text-[5rem]
+          lg:text-[7rem]
+          "
+        >
+
+          PROJECT
+
+          <br className="sm:hidden" />
+
+          RESULT
+
+        </h2>
+
+      </div>
+
+      {/* RESULT BOX */}
+      <motion.div
+
+        initial={{
+          opacity: 0,
+          y: 80,
+        }}
+
+        whileInView={{
+          opacity: 1,
+          y: 0,
+        }}
+
+        transition={{
+          duration: 1,
+        }}
+
+        viewport={{
+          once: true,
+        }}
+
+        className="
+        relative
+
+        overflow-hidden
+
+        rounded-[18px]
+        sm:rounded-[24px]
+        lg:rounded-[32px]
+
+        border
+        border-white/10
+
+        bg-black/50
+
+        backdrop-blur-sm
+
+        shadow-[0_0_80px_rgba(255,0,0,0.08)]
+        "
+      >
+
+        {/* VIDEO */}
+        {project.video ? (
+
+          <video
+            src={project.video}
+
+            controls
+
+            preload="metadata"
+
+            playsInline
+
             className="
-            relative
-            z-10
+            w-full
 
-            max-w-full
-            lg:max-w-[1200px]
+            aspect-video
 
-            mx-auto
-            lg:mr-auto
-            lg:ml-0
+            object-cover
+
+            bg-black
             "
-          >
+          />
 
-            {/* TITLE */}
-            <div
-              className="
-              mb-10
-              md:mb-16
+        ) : (
 
-              lg:-ml-40
-              "
-            >
+          <img
+            src={project.resultImage}
+            alt={project.title}
 
-              <p className="section-label mb-4 md:mb-5">
-                Final Output
-              </p>
+            className="
+            w-full
 
-              <h2
-                className="
-                text-[2.5rem]
-                sm:text-[3.5rem]
-                md:text-7xl
+            aspect-video
 
-                font-black
+            object-cover
 
-                uppercase
+            bg-black
+            "
+          />
 
-                text-white
-                "
-              >
-                PROJECT RESULT
-              </h2>
+        )}
 
-            </div>
+      </motion.div>
 
-            {/* RESULT BOX */}
-            <motion.div
+    </div>
 
-              initial={{
-                opacity: 0,
-                y: 80,
-              }}
+  </SectionContainer>
 
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-
-              transition={{
-                duration: 1,
-              }}
-
-              viewport={{
-                once: true,
-              }}
-
-              className="
-              relative
-
-              overflow-hidden
-
-              border
-              border-white/10
-
-              bg-black/40
-
-              backdrop-blur-sm
-              "
-            >
-
-              {/* VIDEO */}
-              {project.video ? (
-
-                <video
-                  src={project.video}
-
-                  controls
-
-                  preload="metadata"
-
-                  playsInline
-
-                  className="
-                  w-full
-
-                  max-h-[85vh]
-
-                  object-contain
-
-                  bg-black
-                  "
-                />
-
-              ) : (
-
-                <img
-                  src={project.resultImage}
-                  alt={project.title}
-
-                  className="
-                  w-full
-
-                  max-h-[85vh]
-
-                  object-contain
-
-                  bg-black
-                  "
-                />
-
-              )}
-
-            </motion.div>
-
-          </div>
-
-        </SectionContainer>
-
-      </section>
-
+</section>
       {/* ==================================================
           THANK YOU SECTION
       ================================================== */}

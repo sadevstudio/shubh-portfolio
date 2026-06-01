@@ -247,26 +247,26 @@ function Navbar() {
           {links.map((link)=>(
 
             <NavLink
-              key={link.name}
-              to={link.path}
+  key={link.name}
+  to={link.path}
 
-              className={({ isActive }) => `
-                relative
+  className={({ isActive }) => `
+    relative
 
-                text-white/70
+    transition
+    duration-300
 
-                hover:text-red-500
+    ${
+      isActive
+        ? 'text-red-500'
+        : 'text-white/70 hover:text-white'
+    }
+  `}
+>
 
-                transition
-                duration-300
+  {link.name}
 
-                ${isActive ? 'text-red-500' : ''}
-              `}
-            >
-
-              {link.name}
-
-            </NavLink>
+</NavLink>
 
           ))}
 
@@ -426,15 +426,15 @@ function Navbar() {
                 onClick={()=>setMenuOpen(false)}
 
                 className={({ isActive }) => `
-                  text-white/70
+  transition
+  duration-300
 
-                  hover:text-red-500
-
-                  transition
-                  duration-300
-
-                  ${isActive ? 'text-red-500' : ''}
-                `}
+  ${
+    isActive
+      ? 'text-red-500'
+      : 'text-white/70 hover:text-white'
+  }
+`}
               >
 
                 {link.name}

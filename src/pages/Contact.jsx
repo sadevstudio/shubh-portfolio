@@ -535,7 +535,6 @@ function Contact() {
 >
 
   {/* BACKGROUND IMAGE */}
-
   <motion.img
 
     initial={{
@@ -558,63 +557,89 @@ function Contact() {
 
     className="
     absolute inset-0
-    w-full h-full
+
+    w-full
+    h-full
+
     object-cover
+
+    object-[center]
+
     brightness-[1.05]
+
     scale-[1.08]
     "
   />
 
   {/* DARK OVERLAY */}
-
   <div
     className="
     absolute inset-0
-    bg-black/30
+    bg-black/40
     "
   ></div>
 
   {/* CINEMATIC GRADIENT */}
-
   <div
     className="
     absolute inset-0
+
     bg-gradient-to-r
+
     from-black
-    via-black/40
+    via-black/50
     to-transparent
     "
   ></div>
 
   {/* RED GLOW */}
-
   <div
     className="
     absolute
+
     top-0
-    right-0
-    w-[700px]
-    h-[700px]
+    right-[-20%]
+
+    w-[300px]
+    h-[300px]
+
+    sm:w-[450px]
+    sm:h-[450px]
+
+    md:w-[700px]
+    md:h-[700px]
+
     bg-red-600/20
-    blur-[160px]
+
+    blur-[100px]
+    md:blur-[160px]
+
     rounded-full
     "
   ></div>
 
   {/* CONTENT */}
-
   <div
     className="
     relative z-10
-    w-[90%]
+
+    w-[92%]
+    sm:w-[90%]
+
     max-w-[1500px]
+
     mx-auto
-    pt-24
-    md:pt-32
+
+    pt-28
+    sm:pt-32
+    md:pt-36
+
+    pb-16
     "
   >
 
     <motion.div
+
       initial={{
         opacity: 0,
         y: 100,
@@ -628,17 +653,30 @@ function Contact() {
       transition={{
         duration: 1.2,
       }}
+
+      className="
+      max-w-[900px]
+      "
     >
 
       {/* SMALL TITLE */}
-
       <p
         className="
         uppercase
-        tracking-[14px]
+
+        tracking-[6px]
+        sm:tracking-[10px]
+        md:tracking-[14px]
+
         text-red-600
-        mb-6
-        text-sm
+
+        mb-5
+        md:mb-6
+
+        text-[10px]
+        sm:text-xs
+        md:text-sm
+
         font-semibold
         "
       >
@@ -646,14 +684,17 @@ function Contact() {
       </p>
 
       {/* MAIN TITLE */}
-
       <h1
         className="
-        text-[4rem]
-        md:text-[8rem]
-        leading-[0.82]
         font-black
         uppercase
+
+        leading-[0.9]
+
+        text-[3rem]
+        sm:text-[4.5rem]
+        md:text-[6rem]
+        lg:text-[8rem]
         "
       >
 
@@ -666,26 +707,38 @@ function Contact() {
       </h1>
 
       {/* DIVIDER */}
-
       <div
         className="
-        w-[90px]
+        w-[70px]
+        md:w-[90px]
+
         h-[2px]
+
         bg-red-600
-        mt-8
-        mb-8
+
+        mt-6
+        md:mt-8
+
+        mb-6
+        md:mb-8
         "
       ></div>
 
       {/* FIRST TEXT */}
-
       <p
         className="
         text-white/85
-        text-[1.15rem]
-        md:text-[1.3rem]
-        leading-[2]
+
+        text-[15px]
+        sm:text-[17px]
+        md:text-[1.2rem]
+        lg:text-[1.3rem]
+
+        leading-[1.9]
+        md:leading-[2]
+
         max-w-[700px]
+
         font-light
         "
       >
@@ -698,14 +751,21 @@ function Contact() {
       </p>
 
       {/* SECOND TEXT */}
-
       <p
         className="
         text-white/60
-        text-lg
-        leading-[2]
+
+        text-[14px]
+        sm:text-base
+        md:text-lg
+
+        leading-[1.9]
+        md:leading-[2]
+
         max-w-[650px]
-        mt-8
+
+        mt-6
+        md:mt-8
         "
       >
 
@@ -715,8 +775,15 @@ function Contact() {
       </p>
 
       {/* SIGNATURE */}
+      <div
+        className="
+        mt-2
 
-      <div className="mt-0 flex flex-col items-start">
+        flex
+        flex-col
+        items-start
+        "
+      >
 
         <motion.img
 
@@ -739,12 +806,22 @@ function Contact() {
           alt="Shubh Asawa Signature"
 
           className="
-          w-[620px]
-          md:w-[720px]
-          max-w-none
+          w-[260px]
+          sm:w-[380px]
+          md:w-[520px]
+          lg:w-[720px]
+
+          max-w-full
+
           object-contain
-          -ml-32
-          mt-0
+
+          ml-[-20px]
+          sm:ml-[-40px]
+          md:ml-[-80px]
+          lg:ml-[-120px]
+
+          mt-2
+
           opacity-90
           "
         />
@@ -756,14 +833,17 @@ function Contact() {
   </div>
 
   {/* TOP FADE */}
-
   <div
     className="
     absolute
     top-0
     left-0
+
     w-full
-    h-[180px]
+
+    h-[120px]
+    md:h-[180px]
+
     bg-gradient-to-b
     from-black
     to-transparent
@@ -771,14 +851,17 @@ function Contact() {
   ></div>
 
   {/* BOTTOM FADE */}
-
   <div
     className="
     absolute
     bottom-0
     left-0
+
     w-full
-    h-[220px]
+
+    h-[140px]
+    md:h-[220px]
+
     bg-gradient-to-t
     from-black
     to-transparent
