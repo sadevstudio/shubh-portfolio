@@ -446,7 +446,7 @@ import locationIcon from "../assets/icons/location.png";
 import emailIcon from "../assets/icons/email.png";
 
 // ⚠️ PORT CHANGED TO 8080 — port 5000 is blocked by macOS AirPlay
-const API_URL = "http://localhost:8080";
+const API_URL = "";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
