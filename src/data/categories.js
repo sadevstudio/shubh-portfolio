@@ -1,11 +1,27 @@
+// const categories = [
+//   "ALL",
+//   "VIDEO EDITS",
+//   "CGI ADS",
+//   "MOTION DESIGN",
+//   "SHOWREELS",
+//   "3D VISUALS",
+  
+// ];
+
+// export default categories;
+
 const categories = [
   "ALL",
-  "VIDEO EDITS",
-  "CGI ADS",
+  "BRAND IDENTITY",
+  "PACKAGING",
+  "SOCIAL MEDIA",
   "MOTION DESIGN",
-  "SHOWREELS",
-  "3D VISUALS",
-  
+  "VIDEO EDITING",
+  "CGI & 3D",
+  "CAMPAIGNS",
+  "UI/UX DESIGN",
+  "AI VIDEO",
+  "AI SOCIAL MEDIA",
 ];
 
 export default categories;

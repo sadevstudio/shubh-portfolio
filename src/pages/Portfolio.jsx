@@ -1056,7 +1056,8 @@ function Portfolio() {
   md:mb-16
 
   w-full
-  overflow-hidden
+  overflow-x-auto
+  scrollbar-hide
   "
 >
       <CategoryFilter
