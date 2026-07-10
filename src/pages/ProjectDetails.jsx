@@ -3560,6 +3560,2160 @@
 
 // export default ProjectDetails;
 
+// import {
+//   motion,
+//   useAnimationFrame,
+// } from "framer-motion";
+// import { useRef, useState } from "react";
+
+// import {
+//   Link,
+//   useParams,
+//   useNavigate,
+// } from "react-router-dom";
+
+// import projects from "../data/projects";
+// import { ArrowLeft } from "lucide-react";
+
+// import Navbar from "../components/layout/Navbar";
+// import Footer from "../components/layout/Footer";
+
+// import SectionContainer from "../components/common/SectionContainer";
+// import SectionTitle from "../components/common/SectionTitle";
+// import GlowOverlay from "../components/common/GlowOverlay";
+// import CinematicButton from "../components/common/CinematicButton";
+
+// import heroOverlay from "../assets/atmosphere/hero-overlay-1.jpg";
+// import galleryBg from "../assets/atmosphere/gallery-bg.jpg";
+// import descriptionBg from "../assets/atmosphere/description-bg.jpg";
+// import resultBg from "../assets/atmosphere/result-bg.jpg";
+// import ThankYouBg from "../assets/atmosphere/thankyou-bg.jpg";
+
+// import NotFound from "./NotFound";
+
+// function ProjectDetails() {
+
+//   const { slug } = useParams();
+//   const navigate = useNavigate();
+
+//   const project = projects.find((item) => item.slug === slug);
+
+//   if (!project) {
+//     return <NotFound />;
+//   }
+
+//   // Hero background always uses thumbnail. heroImage kept only as a
+//   // fallback for older projects that still define it separately.
+//   const heroBg = project.heroImage || project.thumbnail;
+
+//   return (
+//     <>
+//       <Navbar />
+
+//       {/* ==================================================
+//           HERO SECTION (always shows)
+//       ================================================== */}
+//       <section
+//         className="
+//         relative
+//         min-h-screen
+//         overflow-hidden
+//         bg-black
+//         flex
+//         items-center
+//         "
+//       >
+//         <motion.div
+//           initial={{ scale: 1.08 }}
+//           animate={{ scale: 1.02, y: [-20, 20, -20] }}
+//           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+//           className="absolute inset-0"
+//           style={{
+//             backgroundImage: `url(${heroBg})`,
+//             backgroundPosition: "center 25%",
+//             backgroundSize: "cover",
+//             backgroundRepeat: "no-repeat",
+//             filter: "brightness(0.75)",
+//           }}
+//         />
+
+//         <div
+//           className="absolute inset-0 opacity-[0.08] mix-blend-screen"
+//           style={{
+//             backgroundImage: `url(${heroOverlay})`,
+//             backgroundSize: "cover",
+//             backgroundPosition: "center",
+//           }}
+//         />
+
+//         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/95 via-black/75 to-transparent" />
+//         <div className="absolute inset-0 bg-black/40" />
+
+//         <GlowOverlay />
+
+//         <SectionContainer>
+//           <div
+//             className="
+//             grid
+//             grid-cols-1
+//             lg:grid-cols-2
+//             gap-10
+//             md:gap-16
+//             lg:gap-20
+//             items-center
+//             min-h-screen
+//             pt-32
+//             pb-20
+//             "
+//           >
+//             <motion.div
+//               initial={{ opacity: 0, y: 80 }}
+//               animate={{ opacity: 1, y: 0 }}
+//               transition={{ duration: 1 }}
+//               className="relative max-w-full"
+//             >
+//               <div className="relative mb-10">
+//                 <motion.button
+//                   onClick={() => navigate("/portfolio")}
+//                   whileHover={{ x: -5 }}
+//                   transition={{ duration: 0.3 }}
+//                   className="
+//                   flex
+//                   items-center
+//                   gap-3
+//                   text-zinc-400
+//                   hover:text-white
+//                   uppercase
+//                   tracking-[0.15em]
+//                   md:tracking-[0.2em]
+//                   text-[10px]
+//                   md:text-sm
+//                   transition-colors
+//                   "
+//                 >
+//                   <ArrowLeft size={16} />
+//                   <span>Back To Archive</span>
+//                 </motion.button>
+//               </div>
+
+//               <p className="section-label mb-5 md:mb-6">
+//                 {project.category}
+//               </p>
+
+//               <h1
+//                 className="
+//                 big-title
+//                 text-[3rem]
+//                 sm:text-[4rem]
+//                 md:text-[6rem]
+//                 lg:text-[7rem]
+//                 leading-[0.9]
+//                 "
+//               >
+//                 {project.title}
+//               </h1>
+
+//               <p
+//                 className="
+//                 body-text
+//                 text-base
+//                 md:text-lg
+//                 mt-6
+//                 md:mt-10
+//                 leading-[1.9]
+//                 max-w-full
+//                 md:max-w-[700px]
+//                 "
+//               >
+//                 {project.shortDescription}
+//               </p>
+
+//               {project.software && project.software.length > 0 && (
+//                 <div className="flex flex-wrap gap-3 md:gap-4 mt-8 md:mt-10">
+//                   {project.software.map((item, index) => (
+//                     <div
+//                       key={index}
+//                       className="
+//                       px-4
+//                       md:px-5
+//                       py-2
+//                       md:py-3
+//                       glass-panel
+//                       text-[10px]
+//                       md:text-sm
+//                       uppercase
+//                       tracking-wider
+//                       "
+//                     >
+//                       {item}
+//                     </div>
+//                   ))}
+//                 </div>
+//               )}
+//             </motion.div>
+//           </div>
+//         </SectionContainer>
+
+//         <div
+//           className="
+//           absolute
+//           bottom-0
+//           left-0
+//           w-full
+//           h-[120px]
+//           md:h-[220px]
+//           bg-gradient-to-t
+//           from-black
+//           to-transparent
+//           "
+//         />
+//       </section>
+
+//       {/* ==================================================
+//           GALLERY SECTION (only if project.gallery exists)
+//       ================================================== */}
+//       {project.gallery && project.gallery.length > 0 && (
+//         <section className="relative overflow-hidden py-20 md:py-32 bg-black">
+//           <div className="absolute inset-0">
+//             <motion.div
+//               initial={{ scale: 1.08 }}
+//               animate={{ scale: 1.02, y: [-20, 20, -20] }}
+//               transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+//               className="absolute inset-0"
+//               style={{
+//                 backgroundImage: `url(${galleryBg})`,
+//                 backgroundPosition: "center 25%",
+//                 backgroundSize: "cover",
+//                 backgroundRepeat: "no-repeat",
+//                 filter: "brightness(0.75)",
+//               }}
+//             />
+//             <div className="absolute inset-0 bg-black/50" />
+//           </div>
+
+//           <GlowOverlay />
+
+//           <div className="relative z-20 w-full mb-14 md:mb-20">
+//             <div className="px-4 sm:px-6 md:px-12 lg:pl-48 lg:pr-16 mb-10 md:mb-14">
+//               <SectionTitle
+//                 label="Visual Archive"
+//                 title="Project Gallery"
+//                 subtitle="A cinematic breakdown of visuals, frames, and storytelling moments."
+//               />
+//             </div>
+
+//             {project.gallery.length <= 3 ? (
+//               <div
+//                 className={`
+//                   grid
+//                   gap-4
+//                   md:gap-6
+//                   px-4
+//                   sm:px-6
+//                   md:px-10
+//                   mx-auto
+//                   ${
+//                     project.gallery.length === 1
+//                       ? "max-w-[900px]"
+//                       : project.gallery.length === 2
+//                       ? "md:grid-cols-2 max-w-[1400px]"
+//                       : "md:grid-cols-3 max-w-[1700px]"
+//                   }
+//                 `}
+//               >
+//                 {project.gallery.map((image, index) => (
+//                   <motion.div
+//                     key={index}
+//                     whileHover={{ scale: 1.02 }}
+//                     transition={{ duration: 0.4 }}
+//                     className={`
+//                       overflow-hidden
+//                       cinematic-border
+//                       bg-zinc-950
+//                       ${project.gallery.length === 2 ? "max-h-[520px]" : "max-h-[650px]"}
+//                     `}
+//                   >
+//                     <img
+//                       src={image}
+//                       alt={`${project.title}-${index}`}
+//                       className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+//                     />
+//                   </motion.div>
+//                 ))}
+//               </div>
+//             ) : (
+//               <AutoScrollGallery images={project.gallery} />
+//             )}
+//           </div>
+//         </section>
+//       )}
+
+//       {/* ==================================================
+//           DESCRIPTION SECTION (only if project.description exists)
+//       ================================================== */}
+//       {project.description && (
+//         <section
+//           className="
+//           relative
+//           min-h-screen
+//           flex
+//           items-center
+//           overflow-hidden
+//           py-20
+//           md:py-32
+//           "
+//         >
+//           <motion.div
+//             initial={{ scale: 1.08 }}
+//             animate={{ scale: 1.02, y: [-20, 20, -20] }}
+//             transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+//             className="absolute inset-0"
+//             style={{
+//               backgroundImage: `url(${descriptionBg})`,
+//               backgroundPosition: "center 25%",
+//               backgroundSize: "cover",
+//               backgroundRepeat: "no-repeat",
+//               filter: "brightness(0.75)",
+//             }}
+//           />
+//           <div className="absolute inset-0 bg-black/25" />
+
+//           <SectionContainer>
+//             <div
+//               className="
+//               relative
+//               z-10
+//               grid
+//               grid-cols-1
+//               lg:grid-cols-2
+//               gap-6
+//               md:gap-10
+//               items-center
+//               "
+//             >
+//               <motion.div
+//                 initial={{ opacity: 0, y: 50 }}
+//                 whileInView={{ opacity: 1, y: 0 }}
+//                 transition={{ duration: 0.8 }}
+//                 viewport={{ once: true }}
+//                 className="
+//                 relative
+//                 overflow-hidden
+//                 border
+//                 border-white/10
+//                 bg-white/[0.03]
+//                 backdrop-blur-md
+//                 p-6
+//                 md:p-12
+//                 lg:p-14
+//                 "
+//               >
+//                 <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent" />
+
+//                 <div className="relative z-10">
+//                   <p
+//                     className="
+//                     text-red-500
+//                     uppercase
+//                     tracking-[0.25em]
+//                     md:tracking-[0.3em]
+//                     text-[10px]
+//                     md:text-xs
+//                     mb-5
+//                     md:mb-6
+//                     "
+//                   >
+//                     Project Overview
+//                   </p>
+
+//                   <h2
+//                     className="
+//                     text-[2.5rem]
+//                     sm:text-[3rem]
+//                     md:text-6xl
+//                     font-black
+//                     uppercase
+//                     text-white
+//                     leading-none
+//                     "
+//                   >
+//                     The Story
+//                   </h2>
+
+//                   <motion.p
+//                     initial={{ opacity: 0 }}
+//                     whileInView={{ opacity: 1 }}
+//                     transition={{ delay: 0.3, duration: 1 }}
+//                     viewport={{ once: true }}
+//                     className="
+//                     mt-6
+//                     md:mt-8
+//                     text-zinc-300
+//                     leading-[1.9]
+//                     md:leading-[2]
+//                     text-base
+//                     md:text-lg
+//                     "
+//                   >
+//                     {project.description}
+//                   </motion.p>
+//                 </div>
+//               </motion.div>
+
+//               <motion.div
+//                 initial={{ opacity: 0, y: 50 }}
+//                 whileInView={{ opacity: 1, y: 0 }}
+//                 transition={{ duration: 0.8, delay: 0.2 }}
+//                 viewport={{ once: true }}
+//                 className="
+//                 relative
+//                 overflow-hidden
+//                 border
+//                 border-white/10
+//                 bg-white/[0.03]
+//                 backdrop-blur-md
+//                 p-6
+//                 md:p-10
+//                 "
+//               >
+//                 <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent" />
+
+//                 <div className="relative z-10">
+//                   <p
+//                     className="
+//                     text-red-500
+//                     uppercase
+//                     tracking-[0.25em]
+//                     md:tracking-[0.3em]
+//                     text-[10px]
+//                     md:text-xs
+//                     mb-8
+//                     md:mb-10
+//                     "
+//                   >
+//                     Project Details
+//                   </p>
+
+//                   <div className="space-y-6 md:space-y-8">
+//                     {[
+//                       { label: "Project Type", value: project.projectType },
+//                       { label: "Role", value: project.role },
+//                       { label: "Resolution", value: project.resolution },
+//                       { label: "Format", value: project.format },
+//                     ]
+//                       .filter((item) => item.value)
+//                       .map((item, index) => (
+//                         <motion.div
+//                           key={index}
+//                           whileHover={{ x: 5 }}
+//                           className="
+//                           flex
+//                           justify-between
+//                           gap-4
+//                           md:gap-6
+//                           border-b
+//                           border-white/5
+//                           pb-4
+//                           md:pb-5
+//                           "
+//                         >
+//                           <span
+//                             className="
+//                             text-zinc-500
+//                             uppercase
+//                             tracking-[0.15em]
+//                             md:tracking-[0.2em]
+//                             text-[10px]
+//                             md:text-xs
+//                             "
+//                           >
+//                             {item.label}
+//                           </span>
+//                           <span className="text-white text-right text-sm md:text-base">
+//                             {item.value}
+//                           </span>
+//                         </motion.div>
+//                       ))}
+//                   </div>
+//                 </div>
+//               </motion.div>
+//             </div>
+//           </SectionContainer>
+//         </section>
+//       )}
+
+//       {/* ==================================================
+//           DYNAMIC SECTIONS (flexible per-project content blocks)
+//       ================================================== */}
+//       {project.sections?.map((section, i) => renderSection(section, i))}
+
+//       {/* ==================================================
+//           RESULT SECTION (always shows — smart layout by orientation)
+//       ================================================== */}
+//       <ResultSection project={project} resultBg={resultBg} />
+
+//       {/* ==================================================
+//           THANK YOU SECTION
+//       ================================================== */}
+//       <section
+//         className="
+//         relative
+//         min-h-screen
+//         overflow-hidden
+//         flex
+//         items-center
+//         justify-center
+//         py-20
+//         md:py-32
+//         "
+//       >
+//         <motion.div
+//           initial={{ scale: 1.08 }}
+//           animate={{ scale: 1.02, y: [-20, 20, -20] }}
+//           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+//           className="absolute inset-0"
+//           style={{
+//             backgroundImage: `url(${ThankYouBg})`,
+//             backgroundPosition: "center 25%",
+//             backgroundSize: "cover",
+//             backgroundRepeat: "no-repeat",
+//             filter: "brightness(0.75)",
+//           }}
+//         />
+//         <div className="absolute inset-0 bg-black/5" />
+
+//         <div className="relative z-10 text-center px-4 sm:px-6 max-w-[1200px] mx-auto">
+//           <motion.p
+//             initial={{ opacity: 0, y: 30 }}
+//             whileInView={{ opacity: 1, y: 0 }}
+//             transition={{ duration: 1 }}
+//             viewport={{ once: true }}
+//             className="
+//             uppercase
+//             tracking-[0.3em]
+//             md:tracking-[0.7em]
+//             text-red-500
+//             text-[10px]
+//             md:text-sm
+//             mb-6
+//             md:mb-10
+//             "
+//           >
+//             Cinematic Ending
+//           </motion.p>
+
+//           <div className="flex justify-center flex-wrap gap-1 md:gap-2">
+//             {"THANK YOU".split("").map((char, index) => (
+//               <motion.span
+//                 key={index}
+//                 initial={{ opacity: 0, y: 120, rotate: 10, filter: "blur(20px)" }}
+//                 whileInView={{ opacity: 1, y: 0, rotate: 0, filter: "blur(0px)" }}
+//                 transition={{ delay: index * 0.08, duration: 0.8, ease: "easeOut" }}
+//                 viewport={{ once: true }}
+//                 className="
+//                 text-[2.8rem]
+//                 sm:text-[4rem]
+//                 md:text-[9rem]
+//                 font-black
+//                 uppercase
+//                 leading-none
+//                 inline-block
+//                 text-white
+//                 drop-shadow-[0_0_30px_rgba(255,0,0,0.5)]
+//                 "
+//               >
+//                 {char === " " ? "\u00A0" : char}
+//               </motion.span>
+//             ))}
+//           </div>
+
+//           <motion.p
+//             initial={{ opacity: 0, y: 40 }}
+//             whileInView={{ opacity: 1, y: 0 }}
+//             transition={{ delay: 1.1, duration: 1 }}
+//             viewport={{ once: true }}
+//             className="
+//             text-white/75
+//             text-base
+//             md:text-xl
+//             leading-[1.9]
+//             max-w-full
+//             md:max-w-[850px]
+//             mx-auto
+//             mt-8
+//             md:mt-12
+//             "
+//           >
+//             Thank you for exploring my world of cinematic motion design,
+//             anime-inspired visuals, CGI storytelling, and immersive digital
+//             experiences.
+//           </motion.p>
+
+//           <motion.div
+//             initial={{ width: 0, opacity: 0 }}
+//             whileInView={{ width: "220px", opacity: 1 }}
+//             transition={{ delay: 1.4, duration: 1 }}
+//             viewport={{ once: true }}
+//             className="
+//             h-[2px]
+//             bg-red-500
+//             mx-auto
+//             mt-10
+//             md:mt-14
+//             shadow-[0_0_30px_rgba(255,0,0,0.8)]
+//             "
+//           />
+
+//           <motion.div
+//             initial={{ opacity: 0, y: 40 }}
+//             whileInView={{ opacity: 1, y: 0 }}
+//             transition={{ delay: 1.6, duration: 1 }}
+//             viewport={{ once: true }}
+//             className="mt-12 md:mt-16"
+//           >
+//             <Link to="/portfolio">
+//               <CinematicButton>See More Projects</CinematicButton>
+//             </Link>
+//           </motion.div>
+//         </div>
+//       </section>
+
+//       <Footer />
+//     </>
+//   );
+// }
+
+// /* ==================================================
+//    RESULT SECTION — smart layout based on orientation
+//    ================================================== */
+
+// function ResultSection({ project, resultBg }) {
+//   // Build a unified results array. Prefer the new `results` field;
+//   // fall back to legacy `video` / `resultImage` fields so old projects
+//   // keep working without changes.
+//   const results =
+//     project.results && project.results.length > 0
+//       ? project.results
+//       : [
+//           ...(project.video
+//             ? [{ type: "video", src: project.video, orientation: project.resultOrientation || "landscape" }]
+//             : []),
+//           ...(!project.video && project.resultImage
+//             ? [{ type: "image", src: project.resultImage, orientation: project.resultOrientation || "landscape" }]
+//             : []),
+//         ];
+
+//   if (results.length === 0) return null;
+
+//   const portraitItems = results.filter((r) => r.orientation === "portrait");
+//   const landscapeItems = results.filter((r) => r.orientation !== "portrait");
+
+//   return (
+//     <section className="relative overflow-hidden bg-black py-20 sm:py-24 md:py-28 lg:py-32">
+//       <motion.div
+//         initial={{ scale: 1.08 }}
+//         animate={{ scale: 1.02, y: [-20, 20, -20] }}
+//         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+//         className="absolute inset-0"
+//         style={{
+//           backgroundImage: `url(${resultBg})`,
+//           backgroundPosition: "center",
+//           backgroundSize: "cover",
+//           backgroundRepeat: "no-repeat",
+//           filter: "brightness(0.45)",
+//         }}
+//       />
+//       <div className="absolute inset-0 bg-black/55" />
+
+//       <div
+//         className="
+//         absolute
+//         top-1/2
+//         left-1/2
+//         -translate-x-1/2
+//         -translate-y-1/2
+//         w-[300px]
+//         h-[300px]
+//         sm:w-[500px]
+//         sm:h-[500px]
+//         lg:w-[800px]
+//         lg:h-[800px]
+//         bg-red-600/10
+//         blur-[100px]
+//         lg:blur-[160px]
+//         rounded-full
+//         "
+//       />
+
+//       <SectionContainer>
+//         <div className="relative z-10 w-full max-w-[1400px] mx-auto">
+//           <div className="mb-10 sm:mb-14 md:mb-20">
+//             <p
+//               className="
+//               uppercase
+//               tracking-[0.35em]
+//               md:tracking-[0.5em]
+//               text-red-500
+//               text-[10px]
+//               sm:text-xs
+//               md:text-sm
+//               mb-4
+//               md:mb-6
+//               "
+//             >
+//               Final Output
+//             </p>
+//             <h2
+//               className="
+//               uppercase
+//               font-black
+//               leading-[0.9]
+//               text-white
+//               text-[2.3rem]
+//               sm:text-[3.5rem]
+//               md:text-[5rem]
+//               lg:text-[7rem]
+//               "
+//             >
+//               PROJECT
+//               <br className="sm:hidden" />
+//               RESULT
+//             </h2>
+//           </div>
+
+//           {results.length === 1 ? (
+//             <ResultMedia item={results[0]} big />
+//           ) : (
+//             <div className="space-y-10 md:space-y-14">
+//               {portraitItems.length > 0 && (
+//                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+//                   {portraitItems.map((item, i) => (
+//                     <ResultMedia key={`p-${i}`} item={item} />
+//                   ))}
+//                 </div>
+//               )}
+
+//               {landscapeItems.length > 0 && (
+//                 <div className="flex flex-col gap-8 md:gap-12">
+//                   {landscapeItems.map((item, i) => (
+//                     <ResultMedia key={`l-${i}`} item={item} />
+//                   ))}
+//                 </div>
+//               )}
+//             </div>
+//           )}
+//         </div>
+//       </SectionContainer>
+//     </section>
+//   );
+// }
+
+// function ResultMedia({ item, big }) {
+//   const isPortrait = item.orientation === "portrait";
+//   const videoRef = useRef(null);
+//   const [muted, setMuted] = useState(true);
+//   const [playing, setPlaying] = useState(true);
+
+//   const wrapperClass = big
+//     ? `w-full ${isPortrait ? "max-w-[420px]" : "max-w-[1200px]"} mx-auto`
+//     : "w-full";
+
+//   const aspectClass = isPortrait ? "aspect-[9/16]" : "aspect-video";
+
+//   // No rounded corners — sharp edges as requested
+//   const mediaClass = `
+//     w-full
+//     h-full
+//     object-cover
+//     bg-black
+//     border
+//     border-white/10
+//     shadow-[0_0_80px_rgba(255,0,0,0.08)]
+//   `;
+
+//   const toggleMute = (e) => {
+//     e.stopPropagation();
+//     if (videoRef.current) {
+//       videoRef.current.muted = !videoRef.current.muted;
+//       setMuted(videoRef.current.muted);
+//     }
+//   };
+
+//   const togglePlay = () => {
+//     if (!videoRef.current) return;
+//     if (videoRef.current.paused) {
+//       videoRef.current.play();
+//       setPlaying(true);
+//     } else {
+//       videoRef.current.pause();
+//       setPlaying(false);
+//     }
+//   };
+
+//   return (
+//     <motion.div
+//       initial={{ opacity: 0, y: 60 }}
+//       whileInView={{ opacity: 1, y: 0 }}
+//       transition={{ duration: 0.8 }}
+//       viewport={{ once: true }}
+//       className={`relative overflow-hidden ${wrapperClass} ${aspectClass}`}
+//     >
+//       {item.type === "video" ? (
+//         <div className="relative w-full h-full group" onClick={togglePlay}>
+//           <video
+//             ref={videoRef}
+//             src={item.src}
+//             autoPlay
+//             muted
+//             loop
+//             playsInline
+//             preload="metadata"
+//             className={mediaClass}
+//           />
+
+//           {/* PLAY/PAUSE STATE ICON (shows briefly on hover) */}
+//           <div
+//             className="
+//             absolute
+//             inset-0
+//             flex
+//             items-center
+//             justify-center
+//             opacity-0
+//             group-hover:opacity-100
+//             transition-opacity
+//             duration-300
+//             bg-black/20
+//             pointer-events-none
+//             "
+//           >
+//             {!playing && (
+//               <div className="w-16 h-16 rounded-full bg-black/60 flex items-center justify-center">
+//                 <div
+//                   className="
+//                   w-0
+//                   h-0
+//                   border-t-[10px]
+//                   border-t-transparent
+//                   border-b-[10px]
+//                   border-b-transparent
+//                   border-l-[16px]
+//                   border-l-white
+//                   ml-1
+//                   "
+//                 />
+//               </div>
+//             )}
+//           </div>
+
+//           {/* MUTE/UNMUTE BUTTON */}
+//           <button
+//             onClick={toggleMute}
+//             className="
+//             absolute
+//             bottom-4
+//             right-4
+//             z-10
+//             w-10
+//             h-10
+//             flex
+//             items-center
+//             justify-center
+//             bg-black/60
+//             border
+//             border-white/20
+//             text-white
+//             hover:bg-black/80
+//             transition-colors
+//             duration-300
+//             "
+//           >
+//             {muted ? (
+//               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+//                 <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+//                 <line x1="23" y1="9" x2="17" y2="15" />
+//                 <line x1="17" y1="9" x2="23" y2="15" />
+//               </svg>
+//             ) : (
+//               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+//                 <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+//                 <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+//                 <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+//               </svg>
+//             )}
+//           </button>
+//         </div>
+//       ) : (
+//         <img src={item.src} alt="" className={mediaClass} />
+//       )}
+//     </motion.div>
+//   );
+// }
+
+// /* ==================================================
+//    GALLERY AUTO-SCROLL (unchanged)
+//    ================================================== */
+
+// function AutoScrollGallery({ images }) {
+//   const duplicatedImages = [...images, ...images];
+
+//   return (
+//     <div className="relative overflow-hidden w-screen left-1/2 -translate-x-1/2">
+//       <div
+//         className="
+//         absolute
+//         left-0
+//         top-0
+//         z-30
+//         h-full
+//         w-16
+//         md:w-40
+//         bg-gradient-to-r
+//         from-black
+//         to-transparent
+//         pointer-events-none
+//         "
+//       />
+//       <div
+//         className="
+//         absolute
+//         right-0
+//         top-0
+//         z-30
+//         h-full
+//         w-16
+//         md:w-40
+//         bg-gradient-to-l
+//         from-black
+//         to-transparent
+//         pointer-events-none
+//         "
+//       />
+
+//       <motion.div
+//         animate={{ x: ["0%", "-50%"] }}
+//         transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+//         className="flex gap-4 md:gap-8 w-max px-4 md:px-8"
+//       >
+//         {duplicatedImages.map((image, index) => (
+//           <motion.div
+//             key={index}
+//             whileHover={{ scale: 1.03 }}
+//             transition={{ duration: 0.4 }}
+//             className="
+//             w-[320px]
+//             sm:w-[450px]
+//             md:w-[720px]
+//             aspect-[16/9]
+//             flex-shrink-0
+//             overflow-hidden
+//             cinematic-border
+//             bg-zinc-950
+//             "
+//           >
+//             <img
+//               src={image}
+//               alt={`gallery-${index}`}
+//               className="
+//               w-full
+//               h-full
+//               object-cover
+//               object-center
+//               transition-transform
+//               duration-700
+//               hover:scale-105
+//               "
+//             />
+//           </motion.div>
+//         ))}
+//       </motion.div>
+//     </div>
+//   );
+// }
+
+// /* ==================================================
+//    FLEXIBLE SECTIONS (unchanged from before)
+//    ================================================== */
+
+// function SectionBlock({ label, title, children }) {
+//   return (
+//     <section className="relative overflow-hidden bg-black py-16 md:py-24">
+//       <div className="relative z-10 w-[92%] sm:w-[90%] max-w-[1700px] mx-auto">
+//         {label && (
+//           <p className="uppercase tracking-[0.35em] text-red-500 text-[10px] sm:text-xs mb-4">
+//             {label}
+//           </p>
+//         )}
+//         {title && (
+//           <h2 className="text-white uppercase font-black leading-[0.95] text-[2rem] sm:text-[2.8rem] md:text-[3.6rem] mb-10">
+//             {title}
+//           </h2>
+//         )}
+//         {children}
+//       </div>
+//     </section>
+//   );
+// }
+
+// function GallerySection({ section }) {
+//   return (
+//     <SectionBlock label="Gallery" title={section.title}>
+//       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+//         {section.images.map((img, i) => (
+//           <div key={i} className="overflow-hidden border border-white/10 bg-zinc-950">
+//             <img src={img} alt={`${section.title}-${i}`} className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
+//           </div>
+//         ))}
+//       </div>
+//     </SectionBlock>
+//   );
+// }
+
+// function VideoSection({ section }) {
+//   return (
+//     <SectionBlock label="Final Output" title={section.title}>
+//       <video src={section.src} controls preload="metadata" playsInline className="w-full aspect-video object-cover bg-black rounded-[18px] border border-white/10" />
+//     </SectionBlock>
+//   );
+// }
+
+// function ImageSection({ section }) {
+//   return (
+//     <SectionBlock label="Visual" title={section.title}>
+//       <img src={section.src} alt={section.title} className="w-full max-h-[80vh] object-cover rounded-[18px] border border-white/10" />
+//     </SectionBlock>
+//   );
+// }
+
+// function BeforeAfterSection({ section }) {
+//   return (
+//     <SectionBlock label="Comparison" title={section.title}>
+//       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+//         <div>
+//           <p className="text-zinc-500 uppercase tracking-widest text-xs mb-3">Before</p>
+//           <img src={section.before} alt="before" className="w-full object-cover border border-white/10" />
+//         </div>
+//         <div>
+//           <p className="text-red-500 uppercase tracking-widest text-xs mb-3">After</p>
+//           <img src={section.after} alt="after" className="w-full object-cover border border-white/10" />
+//         </div>
+//       </div>
+//     </SectionBlock>
+//   );
+// }
+
+// function MockupSection({ section }) {
+//   return (
+//     <SectionBlock label="Showcase" title={section.title}>
+//       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-10">
+//         {section.images.map((img, i) => (
+//           <div key={i} className="overflow-hidden rounded-[16px] border border-white/10 bg-white/[0.03] p-4">
+//             <img src={img} alt={`mockup-${i}`} className="w-full object-contain" />
+//           </div>
+//         ))}
+//       </div>
+//     </SectionBlock>
+//   );
+// }
+
+// function renderSection(section, index) {
+//   switch (section.type) {
+//     case "gallery": return <GallerySection key={index} section={section} />;
+//     case "video": return <VideoSection key={index} section={section} />;
+//     case "image": return <ImageSection key={index} section={section} />;
+//     case "beforeAfter": return <BeforeAfterSection key={index} section={section} />;
+//     case "mockup": return <MockupSection key={index} section={section} />;
+//     default: return null;
+//   }
+// }
+
+// export default ProjectDetails;
+
+// import {
+//   motion,
+//   useAnimationFrame,
+// } from "framer-motion";
+// import { useRef, useState } from "react";
+
+// import {
+//   Link,
+//   useParams,
+//   useNavigate,
+// } from "react-router-dom";
+
+// import projects from "../data/projects";
+// import { ArrowLeft } from "lucide-react";
+
+// import Navbar from "../components/layout/Navbar";
+// import Footer from "../components/layout/Footer";
+
+// import SectionContainer from "../components/common/SectionContainer";
+// import SectionTitle from "../components/common/SectionTitle";
+// import GlowOverlay from "../components/common/GlowOverlay";
+// import CinematicButton from "../components/common/CinematicButton";
+
+// import heroOverlay from "../assets/atmosphere/hero-overlay-1.jpg";
+// import galleryBg from "../assets/atmosphere/gallery-bg.jpg";
+// import descriptionBg from "../assets/atmosphere/description-bg.jpg";
+// import resultBg from "../assets/atmosphere/result-bg.jpg";
+// import ThankYouBg from "../assets/atmosphere/thankyou-bg.jpg";
+
+// import NotFound from "./NotFound";
+
+// function ProjectDetails() {
+
+//   const { slug } = useParams();
+//   const navigate = useNavigate();
+
+//   const project = projects.find((item) => item.slug === slug);
+
+//   if (!project) {
+//     return <NotFound />;
+//   }
+
+//   const heroBg = project.heroImage || project.thumbnail;
+
+//   return (
+//     <>
+//       <Navbar />
+
+//       {/* ==================================================
+//           HERO SECTION (always shows)
+//       ================================================== */}
+//       <section
+//         className="
+//         relative
+//         min-h-screen
+//         overflow-hidden
+//         bg-black
+//         flex
+//         items-center
+//         "
+//       >
+//         <motion.div
+//           initial={{ scale: 1.08 }}
+//           animate={{ scale: 1.02, y: [-20, 20, -20] }}
+//           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+//           className="absolute inset-0"
+//           style={{
+//             backgroundImage: `url(${heroBg})`,
+//             backgroundPosition: "center 25%",
+//             backgroundSize: "cover",
+//             backgroundRepeat: "no-repeat",
+//             filter: "brightness(0.75)",
+//           }}
+//         />
+
+//         <div
+//           className="absolute inset-0 opacity-[0.08] mix-blend-screen"
+//           style={{
+//             backgroundImage: `url(${heroOverlay})`,
+//             backgroundSize: "cover",
+//             backgroundPosition: "center",
+//           }}
+//         />
+
+//         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/95 via-black/75 to-transparent" />
+//         <div className="absolute inset-0 bg-black/40" />
+
+//         <GlowOverlay />
+
+//         <SectionContainer>
+//           <div
+//             className="
+//             grid
+//             grid-cols-1
+//             lg:grid-cols-2
+//             gap-10
+//             md:gap-16
+//             lg:gap-20
+//             items-center
+//             min-h-screen
+//             pt-32
+//             pb-20
+//             "
+//           >
+//             <motion.div
+//               initial={{ opacity: 0, y: 80 }}
+//               animate={{ opacity: 1, y: 0 }}
+//               transition={{ duration: 1 }}
+//               className="relative max-w-full"
+//             >
+//               <div className="relative mb-10">
+//                 <motion.button
+//                   onClick={() => navigate("/portfolio")}
+//                   whileHover={{ x: -5 }}
+//                   transition={{ duration: 0.3 }}
+//                   className="
+//                   flex
+//                   items-center
+//                   gap-3
+//                   text-zinc-400
+//                   hover:text-white
+//                   uppercase
+//                   tracking-[0.15em]
+//                   md:tracking-[0.2em]
+//                   text-[10px]
+//                   md:text-sm
+//                   transition-colors
+//                   "
+//                 >
+//                   <ArrowLeft size={16} />
+//                   <span>Back To Archive</span>
+//                 </motion.button>
+//               </div>
+
+//               <p className="section-label mb-5 md:mb-6">
+//                 {project.category}
+//               </p>
+
+//               <h1
+//                 className="
+//                 big-title
+//                 text-[3rem]
+//                 sm:text-[4rem]
+//                 md:text-[6rem]
+//                 lg:text-[7rem]
+//                 leading-[0.9]
+//                 "
+//               >
+//                 {project.title}
+//               </h1>
+
+//               <p
+//                 className="
+//                 body-text
+//                 text-base
+//                 md:text-lg
+//                 mt-6
+//                 md:mt-10
+//                 leading-[1.9]
+//                 max-w-full
+//                 md:max-w-[700px]
+//                 "
+//               >
+//                 {project.shortDescription}
+//               </p>
+
+//               {project.software && project.software.length > 0 && (
+//                 <div className="flex flex-wrap gap-3 md:gap-4 mt-8 md:mt-10">
+//                   {project.software.map((item, index) => (
+//                     <div
+//                       key={index}
+//                       className="
+//                       px-4
+//                       md:px-5
+//                       py-2
+//                       md:py-3
+//                       glass-panel
+//                       text-[10px]
+//                       md:text-sm
+//                       uppercase
+//                       tracking-wider
+//                       "
+//                     >
+//                       {item}
+//                     </div>
+//                   ))}
+//                 </div>
+//               )}
+//             </motion.div>
+//           </div>
+//         </SectionContainer>
+
+//         <div
+//           className="
+//           absolute
+//           bottom-0
+//           left-0
+//           w-full
+//           h-[120px]
+//           md:h-[220px]
+//           bg-gradient-to-t
+//           from-black
+//           to-transparent
+//           "
+//         />
+//       </section>
+
+//       {/* ==================================================
+//           GALLERY SECTION (only if project.gallery exists)
+//       ================================================== */}
+//       {project.gallery && project.gallery.length > 0 && (
+//         <section className="relative overflow-hidden py-20 md:py-32 bg-black">
+//           <div className="absolute inset-0">
+//             <motion.div
+//               initial={{ scale: 1.08 }}
+//               animate={{ scale: 1.02, y: [-20, 20, -20] }}
+//               transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+//               className="absolute inset-0"
+//               style={{
+//                 backgroundImage: `url(${galleryBg})`,
+//                 backgroundPosition: "center 25%",
+//                 backgroundSize: "cover",
+//                 backgroundRepeat: "no-repeat",
+//                 filter: "brightness(0.75)",
+//               }}
+//             />
+//             <div className="absolute inset-0 bg-black/50" />
+//           </div>
+
+//           <GlowOverlay />
+
+//           <div className="relative z-20 w-full mb-14 md:mb-20">
+//             <div className="px-4 sm:px-6 md:px-12 lg:pl-48 lg:pr-16 mb-10 md:mb-14">
+//               <SectionTitle
+//                 label="Visual Archive"
+//                 title="Project Gallery"
+//                 subtitle="A cinematic breakdown of visuals, frames, and storytelling moments."
+//               />
+//             </div>
+
+//             {project.gallery.length <= 3 ? (
+//               <div
+//                 className={`
+//                   grid
+//                   gap-4
+//                   md:gap-6
+//                   px-4
+//                   sm:px-6
+//                   md:px-10
+//                   mx-auto
+//                   ${
+//                     project.gallery.length === 1
+//                       ? "max-w-[900px]"
+//                       : project.gallery.length === 2
+//                       ? "md:grid-cols-2 max-w-[1400px]"
+//                       : "md:grid-cols-3 max-w-[1700px]"
+//                   }
+//                 `}
+//               >
+//                 {project.gallery.map((item, index) => {
+//                   const src = typeof item === "string" ? item : item.src;
+//                   const ratio = typeof item === "string" ? null : item.aspectRatio;
+
+//                   return (
+//                     <motion.div
+//                       key={index}
+//                       whileHover={{ scale: 1.02 }}
+//                       transition={{ duration: 0.4 }}
+//                       className={`
+//                         overflow-hidden
+//                         cinematic-border
+//                         bg-zinc-950
+//                         ${!ratio && project.gallery.length === 2 ? "max-h-[520px]" : ""}
+//                         ${!ratio && project.gallery.length !== 2 ? "max-h-[650px]" : ""}
+//                       `}
+//                       style={ratio ? { aspectRatio: ratio } : undefined}
+//                     >
+//                       <img
+//                         src={src}
+//                         alt={`${project.title}-${index}`}
+//                         className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+//                       />
+//                     </motion.div>
+//                   );
+//                 })}
+//               </div>
+//             ) : (
+//               <AutoScrollGallery images={project.gallery} />
+//             )}
+//           </div>
+//         </section>
+//       )}
+
+//       {/* ==================================================
+//           DESCRIPTION SECTION (only if project.description exists)
+//       ================================================== */}
+//       {project.description && (
+//         <section
+//           className="
+//           relative
+//           min-h-screen
+//           flex
+//           items-center
+//           overflow-hidden
+//           py-20
+//           md:py-32
+//           "
+//         >
+//           <motion.div
+//             initial={{ scale: 1.08 }}
+//             animate={{ scale: 1.02, y: [-20, 20, -20] }}
+//             transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+//             className="absolute inset-0"
+//             style={{
+//               backgroundImage: `url(${descriptionBg})`,
+//               backgroundPosition: "center 25%",
+//               backgroundSize: "cover",
+//               backgroundRepeat: "no-repeat",
+//               filter: "brightness(0.75)",
+//             }}
+//           />
+//           <div className="absolute inset-0 bg-black/25" />
+
+//           <SectionContainer>
+//             <div
+//               className="
+//               relative
+//               z-10
+//               grid
+//               grid-cols-1
+//               lg:grid-cols-2
+//               gap-6
+//               md:gap-10
+//               items-center
+//               "
+//             >
+//               <motion.div
+//                 initial={{ opacity: 0, y: 50 }}
+//                 whileInView={{ opacity: 1, y: 0 }}
+//                 transition={{ duration: 0.8 }}
+//                 viewport={{ once: true }}
+//                 className="
+//                 relative
+//                 overflow-hidden
+//                 border
+//                 border-white/10
+//                 bg-white/[0.03]
+//                 backdrop-blur-md
+//                 p-6
+//                 md:p-12
+//                 lg:p-14
+//                 "
+//               >
+//                 <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent" />
+
+//                 <div className="relative z-10">
+//                   <p
+//                     className="
+//                     text-red-500
+//                     uppercase
+//                     tracking-[0.25em]
+//                     md:tracking-[0.3em]
+//                     text-[10px]
+//                     md:text-xs
+//                     mb-5
+//                     md:mb-6
+//                     "
+//                   >
+//                     Project Overview
+//                   </p>
+
+//                   <h2
+//                     className="
+//                     text-[2.5rem]
+//                     sm:text-[3rem]
+//                     md:text-6xl
+//                     font-black
+//                     uppercase
+//                     text-white
+//                     leading-none
+//                     "
+//                   >
+//                     The Story
+//                   </h2>
+
+//                   <motion.p
+//                     initial={{ opacity: 0 }}
+//                     whileInView={{ opacity: 1 }}
+//                     transition={{ delay: 0.3, duration: 1 }}
+//                     viewport={{ once: true }}
+//                     className="
+//                     mt-6
+//                     md:mt-8
+//                     text-zinc-300
+//                     leading-[1.9]
+//                     md:leading-[2]
+//                     text-base
+//                     md:text-lg
+//                     "
+//                   >
+//                     {project.description}
+//                   </motion.p>
+//                 </div>
+//               </motion.div>
+
+//               <motion.div
+//                 initial={{ opacity: 0, y: 50 }}
+//                 whileInView={{ opacity: 1, y: 0 }}
+//                 transition={{ duration: 0.8, delay: 0.2 }}
+//                 viewport={{ once: true }}
+//                 className="
+//                 relative
+//                 overflow-hidden
+//                 border
+//                 border-white/10
+//                 bg-white/[0.03]
+//                 backdrop-blur-md
+//                 p-6
+//                 md:p-10
+//                 "
+//               >
+//                 <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent" />
+
+//                 <div className="relative z-10">
+//                   <p
+//                     className="
+//                     text-red-500
+//                     uppercase
+//                     tracking-[0.25em]
+//                     md:tracking-[0.3em]
+//                     text-[10px]
+//                     md:text-xs
+//                     mb-8
+//                     md:mb-10
+//                     "
+//                   >
+//                     Project Details
+//                   </p>
+
+//                   <div className="space-y-6 md:space-y-8">
+//                     {[
+//                       { label: "Project Type", value: project.projectType },
+//                       { label: "Role", value: project.role },
+//                       { label: "Resolution", value: project.resolution },
+//                       { label: "Format", value: project.format },
+//                     ]
+//                       .filter((item) => item.value)
+//                       .map((item, index) => (
+//                         <motion.div
+//                           key={index}
+//                           whileHover={{ x: 5 }}
+//                           className="
+//                           flex
+//                           justify-between
+//                           gap-4
+//                           md:gap-6
+//                           border-b
+//                           border-white/5
+//                           pb-4
+//                           md:pb-5
+//                           "
+//                         >
+//                           <span
+//                             className="
+//                             text-zinc-500
+//                             uppercase
+//                             tracking-[0.15em]
+//                             md:tracking-[0.2em]
+//                             text-[10px]
+//                             md:text-xs
+//                             "
+//                           >
+//                             {item.label}
+//                           </span>
+//                           <span className="text-white text-right text-sm md:text-base">
+//                             {item.value}
+//                           </span>
+//                         </motion.div>
+//                       ))}
+//                   </div>
+//                 </div>
+//               </motion.div>
+//             </div>
+//           </SectionContainer>
+//         </section>
+//       )}
+
+//       {/* ==================================================
+//           DYNAMIC SECTIONS (flexible per-project content blocks)
+//       ================================================== */}
+//       {project.sections?.map((section, i) => renderSection(section, i))}
+
+//       {/* ==================================================
+//           RESULT SECTION (always shows — smart layout by aspect ratio)
+//       ================================================== */}
+//       <ResultSection project={project} resultBg={resultBg} />
+
+//       {/* ==================================================
+//           THANK YOU SECTION
+//       ================================================== */}
+//       <section
+//         className="
+//         relative
+//         min-h-screen
+//         overflow-hidden
+//         flex
+//         items-center
+//         justify-center
+//         py-20
+//         md:py-32
+//         "
+//       >
+//         <motion.div
+//           initial={{ scale: 1.08 }}
+//           animate={{ scale: 1.02, y: [-20, 20, -20] }}
+//           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+//           className="absolute inset-0"
+//           style={{
+//             backgroundImage: `url(${ThankYouBg})`,
+//             backgroundPosition: "center 25%",
+//             backgroundSize: "cover",
+//             backgroundRepeat: "no-repeat",
+//             filter: "brightness(0.75)",
+//           }}
+//         />
+//         <div className="absolute inset-0 bg-black/5" />
+
+//         <div className="relative z-10 text-center px-4 sm:px-6 max-w-[1200px] mx-auto">
+//           <motion.p
+//             initial={{ opacity: 0, y: 30 }}
+//             whileInView={{ opacity: 1, y: 0 }}
+//             transition={{ duration: 1 }}
+//             viewport={{ once: true }}
+//             className="
+//             uppercase
+//             tracking-[0.3em]
+//             md:tracking-[0.7em]
+//             text-red-500
+//             text-[10px]
+//             md:text-sm
+//             mb-6
+//             md:mb-10
+//             "
+//           >
+//             Cinematic Ending
+//           </motion.p>
+
+//           <div className="flex justify-center flex-wrap gap-1 md:gap-2">
+//             {"THANK YOU".split("").map((char, index) => (
+//               <motion.span
+//                 key={index}
+//                 initial={{ opacity: 0, y: 120, rotate: 10, filter: "blur(20px)" }}
+//                 whileInView={{ opacity: 1, y: 0, rotate: 0, filter: "blur(0px)" }}
+//                 transition={{ delay: index * 0.08, duration: 0.8, ease: "easeOut" }}
+//                 viewport={{ once: true }}
+//                 className="
+//                 text-[2.8rem]
+//                 sm:text-[4rem]
+//                 md:text-[9rem]
+//                 font-black
+//                 uppercase
+//                 leading-none
+//                 inline-block
+//                 text-white
+//                 drop-shadow-[0_0_30px_rgba(255,0,0,0.5)]
+//                 "
+//               >
+//                 {char === " " ? "\u00A0" : char}
+//               </motion.span>
+//             ))}
+//           </div>
+
+//           <motion.p
+//             initial={{ opacity: 0, y: 40 }}
+//             whileInView={{ opacity: 1, y: 0 }}
+//             transition={{ delay: 1.1, duration: 1 }}
+//             viewport={{ once: true }}
+//             className="
+//             text-white/75
+//             text-base
+//             md:text-xl
+//             leading-[1.9]
+//             max-w-full
+//             md:max-w-[850px]
+//             mx-auto
+//             mt-8
+//             md:mt-12
+//             "
+//           >
+//             Thank you for exploring my world of cinematic motion design,
+//             anime-inspired visuals, CGI storytelling, and immersive digital
+//             experiences.
+//           </motion.p>
+
+//           <motion.div
+//             initial={{ width: 0, opacity: 0 }}
+//             whileInView={{ width: "220px", opacity: 1 }}
+//             transition={{ delay: 1.4, duration: 1 }}
+//             viewport={{ once: true }}
+//             className="
+//             h-[2px]
+//             bg-red-500
+//             mx-auto
+//             mt-10
+//             md:mt-14
+//             shadow-[0_0_30px_rgba(255,0,0,0.8)]
+//             "
+//           />
+
+//           <motion.div
+//             initial={{ opacity: 0, y: 40 }}
+//             whileInView={{ opacity: 1, y: 0 }}
+//             transition={{ delay: 1.6, duration: 1 }}
+//             viewport={{ once: true }}
+//             className="mt-12 md:mt-16"
+//           >
+//             <Link to="/portfolio">
+//               <CinematicButton>See More Projects</CinematicButton>
+//             </Link>
+//           </motion.div>
+//         </div>
+//       </section>
+
+//       <Footer />
+//     </>
+//   );
+// }
+
+// /* ==================================================
+//    RESULT SECTION — smart layout based on aspect ratio
+//    ================================================== */
+
+// function ResultSection({ project, resultBg }) {
+//   const results =
+//     project.results && project.results.length > 0
+//       ? project.results
+//       : [
+//           ...(project.video
+//             ? [{ type: "video", src: project.video, orientation: project.resultOrientation || "landscape" }]
+//             : []),
+//           ...(!project.video && project.resultImage
+//             ? [{ type: "image", src: project.resultImage, orientation: project.resultOrientation || "landscape" }]
+//             : []),
+//         ];
+
+//   if (results.length === 0) return null;
+
+//   const getRatioValue = (item) => {
+//     if (item.aspectRatio) {
+//       const [w, h] = item.aspectRatio.split("/").map(Number);
+//       return w / h;
+//     }
+//     return item.orientation === "portrait" ? 9 / 16 : 16 / 9;
+//   };
+
+//   const narrowItems = results.filter((r) => getRatioValue(r) <= 1.05);
+//   const wideItems = results.filter((r) => getRatioValue(r) > 1.05);
+
+//   return (
+//     <section className="relative overflow-hidden bg-black py-20 sm:py-24 md:py-28 lg:py-32">
+//       <motion.div
+//         initial={{ scale: 1.08 }}
+//         animate={{ scale: 1.02, y: [-20, 20, -20] }}
+//         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+//         className="absolute inset-0"
+//         style={{
+//           backgroundImage: `url(${resultBg})`,
+//           backgroundPosition: "center",
+//           backgroundSize: "cover",
+//           backgroundRepeat: "no-repeat",
+//           filter: "brightness(0.45)",
+//         }}
+//       />
+//       <div className="absolute inset-0 bg-black/55" />
+
+//       <div
+//         className="
+//         absolute
+//         top-1/2
+//         left-1/2
+//         -translate-x-1/2
+//         -translate-y-1/2
+//         w-[300px]
+//         h-[300px]
+//         sm:w-[500px]
+//         sm:h-[500px]
+//         lg:w-[800px]
+//         lg:h-[800px]
+//         bg-red-600/10
+//         blur-[100px]
+//         lg:blur-[160px]
+//         rounded-full
+//         "
+//       />
+
+//       <SectionContainer>
+//         <div className="relative z-10 w-full max-w-[1400px] mx-auto">
+//           <div className="mb-10 sm:mb-14 md:mb-20">
+//             <p
+//               className="
+//               uppercase
+//               tracking-[0.35em]
+//               md:tracking-[0.5em]
+//               text-red-500
+//               text-[10px]
+//               sm:text-xs
+//               md:text-sm
+//               mb-4
+//               md:mb-6
+//               "
+//             >
+//               Final Output
+//             </p>
+//             <h2
+//               className="
+//               uppercase
+//               font-black
+//               leading-[0.9]
+//               text-white
+//               text-[2.3rem]
+//               sm:text-[3.5rem]
+//               md:text-[5rem]
+//               lg:text-[7rem]
+//               "
+//             >
+//               PROJECT
+//               <br className="sm:hidden" />
+//               RESULT
+//             </h2>
+//           </div>
+
+//           {results.length === 1 ? (
+//             <ResultMedia item={results[0]} big />
+//           ) : (
+//             <div className="space-y-10 md:space-y-14">
+//               {narrowItems.length > 0 && (
+//                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+//                   {narrowItems.map((item, i) => (
+//                     <ResultMedia key={`n-${i}`} item={item} />
+//                   ))}
+//                 </div>
+//               )}
+
+//               {wideItems.length > 0 && (
+//                 <div className="flex flex-col gap-8 md:gap-12">
+//                   {wideItems.map((item, i) => (
+//                     <ResultMedia key={`w-${i}`} item={item} />
+//                   ))}
+//                 </div>
+//               )}
+//             </div>
+//           )}
+//         </div>
+//       </SectionContainer>
+//     </section>
+//   );
+// }
+
+// function ResultMedia({ item, big }) {
+//   const isPortrait = item.orientation === "portrait";
+
+//   const ratio = item.aspectRatio || (isPortrait ? "9/16" : "16/9");
+
+//   const [w, h] = ratio.split("/").map(Number);
+//   const ratioValue = w / h;
+//   const groupsAsNarrow = ratioValue <= 1.05;
+
+//   const wrapperClass = big
+//     ? `w-full ${groupsAsNarrow ? "max-w-[420px]" : "max-w-[1200px]"} mx-auto`
+//     : "w-full";
+
+//   const mediaClass = `
+//     w-full
+//     h-full
+//     object-cover
+//     bg-black
+//     border
+//     border-white/10
+//     shadow-[0_0_80px_rgba(255,0,0,0.08)]
+//   `;
+
+//   const videoRef = useRef(null);
+//   const [muted, setMuted] = useState(true);
+//   const [playing, setPlaying] = useState(true);
+
+//   const toggleMute = (e) => {
+//     e.stopPropagation();
+//     if (videoRef.current) {
+//       videoRef.current.muted = !videoRef.current.muted;
+//       setMuted(videoRef.current.muted);
+//     }
+//   };
+
+//   const togglePlay = () => {
+//     if (!videoRef.current) return;
+//     if (videoRef.current.paused) {
+//       videoRef.current.play();
+//       setPlaying(true);
+//     } else {
+//       videoRef.current.pause();
+//       setPlaying(false);
+//     }
+//   };
+
+//   return (
+//     <motion.div
+//       initial={{ opacity: 0, y: 60 }}
+//       whileInView={{ opacity: 1, y: 0 }}
+//       transition={{ duration: 0.8 }}
+//       viewport={{ once: true }}
+//       className={`relative overflow-hidden ${wrapperClass}`}
+//       style={{ aspectRatio: ratio }}
+//     >
+//       {item.type === "video" ? (
+//         <div className="relative w-full h-full group" onClick={togglePlay}>
+//           <video
+//             ref={videoRef}
+//             src={item.src}
+//             autoPlay
+//             muted
+//             loop
+//             playsInline
+//             preload="metadata"
+//             className={mediaClass}
+//           />
+
+//           <div
+//             className="
+//             absolute
+//             inset-0
+//             flex
+//             items-center
+//             justify-center
+//             opacity-0
+//             group-hover:opacity-100
+//             transition-opacity
+//             duration-300
+//             bg-black/20
+//             pointer-events-none
+//             "
+//           >
+//             {!playing && (
+//               <div className="w-16 h-16 rounded-full bg-black/60 flex items-center justify-center">
+//                 <div
+//                   className="
+//                   w-0
+//                   h-0
+//                   border-t-[10px]
+//                   border-t-transparent
+//                   border-b-[10px]
+//                   border-b-transparent
+//                   border-l-[16px]
+//                   border-l-white
+//                   ml-1
+//                   "
+//                 />
+//               </div>
+//             )}
+//           </div>
+
+//           <button
+//             onClick={toggleMute}
+//             className="
+//             absolute
+//             bottom-4
+//             right-4
+//             z-10
+//             w-10
+//             h-10
+//             flex
+//             items-center
+//             justify-center
+//             bg-black/60
+//             border
+//             border-white/20
+//             text-white
+//             hover:bg-black/80
+//             transition-colors
+//             duration-300
+//             "
+//           >
+//             {muted ? (
+//               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+//                 <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+//                 <line x1="23" y1="9" x2="17" y2="15" />
+//                 <line x1="17" y1="9" x2="23" y2="15" />
+//               </svg>
+//             ) : (
+//               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+//                 <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+//                 <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+//                 <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+//               </svg>
+//             )}
+//           </button>
+//         </div>
+//       ) : (
+//         <img src={item.src} alt="" className={mediaClass} />
+//       )}
+//     </motion.div>
+//   );
+// }
+
+// /* ==================================================
+//    GALLERY AUTO-SCROLL (unchanged)
+//    ================================================== */
+
+// function AutoScrollGallery({ images }) {
+//   const duplicatedImages = [...images, ...images];
+
+//   return (
+//     <div className="relative overflow-hidden w-screen left-1/2 -translate-x-1/2">
+//       <div
+//         className="
+//         absolute
+//         left-0
+//         top-0
+//         z-30
+//         h-full
+//         w-16
+//         md:w-40
+//         bg-gradient-to-r
+//         from-black
+//         to-transparent
+//         pointer-events-none
+//         "
+//       />
+//       <div
+//         className="
+//         absolute
+//         right-0
+//         top-0
+//         z-30
+//         h-full
+//         w-16
+//         md:w-40
+//         bg-gradient-to-l
+//         from-black
+//         to-transparent
+//         pointer-events-none
+//         "
+//       />
+
+//       <motion.div
+//         animate={{ x: ["0%", "-50%"] }}
+//         transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+//         className="flex gap-4 md:gap-8 w-max px-4 md:px-8"
+//       >
+//         {duplicatedImages.map((image, index) => {
+//           const src = typeof image === "string" ? image : image.src;
+//           return (
+//             <motion.div
+//               key={index}
+//               whileHover={{ scale: 1.03 }}
+//               transition={{ duration: 0.4 }}
+//               className="
+//               w-[320px]
+//               sm:w-[450px]
+//               md:w-[720px]
+//               aspect-[16/9]
+//               flex-shrink-0
+//               overflow-hidden
+//               cinematic-border
+//               bg-zinc-950
+//               "
+//             >
+//               <img
+//                 src={src}
+//                 alt={`gallery-${index}`}
+//                 className="
+//                 w-full
+//                 h-full
+//                 object-cover
+//                 object-center
+//                 transition-transform
+//                 duration-700
+//                 hover:scale-105
+//                 "
+//               />
+//             </motion.div>
+//           );
+//         })}
+//       </motion.div>
+//     </div>
+//   );
+// }
+
+// /* ==================================================
+//    FLEXIBLE SECTIONS (unchanged from before)
+//    ================================================== */
+
+// function SectionBlock({ label, title, children }) {
+//   return (
+//     <section className="relative overflow-hidden bg-black py-16 md:py-24">
+//       <div className="relative z-10 w-[92%] sm:w-[90%] max-w-[1700px] mx-auto">
+//         {label && (
+//           <p className="uppercase tracking-[0.35em] text-red-500 text-[10px] sm:text-xs mb-4">
+//             {label}
+//           </p>
+//         )}
+//         {title && (
+//           <h2 className="text-white uppercase font-black leading-[0.95] text-[2rem] sm:text-[2.8rem] md:text-[3.6rem] mb-10">
+//             {title}
+//           </h2>
+//         )}
+//         {children}
+//       </div>
+//     </section>
+//   );
+// }
+
+// function GallerySection({ section }) {
+//   return (
+//     <SectionBlock label="Gallery" title={section.title}>
+//       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+//         {section.images.map((img, i) => (
+//           <div key={i} className="overflow-hidden border border-white/10 bg-zinc-950">
+//             <img src={img} alt={`${section.title}-${i}`} className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
+//           </div>
+//         ))}
+//       </div>
+//     </SectionBlock>
+//   );
+// }
+
+// function VideoSection({ section }) {
+//   return (
+//     <SectionBlock label="Final Output" title={section.title}>
+//       <video src={section.src} controls preload="metadata" playsInline className="w-full aspect-video object-cover bg-black rounded-[18px] border border-white/10" />
+//     </SectionBlock>
+//   );
+// }
+
+// function ImageSection({ section }) {
+//   return (
+//     <SectionBlock label="Visual" title={section.title}>
+//       <img src={section.src} alt={section.title} className="w-full max-h-[80vh] object-cover rounded-[18px] border border-white/10" />
+//     </SectionBlock>
+//   );
+// }
+
+// function BeforeAfterSection({ section }) {
+//   return (
+//     <SectionBlock label="Comparison" title={section.title}>
+//       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+//         <div>
+//           <p className="text-zinc-500 uppercase tracking-widest text-xs mb-3">Before</p>
+//           <img src={section.before} alt="before" className="w-full object-cover border border-white/10" />
+//         </div>
+//         <div>
+//           <p className="text-red-500 uppercase tracking-widest text-xs mb-3">After</p>
+//           <img src={section.after} alt="after" className="w-full object-cover border border-white/10" />
+//         </div>
+//       </div>
+//     </SectionBlock>
+//   );
+// }
+
+// function MockupSection({ section }) {
+//   return (
+//     <SectionBlock label="Showcase" title={section.title}>
+//       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-10">
+//         {section.images.map((img, i) => (
+//           <div key={i} className="overflow-hidden rounded-[16px] border border-white/10 bg-white/[0.03] p-4">
+//             <img src={img} alt={`mockup-${i}`} className="w-full object-contain" />
+//           </div>
+//         ))}
+//       </div>
+//     </SectionBlock>
+//   );
+// }
+
+// function renderSection(section, index) {
+//   switch (section.type) {
+//     case "gallery": return <GallerySection key={index} section={section} />;
+//     case "video": return <VideoSection key={index} section={section} />;
+//     case "image": return <ImageSection key={index} section={section} />;
+//     case "beforeAfter": return <BeforeAfterSection key={index} section={section} />;
+//     case "mockup": return <MockupSection key={index} section={section} />;
+//     default: return null;
+//   }
+// }
+
+// export default ProjectDetails;
+
 import {
   motion,
   useAnimationFrame,
@@ -3602,8 +5756,6 @@ function ProjectDetails() {
     return <NotFound />;
   }
 
-  // Hero background always uses thumbnail. heroImage kept only as a
-  // fallback for older projects that still define it separately.
   const heroBg = project.heroImage || project.thumbnail;
 
   return (
@@ -3821,25 +5973,32 @@ function ProjectDetails() {
                   }
                 `}
               >
-                {project.gallery.map((image, index) => (
-                  <motion.div
-                    key={index}
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.4 }}
-                    className={`
-                      overflow-hidden
-                      cinematic-border
-                      bg-zinc-950
-                      ${project.gallery.length === 2 ? "max-h-[520px]" : "max-h-[650px]"}
-                    `}
-                  >
-                    <img
-                      src={image}
-                      alt={`${project.title}-${index}`}
-                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                    />
-                  </motion.div>
-                ))}
+                {project.gallery.map((item, index) => {
+                  const src = typeof item === "string" ? item : item.src;
+                  const ratio = typeof item === "string" ? null : item.aspectRatio;
+
+                  return (
+                    <motion.div
+                      key={index}
+                      whileHover={{ scale: 1.02 }}
+                      transition={{ duration: 0.4 }}
+                      className={`
+                        overflow-hidden
+                        cinematic-border
+                        bg-zinc-950
+                        ${!ratio && project.gallery.length === 2 ? "max-h-[520px]" : ""}
+                        ${!ratio && project.gallery.length !== 2 ? "max-h-[650px]" : ""}
+                      `}
+                      style={ratio ? { aspectRatio: ratio } : undefined}
+                    >
+                      <img
+                        src={src}
+                        alt={`${project.title}-${index}`}
+                        className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                      />
+                    </motion.div>
+                  );
+                })}
               </div>
             ) : (
               <AutoScrollGallery images={project.gallery} />
@@ -4048,7 +6207,7 @@ function ProjectDetails() {
       {project.sections?.map((section, i) => renderSection(section, i))}
 
       {/* ==================================================
-          RESULT SECTION (always shows — smart layout by orientation)
+          RESULT SECTION (always shows — smart layout by aspect ratio)
       ================================================== */}
       <ResultSection project={project} resultBg={resultBg} />
 
@@ -4184,13 +6343,10 @@ function ProjectDetails() {
 }
 
 /* ==================================================
-   RESULT SECTION — smart layout based on orientation
+   RESULT SECTION — smart layout, preserving array order
    ================================================== */
 
 function ResultSection({ project, resultBg }) {
-  // Build a unified results array. Prefer the new `results` field;
-  // fall back to legacy `video` / `resultImage` fields so old projects
-  // keep working without changes.
   const results =
     project.results && project.results.length > 0
       ? project.results
@@ -4205,8 +6361,13 @@ function ResultSection({ project, resultBg }) {
 
   if (results.length === 0) return null;
 
-  const portraitItems = results.filter((r) => r.orientation === "portrait");
-  const landscapeItems = results.filter((r) => r.orientation !== "portrait");
+  const getRatioValue = (item) => {
+    if (item.aspectRatio) {
+      const [w, h] = item.aspectRatio.split("/").map(Number);
+      return w / h;
+    }
+    return item.orientation === "portrait" ? 9 / 16 : 16 / 9;
+  };
 
   return (
     <section className="relative overflow-hidden bg-black py-20 sm:py-24 md:py-28 lg:py-32">
@@ -4285,20 +6446,19 @@ function ResultSection({ project, resultBg }) {
             <ResultMedia item={results[0]} big />
           ) : (
             <div className="space-y-10 md:space-y-14">
-              {portraitItems.length > 0 && (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                  {portraitItems.map((item, i) => (
-                    <ResultMedia key={`p-${i}`} item={item} />
-                  ))}
-                </div>
-              )}
-
-              {landscapeItems.length > 0 && (
-                <div className="flex flex-col gap-8 md:gap-12">
-                  {landscapeItems.map((item, i) => (
-                    <ResultMedia key={`l-${i}`} item={item} />
-                  ))}
-                </div>
+              {groupResultsInOrder(results, getRatioValue).map((group, i) =>
+                group.type === "row" ? (
+                  <div
+                    key={i}
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+                  >
+                    {group.items.map((item, j) => (
+                      <ResultMedia key={`row-${i}-${j}`} item={item} />
+                    ))}
+                  </div>
+                ) : (
+                  <ResultMedia key={i} item={group.item} />
+                )
               )}
             </div>
           )}
@@ -4308,19 +6468,51 @@ function ResultSection({ project, resultBg }) {
   );
 }
 
+// Groups items in their original array order:
+// consecutive narrow (square/portrait) items become rows of up to 3,
+// each wide (landscape) item becomes its own full-width row.
+function groupResultsInOrder(results, getRatioValue) {
+  const groups = [];
+  let currentRow = [];
+
+  const flushRow = () => {
+    if (currentRow.length > 0) {
+      groups.push({ type: "row", items: currentRow });
+      currentRow = [];
+    }
+  };
+
+  results.forEach((item) => {
+    const isNarrow = getRatioValue(item) <= 1.05;
+
+    if (isNarrow) {
+      currentRow.push(item);
+      if (currentRow.length === 3) {
+        flushRow();
+      }
+    } else {
+      flushRow();
+      groups.push({ type: "single", item });
+    }
+  });
+
+  flushRow();
+  return groups;
+}
+
 function ResultMedia({ item, big }) {
   const isPortrait = item.orientation === "portrait";
-  const videoRef = useRef(null);
-  const [muted, setMuted] = useState(true);
-  const [playing, setPlaying] = useState(true);
+
+  const ratio = item.aspectRatio || (isPortrait ? "9/16" : "16/9");
+
+  const [w, h] = ratio.split("/").map(Number);
+  const ratioValue = w / h;
+  const groupsAsNarrow = ratioValue <= 1.05;
 
   const wrapperClass = big
-    ? `w-full ${isPortrait ? "max-w-[420px]" : "max-w-[1200px]"} mx-auto`
+    ? `w-full ${groupsAsNarrow ? "max-w-[420px]" : "max-w-[1200px]"} mx-auto`
     : "w-full";
 
-  const aspectClass = isPortrait ? "aspect-[9/16]" : "aspect-video";
-
-  // No rounded corners — sharp edges as requested
   const mediaClass = `
     w-full
     h-full
@@ -4330,6 +6522,10 @@ function ResultMedia({ item, big }) {
     border-white/10
     shadow-[0_0_80px_rgba(255,0,0,0.08)]
   `;
+
+  const videoRef = useRef(null);
+  const [muted, setMuted] = useState(true);
+  const [playing, setPlaying] = useState(true);
 
   const toggleMute = (e) => {
     e.stopPropagation();
@@ -4356,7 +6552,8 @@ function ResultMedia({ item, big }) {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
       viewport={{ once: true }}
-      className={`relative overflow-hidden ${wrapperClass} ${aspectClass}`}
+      className={`relative overflow-hidden ${wrapperClass}`}
+      style={{ aspectRatio: ratio }}
     >
       {item.type === "video" ? (
         <div className="relative w-full h-full group" onClick={togglePlay}>
@@ -4371,7 +6568,6 @@ function ResultMedia({ item, big }) {
             className={mediaClass}
           />
 
-          {/* PLAY/PAUSE STATE ICON (shows briefly on hover) */}
           <div
             className="
             absolute
@@ -4406,7 +6602,6 @@ function ResultMedia({ item, big }) {
             )}
           </div>
 
-          {/* MUTE/UNMUTE BUTTON */}
           <button
             onClick={toggleMute}
             className="
@@ -4495,37 +6690,40 @@ function AutoScrollGallery({ images }) {
         transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
         className="flex gap-4 md:gap-8 w-max px-4 md:px-8"
       >
-        {duplicatedImages.map((image, index) => (
-          <motion.div
-            key={index}
-            whileHover={{ scale: 1.03 }}
-            transition={{ duration: 0.4 }}
-            className="
-            w-[320px]
-            sm:w-[450px]
-            md:w-[720px]
-            aspect-[16/9]
-            flex-shrink-0
-            overflow-hidden
-            cinematic-border
-            bg-zinc-950
-            "
-          >
-            <img
-              src={image}
-              alt={`gallery-${index}`}
+        {duplicatedImages.map((image, index) => {
+          const src = typeof image === "string" ? image : image.src;
+          return (
+            <motion.div
+              key={index}
+              whileHover={{ scale: 1.03 }}
+              transition={{ duration: 0.4 }}
               className="
-              w-full
-              h-full
-              object-cover
-              object-center
-              transition-transform
-              duration-700
-              hover:scale-105
+              w-[320px]
+              sm:w-[450px]
+              md:w-[720px]
+              aspect-[16/9]
+              flex-shrink-0
+              overflow-hidden
+              cinematic-border
+              bg-zinc-950
               "
-            />
-          </motion.div>
-        ))}
+            >
+              <img
+                src={src}
+                alt={`gallery-${index}`}
+                className="
+                w-full
+                h-full
+                object-cover
+                object-center
+                transition-transform
+                duration-700
+                hover:scale-105
+                "
+              />
+            </motion.div>
+          );
+        })}
       </motion.div>
     </div>
   );
