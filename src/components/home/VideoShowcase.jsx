@@ -172,46 +172,94 @@ function VideoShowcase() {
           "></div>
 
           {/* CONTENT */}
-          <div className="
-          absolute bottom-10 left-10
-          z-20
-          ">
+          <div
+            className={`
+            absolute
+            z-20
+            ${isPortrait ? "bottom-6 left-6 right-6" : "bottom-10 left-10 right-32"}
+            `}
+          >
 
             <motion.p
-              key={videos[current].subtitle}
-              initial={{ opacity:0, y:20 }}
-              animate={{ opacity:1, y:0 }}
-              transition={{ duration:0.6 }}
-              className="
+              key={activeReel.subtitle}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className={`
               uppercase
-              tracking-[0.4em]
+              tracking-[0.3em]
               text-red-500
-              text-sm
-              mb-4
-              "
+              ${isPortrait ? "text-[9px] mb-2" : "text-xs mb-4"}
+              `}
             >
-              {videos[current].subtitle}
+
+              {activeReel.subtitle}
+
             </motion.p>
 
             <motion.h3
-              key={videos[current].title}
-              initial={{ opacity:0, y:30 }}
-              animate={{ opacity:1, y:0 }}
-              transition={{ duration:0.8 }}
-              className="
+              key={activeReel.title}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              className={`
               big-title
-              text-[3rem]
-              md:text-[6rem]
-              leading-[0.9]
+              leading-[0.95]
               uppercase
-              "
+              ${isPortrait ? "text-[1.6rem]" : "text-[2.5rem] md:text-[4rem]"}
+              `}
             >
-              {videos[current].title}
+
+              {activeReel.title}
+
             </motion.h3>
 
           </div>
 
           {/* CONTROLS */}
+          <div
+            className={`
+            absolute
+            z-20
+            flex
+            items-center
+            ${isPortrait ? "bottom-6 right-6 gap-2" : "bottom-10 right-10 gap-4"}
+            `}
+          >
+
+            <button
+              onClick={prevReel}
+              className={`
+              rounded-full
+              border border-white/10
+              bg-black/40
+              backdrop-blur-xl
+              hover:bg-red-500
+              transition
+              ${isPortrait ? "w-10 h-10 text-sm" : "w-14 h-14"}
+              `}
+            >
+              ←
+            </button>
+
+            <button
+              onClick={nextReel}
+              className={`
+              rounded-full
+              border border-white/10
+              bg-black/40
+              backdrop-blur-xl
+              hover:bg-red-500
+              transition
+              ${isPortrait ? "w-10 h-10 text-sm" : "w-14 h-14"}
+              `}
+            >
+              →
+            </button>
+
+          </div>
+
+          {/* CONTROLS
           <div className="
           absolute bottom-10 right-10
           z-20
@@ -248,7 +296,7 @@ function VideoShowcase() {
               →
             </button>
 
-          </div>
+          </div> */}
 
         </div>
 

@@ -20,7 +20,7 @@ const projectData = {
   slug: "Aure Crossiant",
   title: "Aure Crossiant",
   category: "BRAND IDENTITY",
-  shortDescription: "the elegance of French baking and the warmth of handcrafted traditions. Built around the philosophy of creating memorable experiences through fresh, buttery, and beautifully layered pastries, the brand combines authentic craftsmanship with a refined contemporary aesthetic.",
+  shortDescription: "The elegance of French baking and the warmth of handcrafted traditions. Built around the philosophy of creating memorable experiences through fresh, buttery, and beautifully layered pastries, the brand combines authentic craftsmanship with a refined contemporary aesthetic.",
 
   thumbnail: thumbnail,
 
