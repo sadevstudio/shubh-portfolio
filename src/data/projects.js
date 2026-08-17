@@ -8,6 +8,8 @@ import Aure_crossiant from "../assets/projects/Aure_crossiant/projectData";
 import Aurecrossiant_moodboard from "../assets/projects/Aurecrossiant_moodboard/projectData";
 import Scoovia from "../assets/projects/Scoovia/projectData";
 import Scoovia_moodboard from "../assets/projects/Scoovia_moodboard/projectData";
+import Seyreon from "../assets/projects/Seyreon/projectData";
+import Seyreon_moodboard from "../assets/projects/Seyreon_moodboard/projectData";
 import Mayoor from "../assets/projects/Mayoor/projectData";
 
 const projects = [
@@ -20,8 +22,10 @@ const projects = [
   Project_04,
   Project_05,
   Project_06,
+  Seyreon,
   Aure_crossiant,
   Scoovia,
+  Seyreon_moodboard,
   Aurecrossiant_moodboard,
   Scoovia_moodboard,
   Mayoor,
