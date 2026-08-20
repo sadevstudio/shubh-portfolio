@@ -13,14 +13,14 @@
 const categories = [
   "ALL",
   "BRAND IDENTITY",
-  "PACKAGING",
+  "ILLUSTRATION",
   "SOCIAL MEDIA",
   "MOTION DESIGN",
   "VIDEO EDITING",
   "CGI & 3D",
   "CAMPAIGNS",
   "UI/UX DESIGN",
-  "AI VIDEO",
+  // "AI VIDEO",
   "AI SOCIAL MEDIA",
 ];
 

@@ -22,19 +22,38 @@ import Fleetx from "../assets/projects/Fleetx/projectData";
 import DotKey from "../assets/projects/DotKey/projectData";
 import Go_Figure from "../assets/projects/Go_Figure/projectData";
 import MuscleBlaze from "../assets/projects/MuscleBlaze/projectData";
-
-
+import BannerCGI from "../assets/projects/BannerCGI/projectData";
+import Suzuki from "../assets/projects/Suzuki/projectData";
+import Building_ball from "../assets/projects/Building_ball/projectData";
+import Tennis from "../assets/projects/Tennis/projectData";
+import Car_animation from "../assets/projects/Car_animation/projectData";
+import Deer from "../assets/projects/Deer/projectData";
+import Tranding_reel from "../assets/projects/Tranding_reel/projectData";
+import Threevideo from "../assets/projects/Threevideo/projectData";
+import Threeclips from "../assets/projects/Threeclips/projectData";
+import Flatcharacters from "../assets/projects/Flatcharacters/projectData";
+import Smalldesigns from "../assets/projects/Smalldesigns/projectData";
+import Cuteicons from "../assets/projects/Cuteicons/projectData";
 
 const projects = [
   
   // samuraiAwakening,
   // india,
+  BannerCGI,
+  Suzuki,
+  Building_ball,
+  Tennis,
+  Car_animation,
+  Deer,
   Project_01,
   Project_02,
   Project_03,
   Project_04,
   Project_05,
   Project_06,
+  Tranding_reel,
+  Threevideo,
+  Threeclips,
   Seyreon,
   Aure_crossiant,
   Scoovia,
@@ -44,6 +63,9 @@ const projects = [
   Blinkit,
   Mayoor,
   Fleetx,
+  Flatcharacters,
+  Smalldesigns,
+  Cuteicons,
   Melte,
   Nexora,
   Zaayka,
