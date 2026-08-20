@@ -17,7 +17,7 @@ import Nexora from "../assets/projects/Nexora/projectData";
 import Zaayka from "../assets/projects/Zaayka/projectData";
 import Homewise from "../assets/projects/Homewise/projectData";
 import Homewise_video from "../assets/projects/Homewise_video/projectData";
-import AstroBlend from "../assets/projects/AstroBlend/projectData";
+import Astroblend from "../assets/projects/Astroblend/projectData";
 import Fleetx from "../assets/projects/Fleetx/projectData";
 import DotKey from "../assets/projects/DotKey/projectData";
 import Go_Figure from "../assets/projects/Go_Figure/projectData";
@@ -49,7 +49,7 @@ const projects = [
   Zaayka,
   Homewise,
   Homewise_video,
-  AstroBlend,
+  Astroblend,
   DotKey,
   Go_Figure,
   MuscleBlaze,
