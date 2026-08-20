@@ -1709,7 +1709,7 @@ md:pl-14
             once: true,
           }}
 
-          href="tel:+917017284828"
+          href="tel:+917017288428"
 
           className="
           group
@@ -1782,7 +1782,7 @@ md:pl-14
             </h3>
 
             <p className="text-white/65 text-lg">
-              +91 70172 84828
+              +91 70172 88428
             </p>
 
           </div>

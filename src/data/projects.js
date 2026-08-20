@@ -11,6 +11,19 @@ import Scoovia_moodboard from "../assets/projects/Scoovia_moodboard/projectData"
 import Seyreon from "../assets/projects/Seyreon/projectData";
 import Seyreon_moodboard from "../assets/projects/Seyreon_moodboard/projectData";
 import Mayoor from "../assets/projects/Mayoor/projectData";
+import Blinkit from "../assets/projects/Blinkit/projectData";
+import Melte from "../assets/projects/Melte/projectData";
+import Nexora from "../assets/projects/Nexora/projectData";
+import Zaayka from "../assets/projects/Zaayka/projectData";
+import Homewise from "../assets/projects/Homewise/projectData";
+import Homewise_video from "../assets/projects/Homewise_video/projectData";
+import AstroBlend from "../assets/projects/AstroBlend/projectData";
+import Fleetx from "../assets/projects/Fleetx/projectData";
+import DotKey from "../assets/projects/DotKey/projectData";
+import Go_Figure from "../assets/projects/Go_Figure/projectData";
+import MuscleBlaze from "../assets/projects/MuscleBlaze/projectData";
+
+
 
 const projects = [
   
@@ -28,7 +41,18 @@ const projects = [
   Seyreon_moodboard,
   Aurecrossiant_moodboard,
   Scoovia_moodboard,
+  Blinkit,
   Mayoor,
+  Fleetx,
+  Melte,
+  Nexora,
+  Zaayka,
+  Homewise,
+  Homewise_video,
+  AstroBlend,
+  DotKey,
+  Go_Figure,
+  MuscleBlaze,
   // Project_03,
  
   // Project_05,
