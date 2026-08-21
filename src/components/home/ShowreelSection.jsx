@@ -627,7 +627,7 @@ function ShowreelSection() {
           text-sm
           mb-6
           ">
-            Cinematic Reel Experience
+            SHOWREEL
           </p>
 
           <h2 className="
@@ -639,7 +639,7 @@ function ShowreelSection() {
           mb-8
           ">
 
-            SHOWREEL
+            VISUAL JOURNEY
 
           </h2>
 
@@ -651,11 +651,11 @@ function ShowreelSection() {
           mb-10
           ">
 
-            A cinematic collection of anime-inspired
-            motion visuals,
-            CGI storytelling,
-            dramatic edits,
-            and immersive creative direction.
+            Explore a cinematic reel featuring motion graphics, 
+            3D animation, CGI advertising, video editing, and 
+            visual design bringing creative ideas to 
+            life through movement, composition, and 
+            storytelling.
 
           </p>
 
@@ -676,7 +676,7 @@ function ShowreelSection() {
             <Link to="/portfolio">
 
               <MagneticButton>
-                WATCH MORE
+                EXPLORE
               </MagneticButton>
 
             </Link>

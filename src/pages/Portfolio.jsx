@@ -1006,7 +1006,7 @@ function Portfolio() {
           md:mb-6
           "
         >
-          Work Archive
+          SELECTED WORK
         </p>
 
         <h2
@@ -1024,11 +1024,11 @@ function Portfolio() {
           "
         >
 
-          Featured
+          FEATURED
 
           <br />
 
-          Works
+          PROJECTS
 
         </h2>
 

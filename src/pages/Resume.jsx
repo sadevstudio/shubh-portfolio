@@ -1406,9 +1406,9 @@ function Resume() {
             leading-relaxed
             mb-8
             ">
-              Motion Designer
+              MULTIDISCIPLINARY
               <span className="text-red-500">
-                {' '} & 3D Artist
+                {' '} DESIGNER
               </span>
             </h2>
 
@@ -1418,10 +1418,7 @@ function Resume() {
             text-lg
             mb-10
             ">
-              I create cinematic visuals,
-              anime-inspired motion graphics,
-              immersive storytelling
-              and emotionally powerful digital experiences.
+              I’m Shubh Asawa, a multidisciplinary designer working across motion design, 3D, visual design, video editing, and CGI. I create engaging visual experiences that combine creative direction, design, motion, and storytelling.
             </p>
 
             <div className="space-y-5 mb-12">
@@ -1465,7 +1462,7 @@ function Resume() {
               transition-all duration-500
               "
             >
-              Download Resume (PDF)
+              Download Resume
             </motion.a>
 
           </div>
@@ -1573,10 +1570,7 @@ function Resume() {
               max-w-[420px]
               mb-8
               ">
-                I'm Shubh Asawa,
-                a Motion Designer,
-                Video Editor and 3D Artist
-                passionate about cinematic storytelling.
+                I'm Shubh Asawa, a multidisciplinary designer working across motion design, 3D, visual design, and video editing. I specialize in creating engaging visual content through motion graphics, 3D animation, CGI, video editing, and visual storytelling.
               </p>
 
               <p className="
@@ -1585,11 +1579,7 @@ function Resume() {
               max-w-[520px]
               mb-10
               ">
-                I specialize in anime-inspired visuals,
-                cinematic edits,
-                motion graphics,
-                CGI environments
-                and immersive digital experiences.
+                I combine creativity, design, and technical skills to transform ideas into polished visual experiences that communicate clearly and capture attention.
               </p>
 
               <div className="mt-0 flex flex-col items-start">
@@ -1684,14 +1674,14 @@ function Resume() {
                   uppercase
                   mb-4
                   ">
-                    Freelance Motion Designer
+                    FREELANCE MULTIDISCIPLINARY DESIGNER
                   </h3>
 
                   <p className="
                   text-red-500
                   mb-5
                   ">
-                    Creative Agency Projects
+                    Creative Projects & Client Work
                   </p>
 
                   <p className="
@@ -1699,11 +1689,7 @@ function Resume() {
                   leading-loose
                   max-w-[480px]
                   ">
-                    Working on cinematic reels,
-                    motion graphics,
-                    anime-inspired edits
-                    and storytelling visuals
-                    for brands and creators.
+                    Creating motion graphics, 3D visuals, CGI advertisements, video edits, and visual designs for brands, creators, and creative projects.
                   </p>
 
                 </div>
@@ -1844,10 +1830,10 @@ function Resume() {
 
             {[
               ['Motion Design', '90%'],
-              ['3D Modeling', '85%'],
+              ['CGI Advertising', '95%'],
               ['Video Editing', '92%'],
-              ['Visual Storytelling', '95%'],
-              ['Lighting & Rendering', '80%'],
+              ['3D Animation', '95%'],
+              ['Visual Design', '98%'],
             ].map((item, index) => (
 
               <div key={index} className="mb-10">
@@ -2116,15 +2102,14 @@ function Resume() {
                 transition-all duration-500
                 "
               >
-                Download Resume (PDF)
+                Download Resume
               </motion.a>
 
               <p className="
               text-white/45
               mt-8
               ">
-                Explore my creative journey,
-                cinematic experience and visual storytelling.
+                Explore my creative work, projects, and visual journey.
               </p>
 
             </div>

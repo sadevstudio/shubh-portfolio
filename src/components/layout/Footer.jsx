@@ -232,7 +232,8 @@ import {
   FaInstagram,
   FaLinkedin,
   FaBehance,
-  FaWhatsapp
+  FaWhatsapp,
+  FaMusic
 } from 'react-icons/fa'
 
 import footerBg from "../../assets/images/footer-bg.png";
@@ -534,6 +535,22 @@ function Footer() {
           >
             <FaBehance />
           </a>
+          <a
+          href="https://designtime.ai.studio/"
+    target="_blank"
+    rel="noreferrer"
+    className="
+    text-white/70
+
+    hover:text-red-500
+    hover:scale-110
+
+    transition
+    duration-300
+    "
+  >
+    <FaMusic />
+  </a>
 
         </div>
 

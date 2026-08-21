@@ -1279,7 +1279,7 @@ function FinalCTA() {
               </motion.span>
 
               <span className="relative z-10">
-                LET’S WORK TOGETHER
+                START A PROJECT
               </span>
 
             </motion.a>

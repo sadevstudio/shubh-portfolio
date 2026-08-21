@@ -698,10 +698,10 @@ function Contact() {
         "
       >
 
-        CONTACT{" "}
+        LET'S CREATE{" "}
 
         <span className="text-red-600">
-          ME
+          SOMETHING
         </span>
 
       </h1>
@@ -743,10 +743,7 @@ function Contact() {
         "
       >
 
-        I’m always open to discussing
-        new projects, cinematic visuals,
-        anime-inspired storytelling and
-        powerful creative collaborations.
+        Whether you have a clear concept or just the beginning of an idea, I'm always open to creative collaborations and new projects.
 
       </p>
 
@@ -769,8 +766,7 @@ function Contact() {
         "
       >
 
-        Let’s create visuals that feel
-        emotional, cinematic and unforgettable.
+       Let's create something with purpose, movement, and character — something people remember.
 
       </p>
 
@@ -2195,9 +2191,7 @@ md:pl-14
         "
       >
 
-        Open to freelance work,
-        creative collaborations and
-        cinematic visual projects worldwide.
+        Open to freelance projects, creative collaborations, and remote opportunities worldwide across motion design, 3D, visual design, CGI, and video editing.
 
       </motion.p>
 
@@ -2230,10 +2224,7 @@ md:pl-14
         "
       >
 
-        Let's create something that
-        feels powerful, emotional
-        and unforgettable.
-
+        Let's create something meaningful, memorable, and made to move.
       </motion.p>
 
     </motion.div>
@@ -2373,8 +2364,7 @@ md:pl-14
         "
       >
 
-        Let's Create Something Epic.
-
+        LET'S CREATE SOMETHING MEANINGFUL
       </motion.h2>
 
       {/* TEXT */}
@@ -2407,10 +2397,7 @@ md:pl-14
         "
       >
 
-        Have a project in mind
-        or just want to say hello?
-        I'd love to hear from you.
-
+        Have a project in mind, an idea to explore, or simply want to connect? I'd love to hear from you.
       </motion.p>
 
       {/* BUTTON */}

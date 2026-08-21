@@ -12,12 +12,12 @@
 
 const categories = [
   "ALL",
-  "BRAND IDENTITY",
-  "ILLUSTRATION",
-  "SOCIAL MEDIA",
+  "CGI & 3D",
   "MOTION DESIGN",
   "VIDEO EDITING",
-  "CGI & 3D",
+  "BRAND IDENTITY",
+  "SOCIAL MEDIA",
+  "ILLUSTRATION",
   "CAMPAIGNS",
   "UI/UX DESIGN",
   // "AI VIDEO",

@@ -533,13 +533,7 @@ function CreatorSection() {
             "
           >
 
-            Motion Designer & 3D Artist creating
-            cinematic anime visuals, CGI ads,
-            high-impact edits, immersive storytelling,
-            and futuristic samurai-inspired digital
-            experiences that blend emotion, motion,
-            and visual intensity.
-
+            Multidisciplinary Designer creating motion graphics, 3D visuals, CGI advertisements, video edits, and visual experiences that blend design, movement, storytelling, and creative direction.
           </p>
 
           {/* SKILLS */}
@@ -560,9 +554,9 @@ function CreatorSection() {
 
             {[
               "Motion Design",
+              "Visual Design",
               "Video Editing",
-              "3D Animation",
-              "CGI Ads",
+              "3D & CGI",
             ].map((item, index) => (
 
               <div

@@ -521,9 +521,8 @@ function ProjectCard({ project }) {
           relative
           overflow-hidden
 
-          aspect-[16/11]
-          sm:aspect-[16/10]
-          "
+          aspect-video
+  "
         >
 
           {/* IMAGE */}
@@ -536,6 +535,7 @@ function ProjectCard({ project }) {
             h-full
 
             object-cover
+            object-top
 
             transition-transform
             duration-700
@@ -576,7 +576,7 @@ function ProjectCard({ project }) {
             "
           />
 
-          {/* TOP LABEL */}
+          {/* TOP LABEL
           <div
             className="
             absolute
@@ -619,7 +619,52 @@ function ProjectCard({ project }) {
               {project.category}
             </span>
 
-          </div>
+          </div> */}
+
+          {/* TOP LABEL */}
+<div
+  className="
+  absolute
+
+  top-4
+  right-4
+
+  md:top-6
+  md:right-6
+
+  z-20
+  "
+>
+
+  <span
+    className="
+    px-3
+    md:px-4
+
+    py-2
+
+    text-[9px]
+    md:text-xs
+
+    uppercase
+
+    tracking-[0.2em]
+    md:tracking-[0.3em]
+
+    bg-black/60
+
+    backdrop-blur-sm
+
+    border
+    border-white/10
+
+    text-red-400
+    "
+  >
+    {project.category}
+  </span>
+
+</div>
 
           {/* TITLE ONLY — bottom-left */}
           <div

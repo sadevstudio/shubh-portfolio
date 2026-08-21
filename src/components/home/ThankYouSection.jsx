@@ -470,11 +470,12 @@ function ThankYouSection() {
           "
         >
 
-          Thank you for exploring my world of
-          cinematic motion design,
-          anime-inspired visuals,
-          CGI storytelling,
-          and immersive digital experiences.
+          Every project is an opportunity to turn ideas 
+          into engaging visual experiences that 
+          move, communicate, and connect.
+          From motion design and 3D to visual design, CGI, 
+          and video editing, I create visuals that turn 
+          ideas into stories worth watching.
 
         </motion.p>
 

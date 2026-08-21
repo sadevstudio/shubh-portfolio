@@ -1044,10 +1044,7 @@ function CreativeProcess() {
               "
             >
 
-              Every project begins with an emotion,
-              evolves through cinematic storytelling,
-              and transforms into immersive visual experiences
-              inspired by anime aesthetics and atmosphere.
+              Every project starts with an idea and evolves through concept, design, motion, 3D, editing, and refinement turning a simple concept into a polished visual experience.
 
             </motion.p>
 
@@ -1266,7 +1263,7 @@ function CreativeProcess() {
                 "
               >
 
-                I don’t just create visuals —
+                I don’t just create visuals,
                 I build cinematic experiences.
 
               </h3>
